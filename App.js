@@ -22,6 +22,8 @@ import Signup from './SRC/Screens/Signup';
 import LoginScreen from './SRC/Screens/LoginScreen';
 import Startedscreen from './SRC/Screens/Startedscreen';
 import Authscreen from './SRC/Screens/Authscreen';
+import Questionnaire from './SRC/Screens/Questionnaire';
+import Introscreen from './SRC/Screens/Introscreen';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -67,7 +69,7 @@ const MainContainer = () => {
     return <SplashScreen />;
   }
   // return <ChooseDeclineReasonScreen/>;
-  return <Authscreen/>
+  return <Introscreen/>
   // <AppNavigator />;
 };
 
