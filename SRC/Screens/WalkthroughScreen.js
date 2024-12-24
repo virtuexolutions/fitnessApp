@@ -25,28 +25,28 @@ const WalkThroughScreen = props => {
   const dispatch = useDispatch();
   const navigation = useNavigation()
   const slidesref =useRef(null)
-  const slides = [
-    {
-      key: '1',
-      image: require('../Assets/Images/walk1.jpg'),
-      title: 'CHEVY CRUZ',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas efficitur consectetur ligula eget ultrices. Cras ac risus sodales, posuere nibh et, molestie',
-    },
-    {
-      key: '2',
-      image: require('../Assets/Images/walk2.jpg'),
-      // image1: require('../Assets/Images/icon2.png'),
-      title: 'LOREM IPSUM DOLOR SIT',
-      text: `Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Pellentesque Eu Pulvinar Metus, Fringilla Semper Enim. Etiam Viverra Porttitor Nunc Laoreet Faucibus. Fusce Accumsan Mauris At Sem Finibus Gravida. Donec Cursus Tincidunt Eros In Efficitur. Maecenas Cursus Pretium Dui, In Tristique Turpis Finibus Nec. Class Aptent.`,
-    },
-    {
-      key: '3',
-      image: require('../Assets/Images/walk3.jpg'),
-      // image1: require('../Assets/Images/icon2.png'),
-      title: 'DODGE CARAVAN',
-      text: `Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Pellentesque Eu Pulvinar Metus, Fringilla Semper Enim. Etiam Viverra Porttitor Nunc Laoreet Faucibus. Fusce Accumsan Mauris At Sem Finibus Gravida. Donec Cursus Tincidunt Eros In Efficitur. Maecenas Cursus Pretium Dui, In Tristique Turpis Finibus Nec. Class Aptent.`,
-    },
-  ];
+  // const slides = [
+  //   {
+  //     key: '1',
+  //     image: require('../Assets/Images/walk1.jpg'),
+  //     title: 'CHEVY CRUZ',
+  //     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas efficitur consectetur ligula eget ultrices. Cras ac risus sodales, posuere nibh et, molestie',
+  //   },
+  //   {
+  //     key: '2',
+  //     image: require('../Assets/Images/walk2.jpg'),
+  //     // image1: require('../Assets/Images/icon2.png'),
+  //     title: 'LOREM IPSUM DOLOR SIT',
+  //     text: `Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Pellentesque Eu Pulvinar Metus, Fringilla Semper Enim. Etiam Viverra Porttitor Nunc Laoreet Faucibus. Fusce Accumsan Mauris At Sem Finibus Gravida. Donec Cursus Tincidunt Eros In Efficitur. Maecenas Cursus Pretium Dui, In Tristique Turpis Finibus Nec. Class Aptent.`,
+  //   },
+  //   {
+  //     key: '3',
+  //     image: require('../Assets/Images/walk3.jpg'),
+  //     // image1: require('../Assets/Images/icon2.png'),
+  //     title: 'DODGE CARAVAN',
+  //     text: `Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Pellentesque Eu Pulvinar Metus, Fringilla Semper Enim. Etiam Viverra Porttitor Nunc Laoreet Faucibus. Fusce Accumsan Mauris At Sem Finibus Gravida. Donec Cursus Tincidunt Eros In Efficitur. Maecenas Cursus Pretium Dui, In Tristique Turpis Finibus Nec. Class Aptent.`,
+  //   },
+  // ];
   console.log(slidesref.current ,'indexxxxxxx')
 
   const RenderSlider = ({item}) => {

@@ -18,6 +18,7 @@ import {
 } from './SRC/Utillity/utils';
 import SplashScreen from './SRC/Screens/SplashScreen';
 import AppNavigator from './SRC/appNavigation';
+import LoginScreen from './SRC/Screens/LoginScreen';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -65,11 +66,11 @@ const MainContainer = () => {
   }, []);
 
   const [isloading] = useloader(true);
-  if (isloading == true) {
-    return <SplashScreen />;
-  }
+  // if (isloading == true) {
+  return <SplashScreen />;
+  // }
   // return <ChooseDeclineReasonScreen/>;
-  return <AppNavigator />;
+  // return <AppNavigator />;
 };
 
 const useloader = value => {

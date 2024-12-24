@@ -122,10 +122,10 @@ const CustomButton = props => {
           )}
           {iconIsImage && (
             <View style={{width:windowWidth * 0.1, height:windowWidth * 0.1, overflow:'hidden'}}>
-              <CustomImage
+              {/* <CustomImage
               source={require('../Assets/Images/goal.png')}
               style={{width:'100%', height:"100%"}}              
-              />
+              /> */}
               </View>
           )
 
@@ -167,11 +167,11 @@ const CustomButton = props => {
             <View style={{width:windowWidth * 0.07, 
             marginRight:moderateScale(5,0.2),
             height:windowWidth * 0.07, overflow:'hidden'}}>
-              <CustomImage
+              {/* <CustomImage
               source={require('../Assets/Images/goal.png')}
               style={{width:'100%', height:"100%", tintColor:"black"}}              
               
-              />
+              /> */}
               </View>
           )}
           {iconName && (

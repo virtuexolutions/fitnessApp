@@ -15,7 +15,6 @@ import Feather from 'react-native-vector-icons/Feather';
 import {useDispatch, useSelector} from 'react-redux';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
-import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
 import ImagePickerModal from '../Components/ImagePickerModal';
 import ScreenBoiler from '../Components/ScreenBoiler';
@@ -86,14 +85,14 @@ const Signup = () => {
             width: windowHeight * 0.25,
             marginTop: windowHeight * 0.04,
           }}>
-          <CustomImage
+          {/* <CustomImage
             resizeMode="contain"
             source={require('../Assets/Images/logo.png')}
             style={{
               width: '100%',
               height: '100%',
             }}
-          />
+          /> */}
         </View>
         <CustomText isBold style={styles.text}>
           Sign up
@@ -337,7 +336,7 @@ const Signup = () => {
                       styles.edit,
                       {marginRight: moderateScale(15, 0.6)},
                     ]}>
-                    <CustomImage
+                    {/* <CustomImage
                       resizeMode="cover"
                       source={
                         image?.uri
@@ -349,7 +348,7 @@ const Signup = () => {
                         height: '100%',
                         borderRadius: moderateScale((windowHeight * 0.13) / 2),
                       }}
-                    />
+                    /> */}
                   </View>
                   <TouchableOpacity
                     activeOpacity={0.6}

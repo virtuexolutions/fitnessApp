@@ -140,7 +140,7 @@ const Profile = () => {
             return ( */}
         <View style={styles.fields_box}>
           <View style={styles.image}>
-            <CustomImage
+            {/* <CustomImage
               resizeMode="cover"
               source={
                 image?.uri
@@ -152,7 +152,7 @@ const Profile = () => {
                 height: '100%',
                 borderRadius: moderateScale((windowHeight * 0.13) / 2),
               }}
-            />
+            /> */}
             <TouchableOpacity
               activeOpacity={0.6}
               style={styles.edit}

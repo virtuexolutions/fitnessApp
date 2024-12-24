@@ -16,10 +16,10 @@ const Userbox = ({data, onPress}) => {
     <TouchableOpacity onPress={onPress} style={styles.details_Style}>
       <View style={styles.text_Style}>
         <View style={styles.image_Style}>
-          <CustomImage
+          {/* <CustomImage
             style={{width: windowHeight * 0.06, height: windowHeight * 0.06}}
             source={data.image}
-          />
+          /> */}
         </View>
         <View
           style={{

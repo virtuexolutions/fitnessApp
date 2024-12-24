@@ -12,28 +12,10 @@ import ChangePassword from './Screens/ChangePassword';
 import ResetPassword from './Screens/ResetPassword';
 import VerifyEmail from './Screens/VerifyEmail';
 import WalkThroughScreen from './Screens/WalkthroughScreen';
-import Start from './Screens/Start';
-import RequestScreen from './Screens/RequestScreen';
-import FareScreen from './Screens/FareScreen';
-import MapScreen from './Screens/MapScreen';
-import RideScreen from './Screens/RideScreen';
-import PaymentScreen from './Screens/PaymentScreen';
 import Home from './Screens/Home';
-import RateScreen from './Screens/RateScreen';
-import RideRequest from './Screens/RideRequest';
-import PassengerDetails from './Screens/PassengerDetails';
-import GoOnlineScreen from './Screens/GoOnlineScreen';
-import SendTripRecieptScreen from './Screens/SendTripRecieptScreen';
 import {moderateScale} from 'react-native-size-matters';
-import Walletscreen from './Screens/Walletscreen';
-import Earningsscreen from './Screens/Earningsscreen';
-import ChooseDeclineReasonScreen from './Screens/ChooseDeclineReasonScreen';
 import Profile from './Screens/Profile';
 import {enableScreens} from 'react-native-screens';
-import MyWallet from './Screens/MyWallet';
-// import ReferFriendScreen from './Screens/ReferFriendScreen';
-// import LearningCenter from './Screens/LearningCenter';
-// import PrivacyPolicy from './Screens/PrivacyPolicy';
 
 enableScreens();
 const AppNavigator = () => {
@@ -58,56 +40,19 @@ const AppNavigator = () => {
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator
           initialRouteName={firstScreen}
-          // initialRouteName={'Walletscreen'}
-          // initialRouteName={'RateScreen'}
           screenOptions={{headerShown: false}}>
           <RootNav.Screen name="MyDrawer" component={MyDrawer} />
           <RootNav.Screen
             name="WalkThroughScreen"
             component={WalkThroughScreen}
           />
-          <RootNav.Screen name="Start" component={Start} />
           <RootNav.Screen name="LoginScreen" component={LoginScreen} />
-          <RootNav.Screen name="FareScreen" component={FareScreen} />
           <RootNav.Screen name="VerifyEmail" component={VerifyEmail} />
           <RootNav.Screen name="ResetPassword" component={ResetPassword} />
-          <RootNav.Screen name="RequestScreen" component={RequestScreen} />
           <RootNav.Screen name="ChangePassword" component={ChangePassword} />
           <RootNav.Screen name="Signup" component={Signup} />
-          <RootNav.Screen name="MapScreen" component={MapScreen} />
-          <RootNav.Screen name="RideScreen" component={RideScreen} />
-          <RootNav.Screen name="PaymentScreen" component={PaymentScreen} />
           <RootNav.Screen name="VerifyNumber" component={VerifyNumber} />
           <RootNav.Screen name="Profile" component={Profile} />
-          <RootNav.Screen name="RateScreen" component={RateScreen} />
-          {/* <RootNav.Screen name="PrivacyPolicy" component={PrivacyPolicy} /> */}
-          {/* <RootNav.Screen
-            name="TermsAndConditions"
-            component={TermsAndConditions}
-          /> */}
-          {/* <RootNav.Screen name="HelpAndSupport" component={HelpAndSupport} /> */}
-          {/* <RootNav.Screen
-            name="ReferFriendScreen"
-            component={ReferFriendScreen}
-          /> */}
-
-          {/* <RootNav.Screen name="RideRequest" component={RideRequest} /> */}
-          <RootNav.Screen name="MyWallet" component={MyWallet} />
-
-          <RootNav.Screen
-            name="PassengerDetails"
-            component={PassengerDetails}
-          />
-          <RootNav.Screen name="GoOnlineScreen" component={GoOnlineScreen} />
-          <RootNav.Screen
-            name="RecieptScreen"
-            component={SendTripRecieptScreen}
-          />
-          <RootNav.Screen
-            name="ChooseDeclineReasonScreen"
-            component={ChooseDeclineReasonScreen}
-          />
-          {/* <RootNav.Screen name="LearningCenter" component={LearningCenter} /> */}
         </RootNav.Navigator>
       </NavigationContainer>
     );
@@ -235,29 +180,6 @@ export const MyDrawer = () => {
         },
       }}>
       <DrawerNavigation.Screen name="Home" component={Home} />
-      <DrawerNavigation.Screen name="Walletscreen" component={Walletscreen} />
-      <DrawerNavigation.Screen
-        name="Earningsscreen"
-        component={Earningsscreen}
-      />
-      <DrawerNavigation.Screen name={'RateScreen'} component={RateScreen} />
-      <DrawerNavigation.Screen name="RideRequest" component={RideRequest} />
-      <DrawerNavigation.Screen name="RideScreen" component={RideScreen} />
-      <DrawerNavigation.Screen name="PaymentScreen" component={PaymentScreen} />
-
-      <DrawerNavigation.Screen
-        name="RecieptScreen"
-        component={SendTripRecieptScreen}
-      />
-      <DrawerNavigation.Screen
-        name="PassengerDetails"
-        component={PassengerDetails}
-      />
-      <DrawerNavigation.Screen
-        name="GoOnlineScreen"
-        component={GoOnlineScreen}
-      />
-      <DrawerNavigation.Screen name="MapScreen" component={MapScreen} />
     </DrawerNavigation.Navigator>
   );
 };

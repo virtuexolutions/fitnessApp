@@ -217,14 +217,14 @@ const Header = props => {
             alignItems: 'center',
             height: windowHeight * 0.055,
           }}>
-          <CustomImage
+          {/* <CustomImage
             onPress={() => {
               // navigation.navigate('Profile')
               // dispatch(setUserLogoutAuth());
             }}
             source={require('../Assets/Images/user_Image.png')}
             style={{width: windowHeight * 0.06, height: windowHeight * 0.06}}
-          />
+          /> */}
 
           <View
             style={{

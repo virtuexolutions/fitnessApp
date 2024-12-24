@@ -1,31 +1,22 @@
 import {useNavigation} from '@react-navigation/native';
+import {Formik} from 'formik';
 import React, {useState} from 'react';
 import {ActivityIndicator, ScrollView, StyleSheet, View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {moderateScale} from 'react-native-size-matters';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch, useSelector} from 'react-redux';
 import Color from '../Assets/Utilities/Color';
+import {Post} from '../Axios/AxiosInterceptorFunction';
 import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
+import CustomStatusBar from '../Components/CustomStatusBar';
 import CustomText from '../Components/CustomText';
 import ImagePickerModal from '../Components/ImagePickerModal';
-import ScreenBoiler from '../Components/ScreenBoiler';
 import TextInputWithTitle from '../Components/TextInputWithTitle';
-import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
-import CustomStatusBar from '../Components/CustomStatusBar';
-import VerifyEmail from './VerifyEmail';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import SmsRetrieverModule from 'react-native-sms-retriever';
-import {Post} from '../Axios/AxiosInterceptorFunction';
-import {setUserToken} from '../Store/slices/auth-slice';
-import {Formik} from 'formik';
-import {setUserData} from '../Store/slices/common';
 import {loginSchema} from '../Constant/schema';
-import {mode} from 'native-base/lib/typescript/theme/tools';
-import {background} from 'native-base/lib/typescript/theme/styled-system';
+import {setUserToken} from '../Store/slices/auth-slice';
+import {setUserData} from '../Store/slices/common';
+import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
 
 const LoginScreen = props => {
   const dispatch = useDispatch();
@@ -45,9 +36,9 @@ const LoginScreen = props => {
     const body = {...response1?.data};
     const url = 'google-login';
     const response = await Post(url, body, apiHeader(token));
-    console.log("🚀 ~ loginWithGoogle ~ response:", response?.data?.token)
+    console.log('🚀 ~ loginWithGoogle ~ response:', response?.data?.token);
     if (response != undefined) {
-      dispatch(setUserToken({token:  response?.data?.token}));
+      dispatch(setUserToken({token: response?.data?.token}));
       dispatch(setUserData(response?.user_info));
     }
   };
@@ -88,14 +79,14 @@ const LoginScreen = props => {
             width: windowHeight * 0.2,
             marginTop: windowHeight * 0.04,
           }}>
-          <CustomImage
+          {/* <CustomImage
             resizeMode="contain"
             source={require('../Assets/Images/logo.png')}
             style={{
               width: '100%',
               height: '100%',
             }}
-          />
+          /> */}
         </View>
         <CustomText isBold style={styles.text}>
           Sign in
@@ -216,42 +207,6 @@ const LoginScreen = props => {
           <CustomButton
             onPress={() => {
               setLoginMethod('Google');
-
-              GoogleSignin.configure({
-                offlineAccess: true,
-                webClientId:
-                  '679685403786-posjs7qgk9l5n3f4c13ni6soaf9dv0bb.apps.googleusercontent.com',
-                // androidClientId :'308425731760-d3vg1qt7htafihdc77f2bgcvnp74old0.apps.googleusercontent.com',
-                // webClientId:'256104968520-jh3nmrqlqf4df43156b7upehat6og4o7.apps.googleusercontent.com',
-                // webClientId : '308425731760-757gotl6fio8ume97da60jgbsd5hc2oc.apps.googleusercontent.com'
-                // iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',
-              });
-
-              GoogleSignin.hasPlayServices()
-                .then(hasPlayService => {
-                  console.log(
-                    '========================== << < << ',
-                    hasPlayService,
-                  );
-                  if (hasPlayService) {
-                    GoogleSignin.signIn()
-                      .then(userInfo => {
-                        console.log(
-                          'helllllllllllooooooooooooooooo',
-                          JSON.stringify(userInfo, null, 2),
-                        );
-                        loginWithGoogle(userInfo);
-                      })
-                      .catch(e => {
-                        console.log(
-                          'ERROR IS=============: ' + JSON.stringify(e.message),
-                        );
-                      });
-                  }
-                })
-                .catch(e => {
-                  console.log('ERROR IS: ' + JSON.stringify(e, null, 2));
-                });
             }}
             text={'connect with google'}
             fontSize={moderateScale(12, 0.3)}
