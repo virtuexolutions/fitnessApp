@@ -11,10 +11,10 @@ const SplashScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.logo_Container}>
-        <CustomImage
+        {/* <CustomImage
           source={require('../Assets/Images/logo.png')}
           style={styles.logo}
-        />
+        /> */}
       </View>
       <CustomText style={styles.text}>
         

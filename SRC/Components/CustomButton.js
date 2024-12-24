@@ -49,23 +49,24 @@ const CustomButton = props => {
     image,
     fontcase,
     style,
+    
   } = props;
   return (
     <TouchableOpacity
-      activeOpacity={activeOpacity ? activeOpacity : 0.9}
+      activeOpacity={activeOpacity ? activeOpacity : 0.55}
       onPress={onPress}
       style={[
         styles.mainBtn,
-        {
-          width: width,
-          height: height,
-          borderWidth: borderWidth,
-          backgroundColor: bgColor,
-          borderColor: borderColor,
-          marginTop: marginTop || 0,
-          // alignItems:'center',
-          marginBottom: marginBottom || 0,
-        },
+        // {
+        //   width: width,
+        //   height: height,
+        //   borderWidth: borderWidth,
+        //   backgroundColor: bgColor,
+        //   borderColor: borderColor,
+        //   marginTop: marginTop || 0,
+        //   // alignItems:'center',
+        //   marginBottom: marginBottom || 0,
+        // },
         elevation && {
           shadowColor: Color.themeBlack,
           shadowOffset: {
@@ -120,16 +121,16 @@ const CustomButton = props => {
               color={loaderColor ? loaderColor : Color.white}
             />
           )}
-          {iconIsImage && (
+          {/* {iconIsImage && (
             <View style={{width:windowWidth * 0.1, height:windowWidth * 0.1, overflow:'hidden'}}>
               <CustomImage
               source={require('../Assets/Images/goal.png')}
               style={{width:'100%', height:"100%"}}              
               />
               </View>
-          )
+          ) */}
 
-          }
+          {/* } */}
           {iconName && (
             <Icon
               name={iconName}
@@ -140,10 +141,10 @@ const CustomButton = props => {
           <CustomText
             style={[
               styles.text,
-              textStyle && textStyle,
+              textstyle && textstyle,
               {
                 color: textColor,
-                fontSize: fontSize ? fontSize : moderateScale(13, 0.3),
+                fontSize: fontSize 
               },
               textTransform && {
                 textTransform: textTransform,
@@ -163,7 +164,7 @@ const CustomButton = props => {
               color={loaderColor ? loaderColor : Color.white}
             />
           )}
-           {iconIsImage && (
+           {/* {iconIsImage && (
             <View style={{width:windowWidth * 0.07, 
             marginRight:moderateScale(5,0.2),
             height:windowWidth * 0.07, overflow:'hidden'}}>
@@ -173,21 +174,21 @@ const CustomButton = props => {
               
               />
               </View>
-          )}
-          {iconName && (
+          )} */}
+          {/* {iconName && (
             <Icon
               name={iconName}
               as={iconType}
               style={[styles.iconCustom, iconStyle && iconStyle]}
             />
-          )}
+          )} */}
           <CustomText
             style={[
               styles.text,
               textstyle,
               {
                 color: textColor,
-                // fontSize: fontSize ? fontSize : moderateScale(15, 0.3),
+                fontSize: fontSize 
               },
               textTransform && {
                 textTransform: textTransform,
@@ -215,6 +216,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
+    // backgroundColor:Color.black,
+    // position:'absolute',
     paddingHorizontal: moderateScale(10, 0.3),
     paddingVertical: moderateScale(2, 0.3),
   },

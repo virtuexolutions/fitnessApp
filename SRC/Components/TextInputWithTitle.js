@@ -43,15 +43,16 @@ const TextInputWithTitle = props => {
       )}
       <View
         style={[
-          styles.fieldSet,
-          {
-            width: windowWidth * props.viewWidth,
-            borderWidth: props.border,
-            // borderColor: Color.veryLightGray,
-            backgroundColor: props.backgroundColor,
-            borderBottomWidth: props.borderBottomWidth,
-            borderColor: Color.lightGrey,
-          },
+          styles.fieldSet,props.fieldStyle,
+          // {
+          //   width: windowWidth * props.viewWidth,
+          //   borderWidth: props.border,
+          //   // borderColor: Color.veryLightGray,
+          //   backgroundColor: props.backgroundColor,
+          //   borderBottomWidth: props.borderBottomWidth,
+          //   borderColor: Color.lightGrey,
+          //   backgroundColor:'red'
+          // },
           props.elevation && {
             shadowColor: Color.themeColor,
             shadowOffset: {
@@ -104,7 +105,7 @@ const TextInputWithTitle = props => {
             as={props.iconType}
             style={[
               {
-                // backgroundColor :'green',
+                backgroundColor :'green',
                 textAlign: 'center',
                 width: windowWidth * 0.07,
                 // paddingTop :moderateScale(10,.6),
@@ -146,7 +147,7 @@ const TextInputWithTitle = props => {
                         paddingBottom: 10,
                         fontSize: props?.fontSize
                           ? props?.fontSize
-                          : moderateScale(12, 0.6),
+                          : moderateScale(15, 0.6),
                         fontWeight: '400',
                       },
                     ]
@@ -224,9 +225,10 @@ const TextInputWithTitle = props => {
                   color: props.inputColor,
                 },
               ]}
-              onChangeText={text => props.setText(text)}
+              // onChangeText={text => props.setText(text)}
               value={props.value}
               placeholder={`${props.placeholder}`}
+              
               placeholderTextColor={
                 props.placeholderColor ? props.placeholderColor : Color.white
               }
@@ -248,13 +250,16 @@ const styles = ScaledSheet.create({
   fieldSet: {
     width: Dimensions.get('window').width * 0.9,
     height: Dimensions.get('window').height * 0.06,
-    backgroundColor: 'red',
-    borderRadius: 8,
+    backgroundColor: Color.fieldboxColor,
+    // backgroundColor:'red',
+    borderRadius: moderateScale(24,0.6),
+    borderWidth:1.5,
+    borderColor:Color.white,
     alignItems: 'center',
     // justifyContent: 'center',
-    borderColor: Color.lightGrey,
+    // borderColor: Color.lightGrey,
     flexDirection: 'row',
-    placeholderTextColor: Color.white,
+    placeholderTextColor: Color.lightBlue,
     // textTransform: 'capitalize',
   },
   inputBox: {

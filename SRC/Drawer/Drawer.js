@@ -104,10 +104,10 @@ const Drawer = React.memo(() => {
         }}>
         <View style={styles.profile_view}>
           <View style={styles.image_view}>
-            <CustomImage
+            {/* <CustomImage
               style={styles.image}
               source={require('../Assets/Images/user_image2.png')}
-            />
+            /> */}
           </View>
           <View
             style={{

@@ -18,6 +18,10 @@ import {
 } from './SRC/Utillity/utils';
 import SplashScreen from './SRC/Screens/SplashScreen';
 import AppNavigator from './SRC/appNavigation';
+import Signup from './SRC/Screens/Signup';
+import LoginScreen from './SRC/Screens/LoginScreen';
+import Startedscreen from './SRC/Screens/Startedscreen';
+import Authscreen from './SRC/Screens/Authscreen';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -55,21 +59,16 @@ const MainContainer = () => {
   // const isFocused = useIsFocused()
   // const dispatch = useDispatch();
 
-  useEffect(() => {
-    async function GetPermission() {
-      await requestCameraPermission();
-      await requestWritePermission();
-      await requestLocationPermission();
-    }
-    GetPermission();
-  }, []);
-
+/**
+ * 
+ */
   const [isloading] = useloader(true);
   if (isloading == true) {
     return <SplashScreen />;
   }
   // return <ChooseDeclineReasonScreen/>;
-  return <AppNavigator />;
+  return <Authscreen/>
+  // <AppNavigator />;
 };
 
 const useloader = value => {

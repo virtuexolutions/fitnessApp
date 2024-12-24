@@ -147,15 +147,16 @@ const Header = props => {
       {title ? (
         <CustomText style={[styles.text, textstyle]}>{title}</CustomText>
       ) : (
-        <CustomImage
-          resizeMode={'contain'}
-          style={{
-            width: windowWidth * 0.21,
-            // backgroundColor : 'red' ,
-            height: windowHeight * 0.05,
-          }}
-          // source={require('../Assets/Images/customerservice.png')}
-        />
+        <></>
+        // <CustomImage
+        //   resizeMode={'contain'}
+        //   style={{
+        //     width: windowWidth * 0.21,
+        //     // backgroundColor : 'red' ,
+        //     height: windowHeight * 0.05,
+        //   }}
+        //   // source={require('../Assets/Images/customerservice.png')}
+        // />
       )}
 
       {/* {/ <CustomText isBold style={{color : Color.white , fontSize : moderateScale(20,0.6)}} >Hola!!</CustomText> /} */}
@@ -217,14 +218,14 @@ const Header = props => {
             alignItems: 'center',
             height: windowHeight * 0.055,
           }}>
-          <CustomImage
+          {/* <CustomImage
             onPress={() => {
               // navigation.navigate('Profile')
               // dispatch(setUserLogoutAuth());
             }}
             source={require('../Assets/Images/user_Image.png')}
             style={{width: windowHeight * 0.06, height: windowHeight * 0.06}}
-          />
+          /> */}
 
           <View
             style={{
