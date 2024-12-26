@@ -35,6 +35,7 @@ export default Color = {
   btn_Color:'#282723',
   btntextColor:'#2F2F37',
   fieldboxColor:'rgba(250, 250, 250, 0.27)',
+    lightest_grey: '#D3D3D3',
   
   //gradientColors
   themeBgColor: ['#E9CB5800','#E9CB58'],

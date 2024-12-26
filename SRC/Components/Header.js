@@ -1,35 +1,25 @@
-import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {Icon} from 'native-base';
-import {
-  View,
-  Platform,
-  Dimensions,
-  TouchableOpacity,
-  ToastAndroid,
-  Alert,
-} from 'react-native';
-import {DrawerActions, useNavigation} from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React, {useState} from 'react';
+import {Alert, Dimensions, TouchableOpacity, View} from 'react-native';
 import {moderateScale, ScaledSheet} from 'react-native-size-matters';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Feather from 'react-native-vector-icons/Feather';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useDispatch, useSelector} from 'react-redux';
 import Color from '../Assets/Utilities/Color';
 import {windowHeight, windowWidth} from '../Utillity/utils';
-import CustomText from './CustomText';
-import CustomImage from './CustomImage';
-const {height, width} = Dimensions.get('window');
-import Feather from 'react-native-vector-icons/Feather';
-
-import {useDispatch, useSelector} from 'react-redux';
-import {imageUrl} from '../Config';
-import {setUserLogout, setUserLogoutAuth} from '../Store/slices/auth-slice';
-import LinearGradient from 'react-native-linear-gradient';
-import {setUserLogOut} from '../Store/slices/common';
 import navigationService from '../navigationService';
+import CustomImage from './CustomImage';
+import CustomText from './CustomText';
+const {height, width} = Dimensions.get('window');
 
 const Header = props => {
   const dispatch = useDispatch();
   const notification = useSelector(state => state.commonReducer.notification);
   const cartData = useSelector(state => state.commonReducer.cart);
-  const navigationN = useNavigation();
+  // const navigationN = useNavigation();
   // const navigation = useNavigation();
 
   const [isModalVisible, setModalVisible] = useState(false);
@@ -44,10 +34,14 @@ const Header = props => {
     index,
     cart,
     Notify,
-    hideUser,
-    navigation,
+    isRightIcon,
+    isImage,
     textstyle,
     isFilledButton,
+    islastIcon,
+    rightIconFrom,
+    rightIconName,
+    iconColor,
   } = props;
 
   const [searchText, setSearchText] = useState('');
@@ -82,7 +76,7 @@ const Header = props => {
     <View
       style={[
         styles.header2,
-        {backgroundColor: headerColor ? headerColor : Color.white},
+        {backgroundColor: headerColor ? headerColor : 'transparent'},
       ]}>
       <View
         style={{
@@ -99,118 +93,163 @@ const Header = props => {
             as={Ionicons}
             size={moderateScale(25, 0.3)}
             color={Color.black}
-            onPress={() => {
-              navigationN.goBack();
-            }}
+            // onPress={() => {
+            //   navigationN.goBack();
+            // }}
           />
         ) : (
           <>
-            {isFilledButton ? (
-              <TouchableOpacity style={styles.filledButton}>
-                <Icon
-                  // style={styles.menu}
-                  name={'menu'}
-                  as={Feather}
-                  size={moderateScale(21, 0.3)}
-                  color={Color.white}
-                  // onPress={() => {
-                  //   console.log('hello mg ');
-                  //   navigationN.toggleDrawer();
-                  //   // navigation.openDrawer()
-                  //   // navigationN.dispatch(DrawerActions.toggleDrawer());
-                  // }}
-                />
-              </TouchableOpacity>
+            {isImage ? (
+              <View
+                style={{
+                  width: moderateScale(50, 0.6),
+                  height: moderateScale(50, 0.6),
+                }}>
+                <CustomImage source={require('../Assets/Images/profile.png')} />
+              </View>
             ) : (
-              <Icon
-                style={styles.menu}
-                name={'menu'}
-                as={Feather}
-                size={moderateScale(28, 0.3)}
-                color={Color.black}
-                onPress={() => {
-                  console.log('hello mg ');
-                  navigationN.toggleDrawer();
+              <>
+                {isFilledButton ? (
+                  <TouchableOpacity style={styles.filledButton}>
+                    <Icon
+                      // style={styles.menu}
+                      name={'menu'}
+                      as={Feather}
+                      size={moderateScale(21, 0.3)}
+                      color={Color.white}
+                      // onPress={() => {
+                      //   console.log('hello mg ');
+                      //   navigationN.toggleDrawer();
+                      //   // navigation.openDrawer()
+                      //   // navigationN.dispatch(DrawerActions.toggleDrawer());
+                      // }}
+                    />
+                  </TouchableOpacity>
+                ) : (
+                  <Icon
+                    style={styles.menu}
+                    name={'menu'}
+                    as={Feather}
+                    size={moderateScale(28, 0.3)}
+                    color={Color.black}
+                    // onPress={() => {
+                    //   console.log('hello mg ');
+                    //   navigationN.toggleDrawer();
 
-                  // dispatch(setUserLogOut())
-                  // dispatch(SetUserRole(''));
+                    //   // dispatch(setUserLogOut())
+                    //   // dispatch(SetUserRole(''));
 
-                  // navigation.openDrawer()
-                  // navigationN.dispatch(DrawerActions.toggleDrawer());
-                }}
-              />
+                    //   // navigation.openDrawer()
+                    //   // navigationN.dispatch(DrawerActions.toggleDrawer());
+                    // }}
+                  />
+                )}
+              </>
             )}
-            ,
           </>
         )}
       </View>
       {title ? (
         <CustomText style={[styles.text, textstyle]}>{title}</CustomText>
       ) : (
-        <></>
-        // <CustomImage
-        //   resizeMode={'contain'}
-        //   style={{
-        //     width: windowWidth * 0.21,
-        //     // backgroundColor : 'red' ,
-        //     height: windowHeight * 0.05,
-        //   }}
-        //   // source={require('../Assets/Images/customerservice.png')}
-        // />
-      )}
-
-      {/* {/ <CustomText isBold style={{color : Color.white , fontSize : moderateScale(20,0.6)}} >Hola!!</CustomText> /} */}
-      {!hideUser && cart ? (
-        <View
-          style={{
-            // backgroundColor: 'red',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            paddingTop: moderateScale(6, 0.6),
-          }}>
-          {cartData?.length > 0 && (
+        <>
+          {isImage ? (
             <View
               style={{
-                width: moderateScale(14, 0.6),
-                height: moderateScale(14, 0.6),
-                borderRadius: moderateScale(7, 0.6),
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'red',
-                position: 'absolute',
-                right: -4,
-                zIndex: 1,
-                top: 0,
+                width: windowWidth * 0.21,
+                height: windowHeight * 0.07,
+                borderRadius: windowWidth,
               }}>
-              <CustomText
+              <CustomImage
                 style={{
-                  fontSize: 8,
-                }}>
-                {cartData?.length < 10 ? cartData?.length : '9+'}
-              </CustomText>
+                  width: '100%',
+                  borderRadius: windowWidth,
+                  height: '100%',
+                }}
+                resizeMode={'contain'}
+                source={require('../Assets/Images/header_logo.png')}
+              />
             </View>
+          ) : (
+            <></>
           )}
-
+        </>
+      )}
+        
+      {/* {<CustomText isBold style={{color : Color.white , fontSize : moderateScale(20,0.6)}} >Hola!!</CustomText>} */}
+      {isRightIcon ? (
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
           <Icon
-            name={'shopping-cart'}
-            as={Feather}
-            size={moderateScale(27, 0.3)}
-            color={Color.black}
-            onPress={() => {
-              if (token == null) {
-                Confirm();
-                // navigationService.navigate('LoginScreen')
-              } else if (cartData?.length > 0) {
-                navigationService.navigate('CartScreen');
-              } else {
-                return Platform.OS == 'android'
-                  ? ToastAndroid.show('No Item in cart', ToastAndroid.SHORT)
-                  : Alert('No Item in cart');
-              }
-            }}
+            name={rightIconName ? rightIconName : 'search1'}
+            as={rightIconFrom ? rightIconFrom : AntDesign}
+            size={moderateScale(22, 0.3)}
+            color={iconColor ? iconColor : Color.lightGrey}
           />
+          {islastIcon && (
+            <Icon
+              style={{
+                marginLeft: moderateScale(10, 0.6),
+              }}
+              name="notifications-none"
+              as={MaterialIcons}
+              size={moderateScale(25, 0.3)}
+              color={Color.lightGrey}
+            />
+          )}
         </View>
       ) : (
+        // <View
+        //   style={{
+        //     // backgroundColor: 'red',
+        //     flexDirection: 'row',
+        //     justifyContent: 'center',
+        //     paddingTop: moderateScale(6, 0.6),
+        //   }}>
+        //   {cartData?.length > 0 && (
+        //     <View
+        //       style={{
+        //         width: moderateScale(14, 0.6),
+        //         height: moderateScale(14, 0.6),
+        //         borderRadius: moderateScale(7, 0.6),
+        //         justifyContent: 'center',
+        //         alignItems: 'center',
+        //         backgroundColor: 'red',
+        //         position: 'absolute',
+        //         right: -4,
+        //         zIndex: 1,
+        //         top: 0,
+        //       }}>
+        //       <CustomText
+        //         style={{
+        //           fontSize: 8,
+        //         }}>
+        //         {cartData?.length < 10 ? cartData?.length : '9+'}
+        //       </CustomText>
+        //     </View>
+        //   )}
+        //   <Icon
+        //     name={'shopping-cart'}
+        //     as={Feather}
+        //     size={moderateScale(27, 0.3)}
+        //     color={Color.black}
+        //     onPress={() => {
+        //       if (token == null) {
+        //         Confirm();
+        //         // navigationService.navigate('LoginScreen')
+        //       } else if (cartData?.length > 0) {
+        //         navigationService.navigate('CartScreen');
+        //       } else {
+        //         return Platform.OS == 'android'
+        //           ? ToastAndroid.show('No Item in cart', ToastAndroid.SHORT)
+        //           : Alert('No Item in cart');
+        //       }
+        //     }}
+        //   />
+        // </View>
         <View
           style={{
             width: windowHeight * 0.055,
@@ -218,15 +257,6 @@ const Header = props => {
             alignItems: 'center',
             height: windowHeight * 0.055,
           }}>
-          {/* <CustomImage
-            onPress={() => {
-              // navigation.navigate('Profile')
-              // dispatch(setUserLogoutAuth());
-            }}
-            source={require('../Assets/Images/user_Image.png')}
-            style={{width: windowHeight * 0.06, height: windowHeight * 0.06}}
-          /> */}
-
           <View
             style={{
               height: windowHeight * 0.018,
@@ -303,7 +333,7 @@ const styles = ScaledSheet.create({
     backgroundColor: Color.white,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: moderateScale(20, 0.3),
+    paddingHorizontal: moderateScale(10, 0.3),
     paddingVertical: moderateScale(15, 0.3),
     alignItems: 'center',
   },

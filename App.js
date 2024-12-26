@@ -24,6 +24,11 @@ import Startedscreen from './SRC/Screens/Startedscreen';
 import Authscreen from './SRC/Screens/Authscreen';
 import Questionnaire from './SRC/Screens/Questionnaire';
 import Introscreen from './SRC/Screens/Introscreen';
+import Choosegender from './SRC/Screens/Choosegender';
+import Lifescorescreen from './SRC/Screens/Lifescorescreen';
+import Preferencesscreen from './SRC/Screens/Yourplan';
+import Yourplan from './SRC/Screens/Yourplan';
+import Weightcategoryscreen from './SRC/Screens/Weightcategoryscreen';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -69,7 +74,7 @@ const MainContainer = () => {
     return <SplashScreen />;
   }
   // return <ChooseDeclineReasonScreen/>;
-  return <Introscreen/>
+  return <Weightcategoryscreen/>
   // <AppNavigator />;
 };
 
