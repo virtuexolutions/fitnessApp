@@ -1,26 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import navigationService from './navigationService';
+import React from 'react';
 import {useSelector} from 'react-redux';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import Drawer from './Drawer/Drawer';
-import LoginScreen from './Screens/LoginScreen';
-<<<<<<< HEAD
-import Signup from './Screens/Signup';
-import VerifyNumber from './Screens/VerifyNumber';
-import ChangePassword from './Screens/ChangePassword';
-import ResetPassword from './Screens/ResetPassword';
-import VerifyEmail from './Screens/VerifyEmail';
-import WalkThroughScreen from './Screens/WalkthroughScreen';
+import navigationService from './navigationService';
+import DietPlanScreen from './Screens/DietPlanScreen';
 import Home from './Screens/Home';
-import {moderateScale} from 'react-native-size-matters';
-import Profile from './Screens/Profile';
-import {enableScreens} from 'react-native-screens';
-=======
->>>>>>> 6e0ebb5605c4a3b132ff5f2bf59764b7992f6e3f
-
-
+import LoginScreen from './Screens/LoginScreen';
+import Progress from './Screens/Progress';
+import ProgressTracking from './Screens/ProgressTracking';
+import Recipes from './Screens/Recipes';
+import SupportingScreen from './Screens/SupportingScreen';
+import TimmerSCreen from './Screens/TimmerSCreen';
+import Category from './Screens/Category';
 // enableScreens();
 const AppNavigator = () => {
   const isGoalCreated = useSelector(state => state.authReducer.isGoalCreated);
@@ -43,13 +34,25 @@ const AppNavigator = () => {
     return (
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator
-          initialRouteName={'LoginScreen'}
+          initialRouteName={'Category'}
           // initialRouteName={'Walletscreen'}
           // initialRouteName={'RateScreen'}
           screenOptions={{headerShown: false}}>
-         
           <RootNav.Screen name="LoginScreen" component={LoginScreen} />
-        
+          <RootNav.Screen
+            name="SupportingScreen"
+            component={SupportingScreen}
+          />
+          <RootNav.Screen name="DietPlanScreen" component={DietPlanScreen} />
+          <RootNav.Screen name="TimmerSCreen" component={TimmerSCreen} />
+          <RootNav.Screen name="Home" component={Home} />
+          <RootNav.Screen name="Recipes" component={Recipes} />
+          <RootNav.Screen name="Progress" component={Progress} />
+          <RootNav.Screen name="Category" component={Category} />
+          <RootNav.Screen
+            name="ProgressTracking"
+            component={ProgressTracking}
+          />
         </RootNav.Navigator>
       </NavigationContainer>
     );
@@ -161,27 +164,6 @@ const AppNavigator = () => {
 //   );
 // };
 
-<<<<<<< HEAD
-export const MyDrawer = () => {
-  const DrawerNavigation = createDrawerNavigator();
-  const firstScreen = 'HomeScreen';
-  return (
-    <DrawerNavigation.Navigator
-      drawerContent={props => <Drawer {...props} />}
-      initialRouteName={'Home'}
-      screenOptions={{
-        headerShown: false,
-        drawerStyle: {
-          width: '80%',
-          borderTopRightRadius: moderateScale(120, 0.6),
-          borderBottomRightRadius: moderateScale(120, 0.6),
-        },
-      }}>
-      <DrawerNavigation.Screen name="Home" component={Home} />
-    </DrawerNavigation.Navigator>
-  );
-};
-=======
 // export const MyDrawer = () => {
 //   const DrawerNavigation = createDrawerNavigator();
 //   const firstScreen = 'HomeScreen';
@@ -224,6 +206,5 @@ export const MyDrawer = () => {
 //     </DrawerNavigation.Navigator>
 //   );
 // };
->>>>>>> 6e0ebb5605c4a3b132ff5f2bf59764b7992f6e3f
 
 export default AppNavigator;

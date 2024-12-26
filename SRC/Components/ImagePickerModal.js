@@ -1,25 +1,29 @@
-import { Icon } from 'native-base';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
+  View,
   Dimensions,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+  I18nManager,
   PermissionsAndroid,
   Platform,
-  TouchableOpacity,
-  View
+  ToastAndroid,
+  Alert,
+  // Modal,
+  Button,
 } from 'react-native';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import {moderateScale, ScaledSheet} from 'react-native-size-matters';
+import {Icon} from 'native-base';
 import Modal from 'react-native-modal';
-import { moderateScale, ScaledSheet } from 'react-native-size-matters';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import Entypo from 'react-native-vector-icons/Entypo';
 // import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import CustomText from '../Components/CustomText';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import Color from '../Assets/Utilities/Color';
-  
+
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Color from '../Assets/Utilities/Color';
-import CustomText from '../Components/CustomText';
-import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const requestCameraPermission = async () => {
   try {

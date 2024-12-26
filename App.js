@@ -18,16 +18,12 @@ import {
 } from './SRC/Utillity/utils';
 import SplashScreen from './SRC/Screens/SplashScreen';
 import AppNavigator from './SRC/appNavigation';
-<<<<<<< HEAD
-import LoginScreen from './SRC/Screens/LoginScreen';
-=======
 import Signup from './SRC/Screens/Signup';
 import LoginScreen from './SRC/Screens/LoginScreen';
 import Startedscreen from './SRC/Screens/Startedscreen';
 import Authscreen from './SRC/Screens/Authscreen';
 import Questionnaire from './SRC/Screens/Questionnaire';
 import Introscreen from './SRC/Screens/Introscreen';
->>>>>>> 6e0ebb5605c4a3b132ff5f2bf59764b7992f6e3f
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -65,16 +61,15 @@ const MainContainer = () => {
   // const isFocused = useIsFocused()
   // const dispatch = useDispatch();
 
-/**
- * 
- */
+  /**
+   *
+   */
   const [isloading] = useloader(true);
-  // if (isloading == true) {
-  return <SplashScreen />;
-  // }
+  if (isloading == true) {
+    return <SplashScreen />;
+  }
   // return <ChooseDeclineReasonScreen/>;
-  return <Introscreen/>
-  // <AppNavigator />;
+  return <AppNavigator />;
 };
 
 const useloader = value => {
