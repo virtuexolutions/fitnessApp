@@ -5,9 +5,10 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import Color from '../Assets/Utilities/Color';
 import {moderateScale} from 'react-native-size-matters';
@@ -17,8 +18,12 @@ import CustomText from '../Components/CustomText';
 import PercentageCounter from '../Components/PercentageCounter';
 import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
+import {color} from 'native-base/lib/typescript/theme/styled-system';
+import {Icon} from 'native-base';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Category = () => {
+  const [selected, setSelected] = useState(!true);
   const category_list = [
     {
       id: 1,
@@ -66,31 +71,68 @@ const Category = () => {
             rightIconName={'dots-three-vertical'}
             rightIconFrom={Entypo}
           />
-          <FlatList
-            data={category_list}
-            numColumns={2}
-            columnWrapperStyle={{
-              justifyContent: 'space-between',
-            }}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => {
-              return (
-                <View
-                  style={{
-                    width: windowWidth * 0.4,
-                    height: windowHeight * 0.2,
-                    backgroundColor: Color.white,
-                    marginTop: moderateScale(10, 0.6),
-                    marginRight: moderateScale(10, 0.6),
-                    borderRadius: moderateScale(20, 0.6),
-                  }}>
-                  <View>
-                    <CustomImage source={item?.image} />
+          <View style={{marginTop: moderateScale(130, 0.6)}}>
+            <FlatList
+              data={category_list}
+              numColumns={2}
+              columnWrapperStyle={{
+                justifyContent: 'space-between',
+              }}
+              keyExtractor={item => item.id}
+              renderItem={({item}) => {
+                return (
+                  <View
+                    style={{
+                      width: windowWidth * 0.4,
+                      height: windowHeight * 0.2,
+                      alignItems: 'center',
+                      paddingVertical: moderateScale(10, 0.6),
+                      backgroundColor: Color.white,
+                      marginTop: moderateScale(10, 0.6),
+                      marginRight: moderateScale(10, 0.6),
+                      borderRadius: moderateScale(20, 0.6),
+                    }}>
+                    <View style={styles.imageStyle}>
+                      <CustomImage
+                        style={{
+                          height: '100%',
+                          width: '100%',
+                          resizeMode: 'contain',
+                        }}
+                        source={item?.image}
+                      />
+                    </View>
+                    <CustomText
+                      isBold
+                      style={{
+                        fontSize: moderateScale(12, 0.3),
+                        color: Color.darkGray,
+                        marginTop: moderateScale(10, 0.3),
+                      }}>
+                      {item?.text}
+                    </CustomText> 
+                    <TouchableOpacity activeOpacity={0.9}
+                      // onPress={() => {
+                      //   setSelected(!true);
+                      // }}
+                      style={[
+                        selected
+                          ? {backgroundColor: Color.peach}
+                          : {backgroundColor: Color.lightestwhite_Grey},
+                        styles.edit_btn,
+                      ]}>
+                      <Icon
+                        as={AntDesign}
+                        name="plus"
+                        color={Color.orange}
+                        size={moderateScale(18, 0.6)}
+                      />
+                    </TouchableOpacity>
                   </View>
-                </View>
-              );
-            }}
-          />
+                );
+              }}
+            />
+          </View>
         </ImageBackground>
       </ScrollView>
     </SafeAreaView>
@@ -172,11 +214,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   edit_btn: {
-    width: windowWidth * 0.2,
-    height: moderateScale(20, 0.6),
+    width: windowWidth * 0.32,
+    height: moderateScale(30, 0.6),
     borderRadius: moderateScale(25, 0.6),
     marginTop: moderateScale(10, 0.6),
-    backgroundColor: Color.peach,
+    // backgroundColor: Color.lightestwhite_Grey,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   weight_container: {
     width: windowWidth * 0.9,
@@ -186,5 +230,10 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(20, 0.6),
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageStyle: {
+    width: windowWidth * 0.15,
+    height: windowHeight * 0.08,
+    // backgroundColor:'green'
   },
 });

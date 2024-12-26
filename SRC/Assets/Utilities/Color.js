@@ -13,7 +13,7 @@ export default Color = {
   themeGreen: '#72A131',
   yellow: '#EBB645',
   lightest_grey: '#D3D3D3',
-
+  lightestwhite_Grey :'#EAECEB',
   // themeRed: '#FFCCCB',
   red: '#DA3029',
   blue: '#00ADEF',
