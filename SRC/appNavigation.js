@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Drawer from './Drawer/Drawer';
 import LoginScreen from './Screens/LoginScreen';
+<<<<<<< HEAD
 import Signup from './Screens/Signup';
 import VerifyNumber from './Screens/VerifyNumber';
 import ChangePassword from './Screens/ChangePassword';
@@ -16,8 +17,11 @@ import Home from './Screens/Home';
 import {moderateScale} from 'react-native-size-matters';
 import Profile from './Screens/Profile';
 import {enableScreens} from 'react-native-screens';
+=======
+>>>>>>> 6e0ebb5605c4a3b132ff5f2bf59764b7992f6e3f
 
-enableScreens();
+
+// enableScreens();
 const AppNavigator = () => {
   const isGoalCreated = useSelector(state => state.authReducer.isGoalCreated);
   const walkThrough = useSelector(state => state.authReducer.userWalkThrough);
@@ -39,20 +43,13 @@ const AppNavigator = () => {
     return (
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator
-          initialRouteName={firstScreen}
+          initialRouteName={'LoginScreen'}
+          // initialRouteName={'Walletscreen'}
+          // initialRouteName={'RateScreen'}
           screenOptions={{headerShown: false}}>
-          <RootNav.Screen name="MyDrawer" component={MyDrawer} />
-          <RootNav.Screen
-            name="WalkThroughScreen"
-            component={WalkThroughScreen}
-          />
+         
           <RootNav.Screen name="LoginScreen" component={LoginScreen} />
-          <RootNav.Screen name="VerifyEmail" component={VerifyEmail} />
-          <RootNav.Screen name="ResetPassword" component={ResetPassword} />
-          <RootNav.Screen name="ChangePassword" component={ChangePassword} />
-          <RootNav.Screen name="Signup" component={Signup} />
-          <RootNav.Screen name="VerifyNumber" component={VerifyNumber} />
-          <RootNav.Screen name="Profile" component={Profile} />
+        
         </RootNav.Navigator>
       </NavigationContainer>
     );
@@ -164,6 +161,7 @@ const AppNavigator = () => {
 //   );
 // };
 
+<<<<<<< HEAD
 export const MyDrawer = () => {
   const DrawerNavigation = createDrawerNavigator();
   const firstScreen = 'HomeScreen';
@@ -183,5 +181,49 @@ export const MyDrawer = () => {
     </DrawerNavigation.Navigator>
   );
 };
+=======
+// export const MyDrawer = () => {
+//   const DrawerNavigation = createDrawerNavigator();
+//   const firstScreen = 'HomeScreen';
+//   return (
+//     <DrawerNavigation.Navigator
+//       drawerContent={props => <Drawer {...props} />}
+//       initialRouteName={'Home'}
+//       screenOptions={{
+//         headerShown: false,
+//         drawerStyle: {
+//           width: '80%',
+//           borderTopRightRadius: moderateScale(120, 0.6),
+//           borderBottomRightRadius: moderateScale(120, 0.6),
+//         },
+//       }}>
+//       <DrawerNavigation.Screen name="Home" component={Home} />
+//       <DrawerNavigation.Screen name="Walletscreen" component={Walletscreen} />
+//       <DrawerNavigation.Screen
+//         name="Earningsscreen"
+//         component={Earningsscreen}
+//       />
+//       <DrawerNavigation.Screen name={'RateScreen'} component={RateScreen} />
+//       <DrawerNavigation.Screen name="RideRequest" component={RideRequest} />
+//       <DrawerNavigation.Screen name="RideScreen" component={RideScreen} />
+//       <DrawerNavigation.Screen name="PaymentScreen" component={PaymentScreen} />
+
+//       <DrawerNavigation.Screen
+//         name="RecieptScreen"
+//         component={SendTripRecieptScreen}
+//       />
+//       <DrawerNavigation.Screen
+//         name="PassengerDetails"
+//         component={PassengerDetails}
+//       />
+//       <DrawerNavigation.Screen
+//         name="GoOnlineScreen"
+//         component={GoOnlineScreen}
+//       />
+//       <DrawerNavigation.Screen name="MapScreen" component={MapScreen} />
+//     </DrawerNavigation.Navigator>
+//   );
+// };
+>>>>>>> 6e0ebb5605c4a3b132ff5f2bf59764b7992f6e3f
 
 export default AppNavigator;

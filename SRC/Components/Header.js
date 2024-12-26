@@ -147,15 +147,16 @@ const Header = props => {
       {title ? (
         <CustomText style={[styles.text, textstyle]}>{title}</CustomText>
       ) : (
-        <CustomImage
-          resizeMode={'contain'}
-          style={{
-            width: windowWidth * 0.21,
-            // backgroundColor : 'red' ,
-            height: windowHeight * 0.05,
-          }}
-          // source={require('../Assets/Images/customerservice.png')}
-        />
+        <></>
+        // <CustomImage
+        //   resizeMode={'contain'}
+        //   style={{
+        //     width: windowWidth * 0.21,
+        //     // backgroundColor : 'red' ,
+        //     height: windowHeight * 0.05,
+        //   }}
+        //   // source={require('../Assets/Images/customerservice.png')}
+        // />
       )}
 
       {/* {/ <CustomText isBold style={{color : Color.white , fontSize : moderateScale(20,0.6)}} >Hola!!</CustomText> /} */}

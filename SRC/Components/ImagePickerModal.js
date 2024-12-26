@@ -12,6 +12,10 @@ import Modal from 'react-native-modal';
 import { moderateScale, ScaledSheet } from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 // import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import CustomText from '../Components/CustomText';
+import {windowHeight, windowWidth} from '../Utillity/utils';
+import Color from '../Assets/Utilities/Color';
+  
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Color from '../Assets/Utilities/Color';
 import CustomText from '../Components/CustomText';

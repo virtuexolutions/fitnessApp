@@ -1,22 +1,23 @@
-import {useNavigation} from '@react-navigation/native';
-import {Formik} from 'formik';
-import React, {useState} from 'react';
-import {ActivityIndicator, ScrollView, StyleSheet, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {moderateScale} from 'react-native-size-matters';
-import {useDispatch, useSelector} from 'react-redux';
+// import { GoogleSignin } from '@react-native-google-signin/google-signin';
+// import { useNavigation } from '@react-navigation/native';
+import { Formik } from 'formik';
+import React, { useState } from 'react';
+import { ActivityIndicator, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { moderateScale } from 'react-native-size-matters';
+import { useDispatch, useSelector } from 'react-redux';
 import Color from '../Assets/Utilities/Color';
-import {Post} from '../Axios/AxiosInterceptorFunction';
+import { Post } from '../Axios/AxiosInterceptorFunction';
 import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import CustomStatusBar from '../Components/CustomStatusBar';
 import CustomText from '../Components/CustomText';
 import ImagePickerModal from '../Components/ImagePickerModal';
 import TextInputWithTitle from '../Components/TextInputWithTitle';
-import {loginSchema} from '../Constant/schema';
-import {setUserToken} from '../Store/slices/auth-slice';
-import {setUserData} from '../Store/slices/common';
-import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
+import { loginSchema } from '../Constant/schema';
+import { setUserToken } from '../Store/slices/auth-slice';
+import { setUserData } from '../Store/slices/common';
+import { apiHeader, windowHeight, windowWidth } from '../Utillity/utils';
 
 const LoginScreen = props => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const LoginScreen = props => {
   const [password, setPassword] = useState('');
   const [imagePicker, setImagePicker] = useState(false);
   const [image, setImage] = useState({});
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const [loginMethod, setLoginMethod] = useState('');
   const {user_type} = useSelector(state => state.authReducer);
 
@@ -81,7 +82,7 @@ const LoginScreen = props => {
           }}>
           {/* <CustomImage
             resizeMode="contain"
-            source={require('../Assets/Images/logo.png')}
+            source={require('../Assets/Images/visa_logo.png')}
             style={{
               width: '100%',
               height: '100%',
@@ -204,7 +205,7 @@ const LoginScreen = props => {
           <CustomText style={styles.soc_text}>
             or connecting using social account
           </CustomText>
-          <CustomButton
+          {/* <CustomButton
             onPress={() => {
               setLoginMethod('Google');
             }}
@@ -218,7 +219,7 @@ const LoginScreen = props => {
             height={windowHeight * 0.065}
             bgColor={user_type === 'Rider' ? Color.darkBlue : Color.btn_Color}
             textTransform={'capitalize'}
-          />
+          /> */}
           <CustomButton
             onPress={() => {
               // onPhoneNumberPressed();
