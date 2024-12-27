@@ -6,16 +6,6 @@ import navigationService from './navigationService';
 import DietPlanScreen from './Screens/DietPlanScreen';
 import Home from './Screens/Home';
 import LoginScreen from './Screens/LoginScreen';
-import Progress from './Screens/Progress';
-import ProgressTracking from './Screens/ProgressTracking';
-import Recipes from './Screens/Recipes';
-import SupportingScreen from './Screens/SupportingScreen';
-import TimmerSCreen from './Screens/TimmerSCreen';
-import Category from './Screens/Category';
-import PickItems from './Screens/PickItems';
-import AvailableFood from './Screens/AvailableFood';
-import PickItems2 from './Screens/pickItems2';
-import Height from './Screens/Height';
 // enableScreens();
 const AppNavigator = () => {
   const isGoalCreated = useSelector(state => state.authReducer.isGoalCreated);
@@ -43,24 +33,6 @@ const AppNavigator = () => {
           // initialRouteName={'RateScreen'}
           screenOptions={{headerShown: false}}>
           <RootNav.Screen name="LoginScreen" component={LoginScreen} />
-          <RootNav.Screen
-            name="SupportingScreen"
-            component={SupportingScreen}
-          />
-          <RootNav.Screen name="DietPlanScreen" component={DietPlanScreen} />
-          <RootNav.Screen name="TimmerSCreen" component={TimmerSCreen} />
-          <RootNav.Screen name="Home" component={Home} />
-          <RootNav.Screen name="Recipes" component={Recipes} />
-          <RootNav.Screen name="Progress" component={Progress} />
-          <RootNav.Screen name="Category" component={Category} />
-          <RootNav.Screen name="PickItems" component={PickItems} />
-          <RootNav.Screen name="PickItems2" component={PickItems2} />
-          <RootNav.Screen name="AvailableFood" component={AvailableFood} />
-          <RootNav.Screen name="Height" component={Height} />
-          <RootNav.Screen
-            name="ProgressTracking"
-            component={ProgressTracking}
-          />
         </RootNav.Navigator>
       </NavigationContainer>
     );

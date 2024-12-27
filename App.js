@@ -90,7 +90,8 @@ const MainContainer = () => {
     return <SplashScreen />;
   }
   // return <ChooseDeclineReasonScreen/>;
-  return <AppNavigator />;
+  return <Yourplan />;
+  // <AppNavigator />;
 };
 
 const useloader = value => {
