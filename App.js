@@ -45,6 +45,8 @@ import HealthPlanOnboarding from './SRC/Screens/HealthPlanOnboarding';
 import TrackerScreen from './SRC/Screens/TrackerScreen';
 import WeightTrackerScreen from './SRC/Screens/WeightTrackerScreen';
 import Startedscreen from './SRC/Screens/Startedscreen';
+import Yourplan from './SRC/Screens/Yourplan';
+import AppNavigator from './SRC/appNavigation';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -90,7 +92,7 @@ const MainContainer = () => {
     return <SplashScreen />;
   }
   // return <ChooseDeclineReasonScreen/>;
-  return <Yourplan />;
+  return <AppNavigator />;
   // <AppNavigator />;
 };
 
