@@ -12,6 +12,10 @@ import Recipes from './Screens/Recipes';
 import SupportingScreen from './Screens/SupportingScreen';
 import TimmerSCreen from './Screens/TimmerSCreen';
 import Category from './Screens/Category';
+import PickItems from './Screens/PickItems';
+import AvailableFood from './Screens/AvailableFood';
+import PickItems2 from './Screens/pickItems2';
+import Height from './Screens/Height';
 // enableScreens();
 const AppNavigator = () => {
   const isGoalCreated = useSelector(state => state.authReducer.isGoalCreated);
@@ -34,7 +38,7 @@ const AppNavigator = () => {
     return (
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator
-          initialRouteName={'Category'}
+          initialRouteName={'Progress'}
           // initialRouteName={'Walletscreen'}
           // initialRouteName={'RateScreen'}
           screenOptions={{headerShown: false}}>
@@ -49,6 +53,10 @@ const AppNavigator = () => {
           <RootNav.Screen name="Recipes" component={Recipes} />
           <RootNav.Screen name="Progress" component={Progress} />
           <RootNav.Screen name="Category" component={Category} />
+          <RootNav.Screen name="PickItems" component={PickItems} />
+          <RootNav.Screen name="PickItems2" component={PickItems2} />
+          <RootNav.Screen name="AvailableFood" component={AvailableFood} />
+          <RootNav.Screen name="Height" component={Height} />
           <RootNav.Screen
             name="ProgressTracking"
             component={ProgressTracking}

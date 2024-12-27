@@ -148,6 +148,22 @@ const Home = () => {
             <CustomText style={styles.sectionTitle}>
               WEEKLY NUTRITION HABITS
             </CustomText>
+            <View
+              style={{
+                width: windowWidth * 0.9,
+                height: 6,
+                backgroundColor: Color.lightest_grey,
+                borderRadius: moderateScale(20),
+              }}>
+              <View
+                style={{
+                  width: windowWidth * 0.5,
+                  height: 6,
+                  backgroundColor: Color.peach,
+                  borderRadius: moderateScale(20),
+                }}
+              />
+            </View>
           </View>
         </ImageBackground>
       </ScrollView>

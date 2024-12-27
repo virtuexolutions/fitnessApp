@@ -63,119 +63,122 @@ const DietPlanScreen = () => {
 
   return (
     <SafeAreaView style={styles.safe_are_view}>
-      <ScrollView style={styles.scroll_view}>
-        <View style={styles.header_view}>
-          <Header
-            headerColor={'transparent'}
-            isImage
-            cart
-            isRightIcon
-            islastIcon
-          />
-          <CustomText
-            style={{
-              width: '80%',
-              textAlign: 'center',
-              alignSelf: 'center',
-              fontSize: moderateScale(10, 0.6),
-              color: Color.lightGrey,
-            }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel
-            tortor eros. Fusce sit amet tempus elit, non semper dolor.
-          </CustomText>
-          <View style={styles.counter_main_view}>
-            {list.map(item => {
-              return (
-                <View
-                  style={
-                    item?.id === 2
-                      ? styles.center_counter_view
-                      : styles.counter_view
-                  }>
-                  <View
-                    style={[
-                      styles.counter_sub_view,
-                      {
-                        width:
-                          item?.id === 2
-                            ? windowWidth * 0.41
-                            : windowWidth * 0.17,
-                        height:
-                          item?.id === 2
-                            ? windowWidth * 0.41
-                            : windowWidth * 0.17,
-                      },
-                    ]}>
-                    <CustomText
-                      isBold
-                      style={{
-                        fontSize:
-                          item?.id === 2
-                            ? moderateScale(28, 0.6)
-                            : moderateScale(18, 0.6),
-                        color: Color.darkGray,
-                      }}>
-                      {item?.value}
-                    </CustomText>
-                    <CustomText
-                      style={{
-                        fontSize:
-                          item?.id === 2
-                            ? moderateScale(20, 0.6)
-                            : moderateScale(10, 0.6),
-                        color: Color.darkGray,
-                      }}>
-                      {item?.text}
-                    </CustomText>
-                  </View>
-                </View>
-              );
-            })}
-          </View>
-        </View>
-        <FlatList
-          data={diet_plan}
-          style={{
-            top: 50,
-            paddingHorizontal: moderateScale(12, 0.6),
-            marginBottom: moderateScale(20, 0.6),
-          }}
-          renderItem={({item}) => {
-            return (
-              <TouchableOpacity
-                style={[
-                  styles.list_view,
-                  item?.id === 1
-                    ? {
-                        borderColor: Color.peach,
-                        shadowOffset: {
-                          width: 12,
-                          height: 17,
-                        },
-                        shadowOpacity: 0.58,
-                        shadowRadius: 16.0,
-                        elevation: 24,
-                        shadowColor: Color.peach,
-                      }
-                    : {
-                        borderColor: Color.lightest_grey,
-                      },
-                ]}>
-                <View style={styles.list_image_view}>
-                  <CustomImage style={styles.image} source={item?.image} />
-                </View>
-                <View
-                  style={{
-                    marginLeft: moderateScale(10, 0.6),
-                  }}>
-                  <CustomText style={styles.heading}>{item.heading}</CustomText>
-                  <CustomText style={styles.text}>{item.text}</CustomText>
-                </View>
-              </TouchableOpacity>
-            );
-          }}
+      <View style={styles.header_view}>
+        <Header
+          headerColor={'transparent'}
+          isImage
+          cart
+          isRightIcon
+          islastIcon
         />
-      </ScrollView>
+        <CustomText
+          style={{
+            width: '80%',
+            textAlign: 'center',
+            alignSelf: 'center',
+            fontSize: moderateScale(10, 0.6),
+            color: Color.lightGrey,
+          }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel
+          tortor eros. Fusce sit amet tempus elit, non semper dolor.
+        </CustomText>
+        <View style={styles.counter_main_view}>
+          {list.map(item => {
+            return (
+              <View
+                style={
+                  item?.id === 2
+                    ? styles.center_counter_view
+                    : styles.counter_view
+                }>
+                <View
+                  style={[
+                    styles.counter_sub_view,
+                    {
+                      width:
+                        item?.id === 2
+                          ? windowWidth * 0.41
+                          : windowWidth * 0.17,
+                      height:
+                        item?.id === 2
+                          ? windowWidth * 0.41
+                          : windowWidth * 0.17,
+                    },
+                  ]}>
+                  <CustomText
+                    isBold
+                    style={{
+                      fontSize:
+                        item?.id === 2
+                          ? moderateScale(28, 0.6)
+                          : moderateScale(18, 0.6),
+                      color: Color.darkGray,
+                    }}>
+                    {item?.value}
+                  </CustomText>
+                  <CustomText
+                    style={{
+                      fontSize:
+                        item?.id === 2
+                          ? moderateScale(20, 0.6)
+                          : moderateScale(10, 0.6),
+                      color: Color.darkGray,
+                    }}>
+                    {item?.text}
+                  </CustomText>
+                </View>
+              </View>
+            );
+          })}
+        </View>
+      </View>
+      <View
+        style={{
+          marginTop: moderateScale(50, 0.6),
+        }}
+      />
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={diet_plan}
+        style={{
+          paddingHorizontal: moderateScale(12, 0.6),
+          marginBottom: moderateScale(20, 0.6),
+        }}
+        renderItem={({item}) => {
+          return (
+            <TouchableOpacity
+              style={[
+                styles.list_view,
+                item?.id === 1
+                  ? {
+                      borderColor: Color.peach,
+                      shadowOffset: {
+                        width: 12,
+                        height: 17,
+                      },
+                      shadowOpacity: 0.58,
+                      shadowRadius: 16.0,
+                      elevation: 24,
+                      shadowColor: Color.peach,
+                    }
+                  : {
+                      borderColor: Color.lightest_grey,
+                    },
+              ]}>
+              <View style={styles.list_image_view}>
+                <CustomImage style={styles.image} source={item?.image} />
+              </View>
+              <View
+                style={{
+                  marginLeft: moderateScale(10, 0.6),
+                }}>
+                <CustomText style={styles.heading}>{item.heading}</CustomText>
+                <CustomText style={styles.text}>{item.text}</CustomText>
+              </View>
+            </TouchableOpacity>
+          );
+        }}
+      />
     </SafeAreaView>
   );
 };
@@ -185,13 +188,10 @@ export default DietPlanScreen;
 const styles = StyleSheet.create({
   safe_are_view: {
     width: windowWidth,
-    height: windowHeight,
-  },
-  scroll_view: {
-    height: windowHeight,
-    width: windowWidth,
     backgroundColor: Color.white,
+    height: windowHeight,
   },
+
   header_view: {
     backgroundColor: Color.peach,
     width: windowWidth,

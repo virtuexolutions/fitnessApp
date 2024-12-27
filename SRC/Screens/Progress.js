@@ -20,7 +20,7 @@ const Progress = () => {
   const text = ['OFF-TRACK', 'imBalanced', 'Good', 'Great', 'Optimal'];
   return (
     <SafeAreaView style={styles.safe_are_view}>
-      <ScrollView>
+      <ScrollView style={styles.scroll_view}>
         <ImageBackground
           source={require('../Assets/Images/background2.png')}
           style={styles.image_background_view}
@@ -87,7 +87,11 @@ const Progress = () => {
               tortor eros. Fusce sit amet tempus elit, non semper dolor.
             </CustomText>
           </View>
-          <CustomText style={[styles.heading, {alignSelf: 'flex-start'}]}>
+          <CustomText
+            style={[
+              styles.heading,
+              {alignSelf: 'flex-start', marginLeft: moderateScale(15, 0.6)},
+            ]}>
             Streaks
           </CustomText>
           <View style={styles.button_view}>
@@ -128,7 +132,11 @@ const Progress = () => {
           <CustomText
             style={[
               styles.heading,
-              {alignSelf: 'flex-start', marginTop: moderateScale(10, 0.6)},
+              {
+                alignSelf: 'flex-start',
+                marginTop: moderateScale(10, 0.6),
+                marginLeft: moderateScale(15, 0.6),
+              },
             ]}>
             Weight Goal
           </CustomText>
@@ -165,6 +173,11 @@ const styles = StyleSheet.create({
   safe_are_view: {
     width: windowWidth,
     height: windowHeight,
+  },
+  scroll_view: {
+    height: windowHeight,
+    width: windowWidth,
+    backgroundColor: Color.white,
   },
   scroll_view: {
     height: windowHeight,

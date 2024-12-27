@@ -1,5 +1,11 @@
 import React from 'react';
-import {ImageBackground, SafeAreaView, StyleSheet, View} from 'react-native';
+import {
+  ImageBackground,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Color from '../Assets/Utilities/Color';
@@ -23,59 +29,61 @@ const ProgressTracking = () => {
           rightIconName={'dots-three-vertical'}
           rightIconFrom={Entypo}
         />
-        <View style={styles.image_view}>
-          <CustomImage
-            style={styles.image}
-            source={require('../Assets/Images/progress.png')}
+        <ScrollView>
+          <View style={styles.image_view}>
+            <CustomImage
+              style={styles.image}
+              source={require('../Assets/Images/progress.png')}
+            />
+          </View>
+          <CustomButton
+            text={'End Fasting'}
+            textColor={Color.grey}
+            fontSize={moderateScale(12, 0.6)}
+            bgColor={Color.peach}
+            width={windowWidth * 0.8}
+            style={styles.buttonStyle}
           />
-        </View>
-        <CustomButton
-          text={'End Fasting'}
-          textColor={Color.grey}
-          fontSize={moderateScale(14, 0.6)}
-          bgColor={Color.peach}
-          width={windowWidth * 0.8}
-          style={styles.buttonStyle}
-        />
-        <CustomButton
-          text={'End Fasting'}
-          textColor={Color.grey}
-          fontSize={moderateScale(14, 0.6)}
-          bgColor={Color.peach}
-          width={windowWidth * 0.8}
-          style={[
-            styles.buttonStyle,
-            {
-              backgroundColor: Color.white,
-              borderWidth: 2,
-            },
-          ]}
-        />
-        <CustomButton
-          text={'End Fasting'}
-          textColor={Color.grey}
-          fontSize={moderateScale(14, 0.6)}
-          bgColor={Color.peach}
-          width={windowWidth * 0.8}
-          style={[
-            styles.buttonStyle,
-            {
-              backgroundColor: Color.white,
-              borderWidth: 2,
-            },
-          ]}
-        />
-        <View
-          style={{
-            width: windowWidth * 0.9,
-            height: windowHeight * 0.25,
-            marginTop: moderateScale(30, 0.6),
-          }}>
-          <CustomImage
-            source={require('../Assets/Images/graph.png')}
-            style={styles.image}
+          <CustomButton
+            text={'Log Weight'}
+            textColor={Color.grey}
+            fontSize={moderateScale(12, 0.6)}
+            bgColor={Color.peach}
+            width={windowWidth * 0.8}
+            style={[
+              styles.buttonStyle,
+              {
+                backgroundColor: Color.white,
+                borderWidth: 2,
+              },
+            ]}
           />
-        </View>
+          <CustomButton
+            text={'Upload Progress Photo'}
+            textColor={Color.grey}
+            fontSize={moderateScale(12, 0.6)}
+            bgColor={Color.peach}
+            width={windowWidth * 0.8}
+            style={[
+              styles.buttonStyle,
+              {
+                backgroundColor: Color.white,
+                borderWidth: 2,
+              },
+            ]}
+          />
+          <View
+            style={{
+              width: windowWidth * 0.9,
+              height: windowHeight * 0.25,
+              marginTop: moderateScale(30, 0.6),
+            }}>
+            <CustomImage
+              source={require('../Assets/Images/graph.png')}
+              style={styles.image}
+            />
+          </View>
+        </ScrollView>
       </ImageBackground>
     </SafeAreaView>
   );

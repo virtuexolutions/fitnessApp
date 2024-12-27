@@ -4,7 +4,7 @@ export default Color = {
   // Basic Colors
   white: '#FFFFFF',
   black: '#000000',
-  darkGray: '#7B7B7B',
+  darkGray: '#686868',
   mediumGray: '#9B9B9B',
   lightGrey: '#7B7B7B',
   veryLightGray: '#77838F',
@@ -13,7 +13,7 @@ export default Color = {
   themeGreen: '#72A131',
   yellow: '#EBB645',
   lightest_grey: '#D3D3D3',
-  lightestwhite_Grey :'#EAECEB',
+  lightestwhite_Grey: '#EAECEB',
   // themeRed: '#FFCCCB',
   red: '#DA3029',
   blue: '#00ADEF',

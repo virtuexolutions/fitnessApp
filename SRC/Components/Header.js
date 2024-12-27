@@ -272,7 +272,8 @@ const styles = ScaledSheet.create({
   },
   text: {
     fontSize: moderateScale(18, 0.6),
-    color: Color.black,
+    color: Color.darkGray,
+    fontWeight: '700',
   },
   menu: {
     height: windowHeight * 0.05,

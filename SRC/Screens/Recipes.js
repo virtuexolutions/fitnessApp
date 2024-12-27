@@ -88,15 +88,15 @@ const Recipes = () => {
 
   return (
     <SafeAreaView style={styles.safe_are_view}>
+      <Header
+        title={'Recipes'}
+        showBack
+        isRightIcon
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+      />
       <ScrollView style={styles.scroll_view}>
-        <Header
-          title={'Recipes'}
-          showBack
-          isRightIcon
-          iconColor={Color.black}
-          rightIconName={'dots-three-vertical'}
-          rightIconFrom={Entypo}
-        />
         <View style={styles.main_view}>
           <TextInputWithTitle
             placeholder={'Find Recipies'}
@@ -197,6 +197,7 @@ const styles = StyleSheet.create({
   safe_are_view: {
     width: windowWidth,
     height: windowHeight,
+    backgroundColor: Color.white,
   },
   scroll_view: {
     height: windowHeight,

@@ -110,8 +110,9 @@ const Category = () => {
                         marginTop: moderateScale(10, 0.3),
                       }}>
                       {item?.text}
-                    </CustomText> 
-                    <TouchableOpacity activeOpacity={0.9}
+                    </CustomText>
+                    <TouchableOpacity
+                      activeOpacity={0.9}
                       // onPress={() => {
                       //   setSelected(!true);
                       // }}
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
   image_background_image: {
     width: '100%',
     height: '45%',
-    top: -100,
+    top: -150,
   },
   image_background_view: {
     width: windowWidth,
