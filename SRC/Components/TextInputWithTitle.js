@@ -20,7 +20,6 @@ import CustomText from './CustomText';
 
 const TextInputWithTitle = props => {
   const [showPassword, setShowPassword] = useState(false);
-
   return (
     <>
       {props?.title && (
@@ -43,7 +42,8 @@ const TextInputWithTitle = props => {
       )}
       <View
         style={[
-          styles.fieldSet,props.fieldStyle,
+          styles.fieldSet,
+          props.fieldStyle,
           // {
           //   width: windowWidth * props.viewWidth,
           //   borderWidth: props.border,
@@ -105,7 +105,6 @@ const TextInputWithTitle = props => {
             as={props.iconType}
             style={[
               {
-                backgroundColor :'green',
                 textAlign: 'center',
                 width: windowWidth * 0.07,
                 // paddingTop :moderateScale(10,.6),
@@ -132,7 +131,6 @@ const TextInputWithTitle = props => {
             // color={props.iconColor ? props.iconColor :'black'}
           />
         )}
-
         {props.secureText ? (
           <>
             <TextInput
@@ -228,7 +226,6 @@ const TextInputWithTitle = props => {
               // onChangeText={text => props.setText(text)}
               value={props.value}
               placeholder={`${props.placeholder}`}
-              
               placeholderTextColor={
                 props.placeholderColor ? props.placeholderColor : Color.white
               }
@@ -252,9 +249,9 @@ const styles = ScaledSheet.create({
     height: Dimensions.get('window').height * 0.06,
     backgroundColor: Color.fieldboxColor,
     // backgroundColor:'red',
-    borderRadius: moderateScale(24,0.6),
-    borderWidth:1.5,
-    borderColor:Color.white,
+    borderRadius: moderateScale(24, 0.6),
+    borderWidth: 1.5,
+    borderColor: Color.white,
     alignItems: 'center',
     // justifyContent: 'center',
     // borderColor: Color.lightGrey,

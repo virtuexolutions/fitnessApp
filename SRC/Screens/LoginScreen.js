@@ -37,9 +37,9 @@ const LoginScreen = props => {
     const body = {...response1?.data};
     const url = 'google-login';
     const response = await Post(url, body, apiHeader(token));
-    console.log("🚀 ~ loginWithGoogle ~ response:", response?.data?.token)
+    console.log('🚀 ~ loginWithGoogle ~ response:', response?.data?.token);
     if (response != undefined) {
-      dispatch(setUserToken({token:  response?.data?.token}));
+      dispatch(setUserToken({token: response?.data?.token}));
       dispatch(setUserData(response?.user_info));
     }
   };
@@ -208,42 +208,6 @@ const LoginScreen = props => {
           {/* <CustomButton
             onPress={() => {
               setLoginMethod('Google');
-
-              GoogleSignin.configure({
-                offlineAccess: true,
-                webClientId:
-                  '679685403786-posjs7qgk9l5n3f4c13ni6soaf9dv0bb.apps.googleusercontent.com',
-                // androidClientId :'308425731760-d3vg1qt7htafihdc77f2bgcvnp74old0.apps.googleusercontent.com',
-                // webClientId:'256104968520-jh3nmrqlqf4df43156b7upehat6og4o7.apps.googleusercontent.com',
-                // webClientId : '308425731760-757gotl6fio8ume97da60jgbsd5hc2oc.apps.googleusercontent.com'
-                // iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',
-              });
-
-              GoogleSignin.hasPlayServices()
-                .then(hasPlayService => {
-                  console.log(
-                    '========================== << < << ',
-                    hasPlayService,
-                  );
-                  if (hasPlayService) {
-                    GoogleSignin.signIn()
-                      .then(userInfo => {
-                        console.log(
-                          'helllllllllllooooooooooooooooo',
-                          JSON.stringify(userInfo, null, 2),
-                        );
-                        loginWithGoogle(userInfo);
-                      })
-                      .catch(e => {
-                        console.log(
-                          'ERROR IS=============: ' + JSON.stringify(e.message),
-                        );
-                      });
-                  }
-                })
-                .catch(e => {
-                  console.log('ERROR IS: ' + JSON.stringify(e, null, 2));
-                });
             }}
             text={'connect with google'}
             fontSize={moderateScale(12, 0.3)}

@@ -22,7 +22,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import CustomText from '../Components/CustomText';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import Color from '../Assets/Utilities/Color';
-  
+
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const requestCameraPermission = async () => {

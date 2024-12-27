@@ -14,7 +14,7 @@ import {moderateScale, scale} from 'react-native-size-matters';
 import CustomText from './CustomText';
 import Color from '../Assets/Utilities/Color';
 import CustomImage from './CustomImage';
-import { windowWidth } from '../Utillity/utils';
+import {windowWidth} from '../Utillity/utils';
 
 const CustomButton = props => {
   const {
@@ -49,7 +49,6 @@ const CustomButton = props => {
     image,
     fontcase,
     style,
-    
   } = props;
   return (
     <TouchableOpacity
@@ -122,7 +121,7 @@ const CustomButton = props => {
             />
           )}
           {/* {iconIsImage && (
-            <View style={{width:windowWidth * 0.1, height:windowWidth * 0.1, overflow:'hidden'}}>
+            <View style={{width:windowWidth  0.1, height:windowWidth  0.1, overflow:'hidden'}}>
               <CustomImage
               source={require('../Assets/Images/goal.png')}
               style={{width:'100%', height:"100%"}}              
@@ -130,7 +129,7 @@ const CustomButton = props => {
               </View>
           ) */}
 
-          {/* } */}
+          {/ } /}
           {iconName && (
             <Icon
               name={iconName}
@@ -144,7 +143,7 @@ const CustomButton = props => {
               textstyle && textstyle,
               {
                 color: textColor,
-                fontSize: fontSize 
+                fontSize: fontSize,
               },
               textTransform && {
                 textTransform: textTransform,
@@ -164,7 +163,7 @@ const CustomButton = props => {
               color={loaderColor ? loaderColor : Color.white}
             />
           )}
-           {/* {iconIsImage && (
+          {/* {iconIsImage && (
             <View style={{width:windowWidth * 0.07, 
             marginRight:moderateScale(5,0.2),
             height:windowWidth * 0.07, overflow:'hidden'}}>
@@ -188,7 +187,7 @@ const CustomButton = props => {
               textstyle,
               {
                 color: textColor,
-                fontSize: fontSize 
+                fontSize: fontSize,
               },
               textTransform && {
                 textTransform: textTransform,

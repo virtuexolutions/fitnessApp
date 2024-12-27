@@ -34,7 +34,8 @@ const Startedscreen = () => {
           height: windowHeight,
         }}
         imageStyle={{width: '100%', height: '100%', resizeMode: 'stretch'}}
-        source={require('../Assets/Images/bgcImage.png')}>
+        source={require('../Assets/Images/bgcImage.png')}
+      >
         <View style={styles.Container}>
           <View style={styles.bluImage}>
             <CustomImage
@@ -54,7 +55,7 @@ const Startedscreen = () => {
           <CustomButton
             style={styles.buttonStyle}
             text={'Get Started'}
-            fontSize={moderateScale(15,0.6)}
+            fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
           />
           <View style={styles.loginTextStyle}>
@@ -79,11 +80,12 @@ const Startedscreen = () => {
           </View>
         </View>
         <View style={styles.bottomText}>
-          <CustomText style={{
-            fontSize:moderateScale(12,0.6),
-            color:Color.grey,
-            textAlign:'center'
-          }}>
+          <CustomText
+            style={{
+              fontSize: moderateScale(12, 0.6),
+              color: Color.grey,
+              textAlign: 'center',
+            }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             laoreet urna vel hendrerit commodo.
           </CustomText>
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
   Container: {
     // alignSelf:'center'
     // width: windowWidth,
-    height: windowHeight *0.91,
+    height: windowHeight * 0.91,
     // justifyContent:'center',
     // bottom: moderateScale(190, 0.6),
     // backgroundColor: 'red',
@@ -133,12 +135,12 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(15, 0.6),
     // letterSpacing:
   },
-  bottomText:{
-    width:windowWidth*0.85,
-    
+  bottomText: {
+    width: windowWidth * 0.85,
+
     // backgroundColor:'red',
-   alignSelf:'center',
+    alignSelf: 'center',
     // bottom:moderateScale(100,0.6)
     // position:'absolute'
-  }
+  },
 });

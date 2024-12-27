@@ -42,6 +42,7 @@ const Header = props => {
     rightIconFrom,
     rightIconName,
     iconColor,
+    isRightImage,
   } = props;
 
   const [searchText, setSearchText] = useState('');
@@ -105,26 +106,17 @@ const Header = props => {
                   width: moderateScale(50, 0.6),
                   height: moderateScale(50, 0.6),
                 }}>
-                {/* <CustomImage source={require('../Assets/Images/profile.png')} /> */}
+                <CustomImage source={require('../Assets/Images/profile.png')} />
               </View>
             ) : (
               <>
                 {isFilledButton ? (
-                  <TouchableOpacity style={styles.filledButton}>
-                    <Icon
-                      // style={styles.menu}
-                      name={'menu'}
-                      as={Feather}
-                      size={moderateScale(21, 0.3)}
-                      color={Color.white}
-                      // onPress={() => {
-                      //   console.log('hello mg ');
-                      //   navigationN.toggleDrawer();
-                      //   // navigation.openDrawer()
-                      //   // navigationN.dispatch(DrawerActions.toggleDrawer());
-                      // }}
-                    />
-                  </TouchableOpacity>
+                  <Icon
+                    name={'menu'}
+                    as={Feather}
+                    size={moderateScale(24, 0.3)}
+                    color={Color.black}
+                  />
                 ) : (
                   <Icon
                     style={styles.menu}
@@ -152,24 +144,31 @@ const Header = props => {
       {title ? (
         <CustomText style={[styles.text, textstyle]}>{title}</CustomText>
       ) : (
-        <View
-          style={{
-            width: windowWidth * 0.21,
-            height: windowHeight * 0.07,
-            borderRadius: windowWidth,
-          }}>
-          <CustomImage
-            style={{
-              width: '100%',
-              borderRadius: windowWidth,
-              height: '100%',
-            }}
-            resizeMode={'contain'}
-            // source={require('../Assets/Images/header_logo.png')}
-          />
-        </View>
+        <>
+          {isImage ? (
+            <View
+              style={{
+                width: windowWidth * 0.21,
+                height: windowHeight * 0.07,
+                borderRadius: windowWidth,
+              }}>
+              <CustomImage
+                style={{
+                  width: '100%',
+                  borderRadius: windowWidth,
+                  height: '100%',
+                }}
+                resizeMode={'contain'}
+                source={require('../Assets/Images/header_logo.png')}
+              />
+            </View>
+          ) : (
+            <></>
+          )}
+        </>
       )}
 
+      {/* {/ <CustomText isBold style={{color : Color.white , fontSize : moderateScale(20,0.6)}} >Hola!!</CustomText> /} */}
       {isRightIcon ? (
         <View
           style={{
@@ -245,21 +244,10 @@ const Header = props => {
         // </View>
         <View
           style={{
-            width: windowHeight * 0.055,
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: windowHeight * 0.055,
+            width: moderateScale(50, 0.6),
+            height: moderateScale(50, 0.6),
           }}>
-          <View
-            style={{
-              height: windowHeight * 0.018,
-              width: windowHeight * 0.018,
-              borderRadius: (windowHeight * 0.018) / 2,
-              backgroundColor: '#04FF3F',
-              position: 'absolute',
-              top: moderateScale(35, 0.6),
-              right: moderateScale(29, 0.6),
-            }}></View>
+          <CustomImage source={require('../Assets/Images/profile.png')} />
         </View>
       )}
     </View>
@@ -268,7 +256,7 @@ const Header = props => {
 const styles = ScaledSheet.create({
   header1: {
     width: windowWidth,
-    height: windowHeight * 0.1,
+    height: windowHeight * 0.9,
     backgroundColor: Color.white,
     marginBottom: moderateScale(5, 0.3),
     justifyContent: 'center',
@@ -284,7 +272,8 @@ const styles = ScaledSheet.create({
   },
   text: {
     fontSize: moderateScale(18, 0.6),
-    color: Color.black,
+    color: Color.darkGray,
+    fontWeight: '700',
   },
   menu: {
     height: windowHeight * 0.05,
@@ -328,7 +317,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: moderateScale(20, 0.3),
-    paddingVertical: moderateScale(15, 0.3),
+    paddingVertical: moderateScale(10, 0.3),
     alignItems: 'center',
   },
   notificationCircle: {

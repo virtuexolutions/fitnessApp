@@ -82,23 +82,15 @@ const MainContainer = () => {
   // const isFocused = useIsFocused()
   // const dispatch = useDispatch();
 
-/**
- * 
- */
+  /**
+   *
+   */
   const [isloading] = useloader(true);
   if (isloading == true) {
     return <SplashScreen />;
   }
   // return <ChooseDeclineReasonScreen/>;
-  // return <Authscreen/>
-  // return <HealthPlanOnboarding/>
-  // return <TrackerScreen/>
-  // return <WeightTrackerScreen/>
-  return <Startedscreen/>
-  // return <RemaindersScreen/>
-
-
-  // <AppNavigator />;
+  return <AppNavigator />;
 };
 
 const useloader = value => {
