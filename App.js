@@ -67,15 +67,15 @@ const MainContainer = () => {
   // const isFocused = useIsFocused()
   // const dispatch = useDispatch();
 
-/**
- * 
- */
+  /**
+   *
+   */
   const [isloading] = useloader(true);
   if (isloading == true) {
     return <SplashScreen />;
   }
   // return <ChooseDeclineReasonScreen/>;
-  return <Socialscreen/>
+  return <Yourplan />;
   // <AppNavigator />;
 };
 

@@ -67,102 +67,119 @@ const Socialscreen = () => {
   ];
   return (
     // <SafeAreaView style={{height:windowHeight,backgroundColor:Color.white}}>
-    <> 
-    <Header
-          showBack
-          isRightIcon
-          iconColor={Color.black}
-          rightIconName={'dots-three-vertical'}
-          rightIconFrom={Entypo}
-          headerColor={'#FBD7BD'}
-        />
+    <>
+      <Header
+        showBack
+        isRightIcon
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+        headerColor={'#FBD7BD'}
+      />
       <ImageBackground
         imageStyle={{
-          height: '100%',width:'100%',
-        //   top: moderateScale(-30, 0.3),
-        
+          height: '100%',
+          width: '100%',
+          //   top: moderateScale(-30, 0.3),
         }}
         source={require('../Assets/Images/Rectangleimage.png')}
         style={styles.bgcImage}>
-            
-        
         <CustomText isBold style={styles.genderText}>
           How did you hear about blu?
         </CustomText>
-        </ImageBackground>
-       <ScrollView contentContainerStyle={{backgroundColor:Color.white, paddingBottom:moderateScale(25,0.3)}}>
-
-          <FlatList
-            contentContainerStyle={{
+      </ImageBackground>
+      <ScrollView
+        contentContainerStyle={{
+          backgroundColor: Color.white,
+          paddingBottom: moderateScale(25, 0.3),
+        }}>
+        <FlatList
+          contentContainerStyle={{
             //   marginTop: moderateScale(80, 0.3),
-                //  backgroundColor:Color.green,
-                 alignItems:'center'
-              // paddingVertical:15
-              // paddingBottom:moderateScale(20,0.6),
-            }}
-            data={socialList}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity
-                  onPress={() => {
-                    setSelected(item?.name);
-                  }}
-                  activeOpacity={0.8}
-                  style={[
-                    selected === item?.name
-                      ? {backgroundColor: Color.peach}
-                      : {
-                          backgroundColor: Color.white,
-                          borderWidth: 0.8,
-                          borderColor: Color.lightest_grey,
-                        },
-                    styles.nextButton,
-                  ]}>
-                  <CustomText
-                    style={{
-                      fontSize: moderateScale(13, 0.3),
-                      color: Color.grey,
-                      width: windowWidth * 0.76,
-                      // backgroundColor:'green'
-                    }}>
-                    {item?.name}
-                  </CustomText>
-                  {item.isRightIcon === true && (
-                    <Icon
-                      as={Entypo}
-                      name="chevron-small-down"
-                      size={moderateScale(17, 0.6)}
-                      color={Color.grey}
-                    />
-                  )}
-                </TouchableOpacity>
-              );
-            }}
-          />
+            //  backgroundColor:Color.green,
+            alignItems: 'center',
+            // paddingVertical:15
+            // paddingBottom:moderateScale(20,0.6),
+          }}
+          data={socialList}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  setSelected(item?.name);
+                }}
+                activeOpacity={0.8}
+                style={[
+                  selected === item?.name
+                    ? {backgroundColor: Color.peach}
+                    : {
+                        backgroundColor: Color.white,
+                        borderWidth: 0.8,
+                        borderColor: Color.lightest_grey,
+                      },
+                  styles.nextButton,
+                ]}>
+                <CustomText
+                  style={{
+                    fontSize: moderateScale(13, 0.3),
+                    color: Color.grey,
+                    width: windowWidth * 0.76,
+                    // backgroundColor:'green'
+                  }}>
+                  {item?.name}
+                </CustomText>
+                {item.isRightIcon === true && (
+                  <Icon
+                    as={Entypo}
+                    name="chevron-small-down"
+                    size={moderateScale(17, 0.6)}
+                    color={Color.grey}
+                  />
+                )}
+              </TouchableOpacity>
+            );
+          }}
+        />
 
-          <CustomButton onPress={()=>{
-            setActivebutton(true)
+        <CustomButton
+          onPress={() => {
+            setActivebutton(true);
           }}
-            style={[activeButton  ? {backgroundColor:Color.peach} : {backgroundColor:Color.white},{
-              borderWidth:1,borderColor:Color.lightest_grey
-            } ,styles.bottomButton]}
-            text={'Next'}
-            textColor={Color.grey}
-            fontSize={moderateScale(14, 0.6)}
-          />
-          <CustomButton onPress={()=>{
-            setActivebutton(false)
+          style={[
+            activeButton
+              ? {backgroundColor: Color.peach}
+              : {backgroundColor: Color.white},
+            {
+              borderWidth: 1,
+              borderColor: Color.lightest_grey,
+            },
+            styles.bottomButton,
+          ]}
+          text={'Next'}
+          textColor={Color.grey}
+          fontSize={moderateScale(14, 0.6)}
+        />
+        <CustomButton
+          onPress={() => {
+            setActivebutton(false);
           }}
-            style={[activeButton ==  false ? {backgroundColor:Color.peach} : {backgroundColor:Color.white},{
-              borderWidth:1,borderColor:Color.lightest_grey
-            } ,styles.bottomButton]}
-            text={'Dismiss'}
-            textColor={Color.grey}
-            fontSize={moderateScale(14, 0.6)}
-          />
-     </ScrollView>
-      </>
-//  </SafeAreaView> 
+          style={[
+            activeButton == false
+              ? {backgroundColor: Color.peach}
+              : {backgroundColor: Color.white},
+            {
+              borderWidth: 1,
+              borderColor: Color.lightest_grey,
+            },
+            styles.bottomButton,
+          ]}
+          text={'Dismiss'}
+          textColor={Color.grey}
+          fontSize={moderateScale(14, 0.6)}
+        />
+      </ScrollView>
+    </>
+    //  </SafeAreaView>
   );
 };
 
@@ -171,7 +188,7 @@ export default Socialscreen;
 const styles = StyleSheet.create({
   bgcImage: {
     width: windowWidth,
-    height: windowHeight *0.25,
+    height: windowHeight * 0.25,
     backgroundColor: Color.white,
     alignItems: 'center',
     // bottom:moderateScale(20,0.3)

@@ -21,7 +21,15 @@ const Preferencesscreen = () => {
   );
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safe_area}>
+      <Header
+        showBack
+        isRightIcon
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+        headerColor={Color.peach}
+      />
       <ImageBackground
         imageStyle={{
           height: '30%',
@@ -29,17 +37,10 @@ const Preferencesscreen = () => {
         }}
         source={require('../Assets/Images/Rectangleimage.png')}
         style={styles.bgcImage}>
-        <Header
-          showBack
-          isRightIcon
-          iconColor={Color.black}
-          rightIconName={'dots-three-vertical'}
-          rightIconFrom={Entypo}
-        />
         <CustomText isBold style={styles.genderText}>
           What are your food preferences?
         </CustomText>
-        <View style={{marginTop: moderateScale(110, 0.6)}}>
+        <View style={{marginTop: moderateScale(160, 0.6)}}>
           <TouchableOpacity
             onPress={() => {
               setSelected("I Don't Have Any Specific Preferences");
@@ -122,6 +123,11 @@ const Preferencesscreen = () => {
             </CustomText>
           </TouchableOpacity>
         </View>
+        <View
+          style={{
+            marginTop: moderateScale(100, 0.6),
+          }}
+        />
         <CustomButton
           style={styles.nextButton}
           text={'Next'}
@@ -143,6 +149,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // paddingHorizontal:moderateScale(0,0.6)
   },
+  safe_area: {
+    width: windowWidth,
+    height: windowWidth,
+  },
   genderText: {
     fontSize: moderateScale(18, 0.6),
     color: Color.grey,
@@ -151,13 +161,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
   },
-  nextButton: {
-    width: windowWidth * 0.88,
-    height: moderateScale(50, 0.6),
-    borderRadius: moderateScale(25, 0.6),
-    marginTop: moderateScale(15, 0.6),
-    backgroundColor: Color.peach,
-  },
+  // nextButton: {
+  //   width: windowWidth * 0.88,
+  //   height: moderateScale(50, 0.6),
+  //   borderRadius: moderateScale(25, 0.6),
+  //   marginTop: moderateScale(15, 0.6),
+  //   backgroundColor: Color.peach,
+  // },
   buttonStyle: {
     width: windowWidth * 0.88,
     height: moderateScale(50, 0.6),
@@ -173,9 +183,6 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.88,
     height: moderateScale(50, 0.6),
     borderRadius: moderateScale(25, 0.6),
-    bottom:moderateScale(40,0.6),
-    position:'absolute',
-    // marginTop: moderateScale(10, 0.6),
     backgroundColor: Color.peach,
   },
 });

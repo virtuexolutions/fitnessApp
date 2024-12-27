@@ -7,7 +7,6 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import Drawer from './Drawer/Drawer';
 import LoginScreen from './Screens/LoginScreen';
 
-
 // enableScreens();
 const AppNavigator = () => {
   const isGoalCreated = useSelector(state => state.authReducer.isGoalCreated);
@@ -34,9 +33,7 @@ const AppNavigator = () => {
           // initialRouteName={'Walletscreen'}
           // initialRouteName={'RateScreen'}
           screenOptions={{headerShown: false}}>
-         
           <RootNav.Screen name="LoginScreen" component={LoginScreen} />
-        
         </RootNav.Navigator>
       </NavigationContainer>
     );
