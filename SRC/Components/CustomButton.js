@@ -57,16 +57,16 @@ const CustomButton = props => {
       onPress={onPress}
       style={[
         styles.mainBtn,
-        // {
-        //   width: width,
-        //   height: height,
-        //   borderWidth: borderWidth,
-        //   backgroundColor: bgColor,
-        //   borderColor: borderColor,
-        //   marginTop: marginTop || 0,
-        //   // alignItems:'center',
-        //   marginBottom: marginBottom || 0,
-        // },
+        {
+          width: width,
+          height: height,
+          borderWidth: borderWidth,
+          backgroundColor: bgColor,
+          borderColor: borderColor,
+          marginTop: marginTop || 0,
+          // alignItems:'center',
+          marginBottom: marginBottom || 0,
+        },
         elevation && {
           shadowColor: Color.themeBlack,
           shadowOffset: {

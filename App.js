@@ -17,11 +17,34 @@ import {
   requestWritePermission,
 } from './SRC/Utillity/utils';
 import SplashScreen from './SRC/Screens/SplashScreen';
-import AppNavigator from './SRC/appNavigation';
-import Signup from './SRC/Screens/Signup';
-import LoginScreen from './SRC/Screens/LoginScreen';
+import QuestionnaireAlcoholicDrinks from './SRC/Screens/QuestionnaireAlcoholicDrinks';
+import QuestionnaireYogurt from './SRC/Screens/QuestionnaireYogurt';
+import QuestionnaireEggs from './SRC/Screens/QuestionnaireEggs';
+import QuestionnaireExcercise from './SRC/Screens/QuestionnaireExerciseMod';
+import QuestionnaireExercise from './SRC/Screens/QuestionnaireExerciseMod';
+import QuestionnaireExerciseHigh from './SRC/Screens/QuestionnaireExerciseHigh';
+import QuestionnaireVegetables from './SRC/Screens/QuestionnaireVegetables';
+import QuestionnaireFruitJuice from './SRC/Screens/QuestionnaireFruitJuice';
+import QuestionnaireMeat from './SRC/Screens/QuestionnaireMeat';
+import QuestionnaireColorfulVegetables from './SRC/Screens/QuestionnaireColorfulVegetables';
+import QuestionnaireExerciseStrength from './SRC/Screens/QuestionnaireExerciseStrength';
+import QuestionnaireFriedFood from './SRC/Screens/QuestionnaireFriedFood';
+import QuestionnaireRedMeat from './SRC/Screens/QuestionnaireRedMeat';
+import QuestionnaireSugaryDrinks from './SRC/Screens/QuestionnaireSugaryDrinks';
+import QuestionnairePoultry from './SRC/Screens/QuestionnairePoultry';
+import QuestionnaireCheese from './SRC/Screens/QuestionnaireCheese';
+import QuestionnaireGreenVegetables from './SRC/Screens/QuestionnaireGreenVegetables';
+import QuestionnaireRootVegetables from './SRC/Screens/QuestionnaireRootVegetables.';
+import QuestionnaireSeaFood from './SRC/Screens/QuestionnaireSeaFood';
+import QuestionnaireSeeds from './SRC/Screens/QuestionnaireSeeds';
+import QuestionnaireDiaryProducts from './SRC/Screens/QuestionnaireDiaryProducts';
+import ChooseMealsVariety from './SRC/Screens/ChooseMealsVariety';
+import RemaindersScreen from './SRC/Screens/RemaindersScreen';
+import ScanScreen from './SRC/Screens/ScanScreen';
+import HealthPlanOnboarding from './SRC/Screens/HealthPlanOnboarding';
+import TrackerScreen from './SRC/Screens/TrackerScreen';
+import WeightTrackerScreen from './SRC/Screens/WeightTrackerScreen';
 import Startedscreen from './SRC/Screens/Startedscreen';
-import Authscreen from './SRC/Screens/Authscreen';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -67,7 +90,14 @@ const MainContainer = () => {
     return <SplashScreen />;
   }
   // return <ChooseDeclineReasonScreen/>;
-  return <Authscreen/>
+  // return <Authscreen/>
+  // return <HealthPlanOnboarding/>
+  // return <TrackerScreen/>
+  // return <WeightTrackerScreen/>
+  return <Startedscreen/>
+  // return <RemaindersScreen/>
+
+
   // <AppNavigator />;
 };
 
