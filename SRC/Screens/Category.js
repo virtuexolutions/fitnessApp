@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   image_background_image: {
     width: '100%',
     height: '45%',
-    top: -150,
+    top: -10,
   },
   image_background_view: {
     width: windowWidth,

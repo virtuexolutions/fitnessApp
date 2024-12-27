@@ -23,7 +23,17 @@ const Height = () => {
   const [value, setValue] = useState(100);
   return (
     <SafeAreaView style={styles.safe_are_view}>
+      <Header
+        showBack
+        isRightIcon
+        title={'Height'}
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+        headerColor={Color.peach}
+      />
       <ScrollView
+        showsVerticalScrollIndicator={false}
         style={{
           width: windowWidth,
           height: windowHeight,
@@ -32,14 +42,6 @@ const Height = () => {
           source={require('../Assets/Images/background3.png')}
           style={styles.image_background_view}
           imageStyle={styles.image_background_image}>
-          <Header
-            showBack
-            isRightIcon
-            title={'Height'}
-            iconColor={Color.black}
-            rightIconName={'dots-three-vertical'}
-            rightIconFrom={Entypo}
-          />
           <View style={styles.main_view}>
             <CustomText style={styles.heading}>How tall are you?</CustomText>
             <CustomText style={styles.text2}>
@@ -118,7 +120,6 @@ const Height = () => {
               unitSize={13}
               unit={selec_btn === 'CM' ? 'cm' : 'ft'}
             />
-            ;
             <CustomButton
               text={'Skip'}
               textColor={Color.grey}
@@ -191,7 +192,7 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.9,
     backgroundColor: '#EAECEB',
     borderRadius: windowWidth,
-    marginTop: moderateScale(70, 0.6),
+    marginTop: moderateScale(100, 0.6),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -208,7 +209,7 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.8,
     height: moderateScale(50, 0.6),
     borderRadius: moderateScale(25, 0.6),
-    marginTop: moderateScale(15, 0.6),
+    marginTop: moderateScale(90, 0.6),
     backgroundColor: Color.peach,
     borderWidth: 0.8,
     borderColor: '#FEF3DD',
@@ -220,8 +221,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
     elevation: 24,
-    position: 'absolute',
-    bottom: 10,
   },
   button_view: {
     flexDirection: 'row',

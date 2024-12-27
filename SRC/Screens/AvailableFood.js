@@ -122,96 +122,59 @@ const AvailableFood = () => {
   ];
   return (
     <SafeAreaView style={styles.safe_are_view}>
+      <Header
+        showBack
+        isRightIcon
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+        headerColor={Color.peach}
+      />
       <ImageBackground
         source={require('../Assets/Images/background3.png')}
         style={styles.image_background_view}
-        imageStyle={styles.image_background_image}>
-        <Header
-          showBack
-          isRightIcon
-          iconColor={Color.black}
-          rightIconName={'dots-three-vertical'}
-          rightIconFrom={Entypo}
-        />
-        <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
-          <View style={styles.main_view}>
-            <View
-              style={{
-                width: moderateScale(70, 0.6),
-                height: moderateScale(70, 0.6),
-                borderRadius: windowWidth,
-                alignSelf: 'center',
-              }}>
-              <CustomImage
-                source={require('../Assets/Images/apple.png')}
-                style={styles.imageStyle}
-              />
-            </View>
-            <View
-              style={{
-                marginTop: moderateScale(40, 0.6),
-              }}
+        imageStyle={styles.image_background_image}></ImageBackground>
+      <View style={styles.main_view}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View
+            style={{
+              width: moderateScale(70, 0.6),
+              height: moderateScale(70, 0.6),
+              borderRadius: windowWidth,
+              alignSelf: 'center',
+              marginTop: moderateScale(80, 0.6),
+            }}>
+            <CustomImage
+              source={require('../Assets/Images/apple.png')}
+              style={styles.imageStyle}
             />
-            <CustomText style={styles.heading}>
-              Select your available foods
-            </CustomText>
-            <CustomText style={styles.text2}>
-              Your meal plan depends on it
-            </CustomText>
-            <View style={styles.text_view}>
-              <CustomText style={styles.heading}>Protien </CustomText>
-              <CustomText style={styles.text}>Select All</CustomText>
-            </View>
-            <View
-              style={{
-                height: windowHeight * 0.35,
-              }}>
-              <FlatList
-                numColumns={3}
-                columnWrapperStyle={{
-                  justifyContent: 'flex-start',
-                }}
-                keyExtractor={item => item.id}
-                data={protein__item}
-                renderItem={({item}) => {
-                  return (
-                    <TouchableOpacity style={styles.btn_view}>
-                      <View style={styles.image_view}>
-                        <CustomImage
-                          source={item?.image}
-                          style={styles.imageStyle}
-                        />
-                      </View>
-                      <CustomText style={styles.btn_text}>
-                        {item?.text}
-                      </CustomText>
-                    </TouchableOpacity>
-                  );
-                }}
-              />
-            </View>
-            <View
-              style={{
-                width: windowWidth * 0.9,
-                height: 1,
-                backgroundColor: Color.darkGray,
-                marginTop: moderateScale(5, 0.6),
-              }}
-            />
-            <View style={styles.text_view}>
-              <CustomText style={styles.heading}>Carbohydrates </CustomText>
-              <CustomText style={styles.text}>Select All</CustomText>
-            </View>
+          </View>
+          <View
+            style={{
+              marginTop: moderateScale(40, 0.6),
+            }}
+          />
+          <CustomText style={styles.heading}>
+            Select your available foods
+          </CustomText>
+          <CustomText style={styles.text2}>
+            Your meal plan depends on it
+          </CustomText>
+          <View style={styles.text_view}>
+            <CustomText style={styles.heading}>Protien </CustomText>
+            <CustomText style={styles.text}>Select All</CustomText>
+          </View>
+          <View
+            style={{
+              height: windowHeight * 0.35,
+            }}>
             <FlatList
               numColumns={3}
               columnWrapperStyle={{
                 justifyContent: 'flex-start',
               }}
-              style={{
-                marginTop: moderateScale(10, 0.6),
-              }}
               keyExtractor={item => item.id}
-              data={caebohdrates_item}
+              data={protein__item}
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity style={styles.btn_view}>
@@ -228,18 +191,59 @@ const AvailableFood = () => {
                 );
               }}
             />
-            <CustomButton
-              text={'Continue'}
-              textColor={Color.grey}
-              fontSize={moderateScale(15, 0.6)}
-              bgColor={Color.peach}
-              width={windowWidth * 0.8}
-              style={[styles.buttonStyle]}
-              textTransform={'Uppercase'}
-            />
           </View>
+          <View
+            style={{
+              width: windowWidth * 0.9,
+              height: 1,
+              backgroundColor: Color.darkGray,
+              marginTop: moderateScale(5, 0.6),
+            }}
+          />
+          <View style={styles.text_view}>
+            <CustomText style={styles.heading}>Carbohydrates </CustomText>
+            <CustomText style={styles.text}>Select All</CustomText>
+          </View>
+          <FlatList
+            numColumns={3}
+            columnWrapperStyle={{
+              justifyContent: 'flex-start',
+            }}
+            style={{
+              marginTop: moderateScale(10, 0.6),
+            }}
+            keyExtractor={item => item.id}
+            data={caebohdrates_item}
+            renderItem={({item}) => {
+              return (
+                <TouchableOpacity style={styles.btn_view}>
+                  <View style={styles.image_view}>
+                    <CustomImage
+                      source={item?.image}
+                      style={styles.imageStyle}
+                    />
+                  </View>
+                  <CustomText style={styles.btn_text}>{item?.text}</CustomText>
+                </TouchableOpacity>
+              );
+            }}
+          />
+          <CustomButton
+            text={'Continue'}
+            textColor={Color.grey}
+            fontSize={moderateScale(15, 0.6)}
+            bgColor={Color.peach}
+            width={windowWidth * 0.8}
+            style={[styles.buttonStyle]}
+            textTransform={'Uppercase'}
+          />
+          <View
+            style={{
+              marginBottom: moderateScale(60, 0.6),
+            }}
+          />
         </ScrollView>
-      </ImageBackground>
+      </View>
     </SafeAreaView>
   );
 };
@@ -250,16 +254,17 @@ const styles = StyleSheet.create({
   safe_are_view: {
     width: windowWidth,
     height: windowHeight,
+    backgroundColor: Color.white,
   },
   scroll_view: {
     height: windowHeight,
     width: windowWidth,
     backgroundColor: Color.peach,
   },
-  main_view: {
-    paddingHorizontal: moderateScale(15, 0.6),
-    height: windowHeight * 0.9,
-  },
+  // main_view: {
+  //   paddingHorizontal: moderateScale(15, 0.6),
+  //   height: windowHeight * 0.9,
+  // },
   heading: {
     fontSize: moderateScale(18, 0.6),
     textAlign: 'center',
@@ -285,15 +290,22 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: windowWidth * 0.5,
   },
   image_background_view: {
-    backgroundColor: '#FAFAFA',
-    alignItems: 'center',
     width: windowWidth,
-    height: windowHeight,
+    height: windowHeight * 0.8,
+    backgroundColor: Color.white,
+    alignItems: 'center',
   },
   image_background_image: {
     width: '100%',
-    height: '45%',
-    top: -150,
+    height: '35%',
+    top: -15,
+  },
+  main_view: {
+    width: windowWidth,
+    height: windowHeight,
+    position: 'absolute',
+    top: 50,
+    alignItems: 'center',
   },
   buttonStyle: {
     width: windowWidth * 0.8,
@@ -311,8 +323,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
     elevation: 24,
-    position: 'absolute',
-    bottom: 10,
+    // position: 'absolute',
+    // bottom: 0,
   },
   button_view: {
     flexDirection: 'row',

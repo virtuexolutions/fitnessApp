@@ -20,19 +20,22 @@ const Progress = () => {
   const text = ['OFF-TRACK', 'imBalanced', 'Good', 'Great', 'Optimal'];
   return (
     <SafeAreaView style={styles.safe_are_view}>
-      <ScrollView style={styles.scroll_view}>
-        <ImageBackground
-          source={require('../Assets/Images/background2.png')}
-          style={styles.image_background_view}
-          imageStyle={styles.image_background_image}>
-          <Header
-            title={'Progress'}
-            showBack
-            isRightIcon
-            iconColor={Color.black}
-            rightIconName={'dots-three-vertical'}
-            rightIconFrom={Entypo}
-          />
+      <Header
+        title={'Progress'}
+        showBack
+        headerColor={Color.peach}
+        isRightIcon
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+      />
+      <ImageBackground
+        source={require('../Assets/Images/background2.png')}
+        style={styles.image_background_view}
+        imageStyle={styles.image_background_image}
+      />
+      <View style={styles.main_view}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View
             style={{
               width: windowWidth * 0.9,
@@ -161,8 +164,8 @@ const Progress = () => {
               }}
             />
           </View>
-        </ImageBackground>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
@@ -193,12 +196,12 @@ const styles = StyleSheet.create({
   },
   image_background_image: {
     width: '100%',
-    height: '45%',
+    height: '40%',
     top: -10,
   },
   image_background_view: {
     width: windowWidth,
-    height: windowHeight,
+    height: windowHeight * 0.8,
     backgroundColor: Color.white,
     alignItems: 'center',
   },
@@ -211,6 +214,13 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(12, 0.6),
     textAlign: 'center',
     color: Color.grey,
+  },
+  main_view: {
+    width: windowWidth,
+    height: windowHeight,
+    position: 'absolute',
+    top: 40,
+    alignItems: 'center',
   },
   time: {
     fontSize: moderateScale(32, 0.6),
@@ -261,5 +271,6 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(20, 0.6),
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: moderateScale(50, 0.6),
   },
 });

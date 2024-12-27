@@ -116,14 +116,14 @@ const PickItems = () => {
   ];
   return (
     <SafeAreaView style={styles.safe_are_view}>
-      <ScrollView>
-        <Header
-          showBack
-          isRightIcon
-          iconColor={Color.black}
-          rightIconName={'dots-three-vertical'}
-          rightIconFrom={Entypo}
-        />
+      <Header
+        showBack
+        isRightIcon
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.main_view}>
           <View style={styles.text_view}>
             <CustomText style={styles.heading}>

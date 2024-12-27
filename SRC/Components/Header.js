@@ -256,7 +256,7 @@ const Header = props => {
 const styles = ScaledSheet.create({
   header1: {
     width: windowWidth,
-    height: windowHeight * 0.1,
+    height: windowHeight * 0.9,
     backgroundColor: Color.white,
     marginBottom: moderateScale(5, 0.3),
     justifyContent: 'center',
@@ -316,7 +316,7 @@ const styles = ScaledSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: moderateScale(20, 0.3),
-    paddingVertical: moderateScale(15, 0.3),
+    paddingVertical: moderateScale(10, 0.3),
     alignItems: 'center',
   },
   notificationCircle: {

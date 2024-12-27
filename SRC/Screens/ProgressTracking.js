@@ -17,18 +17,19 @@ import {windowHeight, windowWidth} from '../Utillity/utils';
 const ProgressTracking = () => {
   return (
     <SafeAreaView style={styles.safe_are_view}>
+      <Header
+        title={'Progress Tracking'}
+        showBack
+        isRightIcon
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+        headerColor={Color.peach}
+      />
       <ImageBackground
         source={require('../Assets/Images/Rectangle.png')}
         style={styles.image_background_view}
         imageStyle={styles.image_background_image}>
-        <Header
-          title={'Progress Tracking'}
-          showBack
-          isRightIcon
-          iconColor={Color.black}
-          rightIconName={'dots-three-vertical'}
-          rightIconFrom={Entypo}
-        />
         <ScrollView>
           <View style={styles.image_view}>
             <CustomImage

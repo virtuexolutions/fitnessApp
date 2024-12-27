@@ -74,17 +74,19 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.safe_are_view}>
+      <Header isFilledButton title={'Home'} headerColor={Color.peach} />
       <ScrollView style={styles.scroll_view}>
         <ImageBackground
           source={require('../Assets/Images/Rectangle.png')}
           style={styles.image_background_view}
-          imageStyle={styles.image_background_image}>
-          <Header isFilledButton title={'Home'} />
+          imageStyle={styles.image_background_image}></ImageBackground>
+        <View style={styles.main_view}>
           <View
             style={{
               height: windowWidth * 0.1,
             }}>
             <FlatList
+              showsHorizontalScrollIndicator={false}
               style={{
                 marginLeft: moderateScale(15, 0.6),
               }}
@@ -165,7 +167,7 @@ const Home = () => {
               />
             </View>
           </View>
-        </ImageBackground>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -185,13 +187,22 @@ const styles = StyleSheet.create({
   },
   image_background_image: {
     width: '100%',
-    height: '30%',
+    height: '100%',
   },
   image_background_view: {
     width: windowWidth,
-    height: windowHeight,
+    height: windowHeight * 0.45,
     backgroundColor: Color.white,
     alignItems: 'center',
+    top: -170,
+  },
+  main_view: {
+    width: windowWidth,
+    height: windowHeight,
+    position: 'absolute',
+    top: 10,
+    alignItems: 'center',
+    backgroundColor: 'transparent',
   },
   varieties_view: {
     height: 30,
@@ -206,7 +217,7 @@ const styles = StyleSheet.create({
   },
   blog_view: {
     width: windowWidth * 0.9,
-    height: windowWidth * 0.4,
+    height: windowWidth * 0.5,
     alignSelf: 'center',
   },
   image: {

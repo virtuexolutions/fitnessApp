@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     backgroundColor: Color.white,
     borderRadius: windowWidth,
     shadowColor: '#000',
+    width: windowWidth * 0.2,
+    alignSelf: 'center',
     shadowOffset: {
       width: 0,
       height: 12,

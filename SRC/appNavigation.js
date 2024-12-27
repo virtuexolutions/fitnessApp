@@ -38,7 +38,7 @@ const AppNavigator = () => {
     return (
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator
-          initialRouteName={'Progress'}
+          initialRouteName={'ProgressTracking'}
           // initialRouteName={'Walletscreen'}
           // initialRouteName={'RateScreen'}
           screenOptions={{headerShown: false}}>
