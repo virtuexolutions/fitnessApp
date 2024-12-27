@@ -6,9 +6,9 @@ export default Color = {
   // Basic Colors
   white: '#FFFFFF',
   black: '#000000',
-  darkGray: '#4B4242',
+  darkGray: '#565656',
   mediumGray: '#9B9B9B',
-  lightGrey: '#F3F4F6',
+  lightGrey: '#6D7278',
   veryLightGray: '#A8A8A8',
   green: '#14B25C',
   lightGreen: '#11A44C',
@@ -35,6 +35,7 @@ export default Color = {
   btn_Color:'#282723',
   btntextColor:'#2F2F37',
   fieldboxColor:'rgba(250, 250, 250, 0.27)',
+    lightest_grey: '#D3D3D3',
   
   //gradientColors
   themeBgColor: ['#E9CB5800','#E9CB58'],
