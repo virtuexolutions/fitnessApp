@@ -13,6 +13,7 @@ import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import Header from '../Components/Header';
 import {windowHeight, windowWidth} from '../Utillity/utils';
+import navigationService from '../navigationService';
 
 const ProgressTracking = () => {
   return (
@@ -38,12 +39,13 @@ const ProgressTracking = () => {
             />
           </View>
           <CustomButton
-            text={'End Fasting'}
+            text={'Log Measurement'}
             textColor={Color.grey}
             fontSize={moderateScale(12, 0.6)}
             bgColor={Color.peach}
             width={windowWidth * 0.8}
             style={styles.buttonStyle}
+            onPress={() => navigationService.navigate('QuestionnaireDessert')}
           />
           <CustomButton
             text={'Log Weight'}

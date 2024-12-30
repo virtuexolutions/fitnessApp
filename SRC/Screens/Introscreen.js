@@ -1,17 +1,16 @@
+import React from 'react';
 import {
   ImageBackground,
   SafeAreaView,
   StyleSheet,
-  Text,
-  View,
+  View
 } from 'react-native';
-import React from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import CustomText from '../Components/CustomText';
-import {moderateScale} from 'react-native-size-matters';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
+import { moderateScale } from 'react-native-size-matters';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
+import CustomText from '../Components/CustomText';
+import navigationService from '../navigationService';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const Introscreen = () => {
   return (
@@ -50,11 +49,14 @@ const Introscreen = () => {
               }}>
               I Still Eat Food I Love
             </CustomText>
-            <CustomText style={{
+            <CustomText
+              style={{
                 fontSize: moderateScale(13, 0.6),
                 color: Color.grey,
-                width:windowWidth*0.86,textAlign:'center',
-                lineHeight:17,marginTop:moderateScale(9,0.6)
+                width: windowWidth * 0.86,
+                textAlign: 'center',
+                lineHeight: 17,
+                marginTop: moderateScale(9, 0.6),
               }}>
               I quickly learned which foods I should eat more and which I should
               eat less. I also tried new dishes and lost weight without feeling
@@ -62,8 +64,13 @@ const Introscreen = () => {
               life.
             </CustomText>
           </View>
-          <CustomButton style={styles.nextButton} text={'Next'}
-          textColor={Color.grey} fontSize={moderateScale(14,0.6)}/>
+          <CustomButton
+            style={styles.nextButton}
+            text={'Next'}
+            onPress={() => navigationService.navigate('WeightTrackerScreen')}
+            textColor={Color.grey}
+            fontSize={moderateScale(14, 0.6)}
+          />
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -99,19 +106,19 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: Color.peach,
     alignItems: 'center',
-    justifyContent:'center',
-    opacity:0.86
+    justifyContent: 'center',
+    opacity: 0.86,
     // paddingVertical:moderateScale(20,0.6)
   },
-  nextButton:{
-      width:windowWidth*0.85,
-      height:moderateScale(50,0.6),
+  nextButton: {
+    width: windowWidth * 0.85,
+    height: moderateScale(50, 0.6),
     //   borderWidth:1.5,
-      borderRadius:moderateScale(25,0.6),
-      marginTop:moderateScale(15,0.6),
+    borderRadius: moderateScale(25, 0.6),
+    marginTop: moderateScale(15, 0.6),
     //   borderColor:Color.grey,
-      backgroundColor:Color.peach
-      // bottom:0,
-      // position:'absolute'
-    }
+    backgroundColor: Color.peach,
+    // bottom:0,
+    // position:'absolute'
+  },
 });

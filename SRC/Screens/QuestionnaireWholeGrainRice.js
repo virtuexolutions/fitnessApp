@@ -9,13 +9,15 @@ import CustomButton from '../Components/CustomButton';
 import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
+import navigationService from '../navigationService';
 const QuestionnaireWholeGrainRice = () => {
   return (
     <ImageBackground
       style={styles.bgcImageStyle}
       source={require('../Assets/Images/bgcthemeimage.png')}
       imageStyle={{width: '100%', height: '100%'}}>
-     \    <View style={styles.topRoundImageContainer}>
+      \{' '}
+      <View style={styles.topRoundImageContainer}>
         <CustomImage
           style={{width: '100%'}}
           source={require('../Assets/Images/27.png')}
@@ -63,52 +65,53 @@ const QuestionnaireWholeGrainRice = () => {
           isBold>
           27/41
         </CustomText>
-        </View>
-        <View
+      </View>
+      <View
         style={{width: windowWidth, paddingVertical: moderateScale(50, 0.3)}}>
-      <View style={styles.infoBox}>
-        <CustomText style={styles.heading} isBold>
-        How much of that rice was whole grain?
-        </CustomText>
-        <CustomText style={styles.examples}>
-        e.g. brown rice, whole grain rice
-        </CustomText>
-      </View>
-      <View style={styles.limitBox}>
-        <CustomText style={styles.duration}>70%</CustomText>
-        <View style={styles.sliderTextContainer}>
-          <CustomText style={styles.sliderText}>Never</CustomText>
-          <CustomText style={styles.sliderText}>Open</CustomText>
+        <View style={styles.infoBox}>
+          <CustomText style={styles.heading} isBold>
+            How much of that rice was whole grain?
+          </CustomText>
+          <CustomText style={styles.examples}>
+            e.g. brown rice, whole grain rice
+          </CustomText>
         </View>
-        <View style={{width: windowWidth, alignItems: 'center'}}>
-          <Slider
-            w="3/4"
-            maxW="300"
-            color={'#F4BC9B'}
-            colorScheme={'amber'}
-            defaultValue={70}
-            minValue={0}
-            maxValue={100}
-            accessibilityLabel="hello world"
-            step={20}>
-            <Slider.Track>
-              <Slider.FilledTrack bg={'#F4BC9B'} />
-            </Slider.Track>
-            <Slider.Thumb
-              borderWidth={'1'}
-              borderColor={'#fff'}
-              bg={'#F4BC9B'}
-            />
-          </Slider>
+        <View style={styles.limitBox}>
+          <CustomText style={styles.duration}>70%</CustomText>
+          <View style={styles.sliderTextContainer}>
+            <CustomText style={styles.sliderText}>Never</CustomText>
+            <CustomText style={styles.sliderText}>Open</CustomText>
+          </View>
+          <View style={{width: windowWidth, alignItems: 'center'}}>
+            <Slider
+              w="3/4"
+              maxW="300"
+              color={'#F4BC9B'}
+              colorScheme={'amber'}
+              defaultValue={70}
+              minValue={0}
+              maxValue={100}
+              accessibilityLabel="hello world"
+              step={20}>
+              <Slider.Track>
+                <Slider.FilledTrack bg={'#F4BC9B'} />
+              </Slider.Track>
+              <Slider.Thumb
+                borderWidth={'1'}
+                borderColor={'#fff'}
+                bg={'#F4BC9B'}
+              />
+            </Slider>
+          </View>
+          <CustomButton
+            style={styles.buttonStyle}
+            text={'Next'}
+            // textstyle={{fontSize: moderateScale(18, 0.6)}}
+            fontSize={moderateScale(15, 0.6)}
+            textColor={Color.grey}
+            onPress={() => navigationService.navigate('QuestionnaireOatMeals')}
+          />
         </View>
-        <CustomButton
-          style={styles.buttonStyle}
-          text={'Next'}
-          // textstyle={{fontSize: moderateScale(18, 0.6)}}
-          fontSize={moderateScale(15, 0.6)}
-          textColor={Color.grey}
-        />
-      </View>
       </View>
     </ImageBackground>
   );
@@ -198,7 +201,7 @@ const styles = StyleSheet.create({
   },
   limitBox: {
     marginTop: moderateScale(52, 0.2),
-    top:-10,
+    top: -10,
   },
   sliderTextContainer: {
     marginTop: moderateScale(30, 0.3),

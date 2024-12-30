@@ -9,6 +9,7 @@ import CustomButton from '../Components/CustomButton';
 import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
+import navigationService from '../navigationService';
 const QuestionnaireFrozenMeals = () => {
   return (
     <ImageBackground
@@ -108,6 +109,7 @@ const QuestionnaireFrozenMeals = () => {
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
+            onPress={() => navigationService.navigate('QuestionnaireRice')}
           />
         </View>
       </View>
@@ -199,7 +201,7 @@ const styles = StyleSheet.create({
   },
   limitBox: {
     marginTop: moderateScale(52, 0.2),
-    top:-10,
+    top: -10,
   },
   sliderTextContainer: {
     marginTop: moderateScale(30, 0.3),

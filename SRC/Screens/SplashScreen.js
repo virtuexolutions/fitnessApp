@@ -1,26 +1,19 @@
-import {AddIcon, View} from 'native-base';
+import { View } from 'native-base';
 import React from 'react';
-import FastImage from 'react-native-fast-image';
-import {moderateScale, ScaledSheet} from 'react-native-size-matters';
-import {windowHeight, windowWidth} from '../Utillity/utils';
+import { moderateScale, ScaledSheet } from 'react-native-size-matters';
+import Color from '../Assets/Utilities/Color';
 import CustomImage from '../Components/CustomImage';
-import CustomText from '../Components/CustomText';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const SplashScreen = () => {
-  // const backgroundImage = require('../Assets/Images/splash.gif');
   return (
     <View style={styles.container}>
       <View style={styles.logo_Container}>
-        {/* <CustomImage
-          source={require('../Assets/Images/logo.png')}
+        <CustomImage
+          source={require('../Assets/Images/Tomato.png')}
           style={styles.logo}
-        /> */}
+        />
       </View>
-      <CustomText style={styles.text}>
-        
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-        efficitur consectetur ligula eget ultrices.
-      </CustomText>
     </View>
   );
 };
@@ -32,10 +25,13 @@ const styles = ScaledSheet.create({
     height: windowHeight,
     width: windowWidth,
     alignItems: 'center',
+    backgroundColor: Color.peach,
   },
   logo_Container: {
-    height: windowHeight * 0.1,
-    width: windowWidth * 0.6,
+    height: windowHeight * 0.45,
+    width: windowWidth * 0.9,
+    position: 'absolute',
+    top: moderateScale(-180, 0.6),
   },
   logo: {
     height: '100%',
@@ -45,13 +41,12 @@ const styles = ScaledSheet.create({
     width: windowWidth * 0.4,
     height: windowWidth * 0.3,
   },
-  text:{
-    width:'80%',
-    textAlign:'center',
-    fontSize:moderateScale(11,.6),
-    position:'absolute',
-    bottom:35,
-
+  text: {
+    width: '80%',
+    textAlign: 'center',
+    fontSize: moderateScale(11, 0.6),
+    position: 'absolute',
+    bottom: 35,
   },
 
   LogoText: {

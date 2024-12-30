@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import {moderateScale} from 'react-native-size-matters';
@@ -6,9 +6,9 @@ import Color from '../Assets/Utilities/Color';
 import CustomImage from './CustomImage';
 import CustomText from './CustomText';
 
-const RecipesCard = ({data}) => {
+const RecipesCard = ({data, onPress}) => {
   return (
-    <View style={styles.main_view}>
+    <TouchableOpacity onPress={onPress} style={styles.main_view}>
       <View style={styles.image_view}>
         <CustomImage source={data?.image} style={styles.image} />
       </View>
@@ -19,7 +19,7 @@ const RecipesCard = ({data}) => {
       <CustomText style={[styles.text, {fontSize: moderateScale(12, 0.6)}]}>
         {data?.cal + ' Cal'}
       </CustomText>
-    </View>
+    </TouchableOpacity>
   );
 };
 

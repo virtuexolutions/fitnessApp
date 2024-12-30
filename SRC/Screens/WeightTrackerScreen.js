@@ -1,39 +1,37 @@
+import { Box, Slider } from 'native-base';
+import React, { useState } from 'react';
 import {
   ImageBackground,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import React, {useState} from 'react';
-import Header from '../Components/Header';
-import Color from '../Assets/Utilities/Color';
-import CustomText from '../Components/CustomText';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import {moderateScale} from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {Box, Slider} from 'native-base';
+import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
-import {RulerPicker} from 'react-native-ruler-picker';
+import CustomText from '../Components/CustomText';
+import Header from '../Components/Header';
+import navigationService from '../navigationService';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const WeightTrackerScreen = () => {
   const [value, setValue] = useState(0);
   return (
     <View style={{alignItems: 'center'}}>
       <Header
-          title={'Weight'}
-          showBack
-          isRightIcon
-          headerColor={"#FBD7BD"}
-          iconColor={Color.black}
-          rightIconName={'dots-three-vertical'}
-          rightIconFrom={Entypo}
-        />
+        title={'Weight'}
+        showBack
+        isRightIcon
+        headerColor={'#FBD7BD'}
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+      />
       <ImageBackground
         imageStyle={{width: '100%', height: '100%'}}
         source={require('../Assets/Images/Rectangle.png')}
         style={styles.UppperContainer}>
-        
         <View style={styles.headingContainer}>
           <CustomText style={styles.heading}>What is your weight?</CustomText>
           <CustomText style={styles.subText}>
@@ -84,18 +82,13 @@ const WeightTrackerScreen = () => {
 
         {/* Slider Thumb */}
         <Slider.Thumb>
-          <Box
-            h={6}
-            w={10}
-            rounded="full"
-            bg="gray.500"
-            shadow={2}
-          />
+          <Box h={6} w={10} rounded="full" bg="gray.500" shadow={2} />
         </Slider.Thumb>
       </Slider>
       <CustomButton
         onPress={() => {
           // onPhoneNumberPressed();
+          navigationService.navigate('Height')
         }}
         text={'Skip'}
         fontSize={moderateScale(13, 0.3)}

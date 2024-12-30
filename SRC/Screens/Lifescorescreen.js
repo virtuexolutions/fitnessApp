@@ -1,21 +1,20 @@
+import React, { useState } from 'react';
 import {
   FlatList,
   ImageBackground,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import React, {useState} from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import Color from '../Assets/Utilities/Color';
-import Header from '../Components/Header';
+import { moderateScale } from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
-import CustomText from '../Components/CustomText';
-import {moderateScale} from 'react-native-size-matters';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
+import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
+import CustomText from '../Components/CustomText';
+import Header from '../Components/Header';
+import navigationService from '../navigationService';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const Lifescorescreen = () => {
   const [selected, setSelected] = useState('None');
@@ -80,6 +79,7 @@ const Lifescorescreen = () => {
             contentContainerStyle={{
               gap: moderateScale(10, 0.6),
             }}
+            showsVerticalScrollIndicator={false}
             data={dietList}
             renderItem={({item}) => {
               return (
@@ -114,6 +114,7 @@ const Lifescorescreen = () => {
           text={'Next'}
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
+          onPress={() => navigationService.navigate('PreferenceScreen')}
         />
       </ImageBackground>
     </SafeAreaView>

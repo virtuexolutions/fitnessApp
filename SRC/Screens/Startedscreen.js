@@ -1,29 +1,18 @@
+import React from 'react';
 import {
   ImageBackground,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import Color from '../Assets/Utilities/Color';
-import CustomImage from '../Components/CustomImage';
-import {
-  height,
-  resizeMethod,
-  resizeMode,
-  width,
-} from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
 import {moderateScale} from 'react-native-size-matters';
-import CustomText from '../Components/CustomText';
-import {
-  background,
-  color,
-} from 'native-base/lib/typescript/theme/styled-system';
-import {Container} from 'native-base';
+import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
+import CustomImage from '../Components/CustomImage';
+import CustomText from '../Components/CustomText';
+import {windowHeight, windowWidth} from '../Utillity/utils';
+import navigationService from '../navigationService';
 
 const Startedscreen = () => {
   return (
@@ -34,8 +23,7 @@ const Startedscreen = () => {
           height: windowHeight,
         }}
         imageStyle={{width: '100%', height: '100%', resizeMode: 'stretch'}}
-        source={require('../Assets/Images/bgcImage.png')}
-      >
+        source={require('../Assets/Images/bgcimage.png')}>
         <View style={styles.Container}>
           <View style={styles.bluImage}>
             <CustomImage
@@ -57,6 +45,7 @@ const Startedscreen = () => {
             text={'Get Started'}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
+            onPress={() => navigationService.navigate('AuthScreen')}
           />
           <View style={styles.loginTextStyle}>
             <CustomText

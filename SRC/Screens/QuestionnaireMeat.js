@@ -9,6 +9,7 @@ import CustomButton from '../Components/CustomButton';
 import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
+import navigationService from '../navigationService';
 const QuestionnaireMeat = () => {
   return (
     <ImageBackground
@@ -20,7 +21,7 @@ const QuestionnaireMeat = () => {
           style={{width: '100%', top: -40}}
           source={require('../Assets/Images/12.png')}
           // resizeMode={"cover"}
-          />
+        />
       </View>
 
       <View>
@@ -64,10 +65,10 @@ const QuestionnaireMeat = () => {
         style={{width: windowWidth, paddingVertical: moderateScale(50, 0.3)}}>
         <View style={styles.infoBox}>
           <CustomText style={styles.heading} isBold>
-          How often did you have processed meat last week?
+            How often did you have processed meat last week?
           </CustomText>
           <CustomText style={styles.examples}>
-          How often did you have processed meat last week?
+            How often did you have processed meat last week?
           </CustomText>
         </View>
         <View style={styles.limitBox}>
@@ -103,6 +104,9 @@ const QuestionnaireMeat = () => {
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
+            onPress={() =>
+              navigationService.navigate('QuestionnaireColorfulVegetables')
+            }
           />
         </View>
       </View>

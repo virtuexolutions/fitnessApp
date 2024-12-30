@@ -9,7 +9,8 @@ import CustomButton from '../Components/CustomButton';
 import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
-const QuestionnaireSeeds= () => {
+import navigationService from '../navigationService';
+const QuestionnaireSeeds = () => {
   return (
     <ImageBackground
       style={styles.bgcImageStyle}
@@ -20,7 +21,7 @@ const QuestionnaireSeeds= () => {
           style={{width: '100%', top: -40}}
           source={require('../Assets/Images/18.png')}
           // resizeMode={"cover"}
-          />
+        />
       </View>
 
       <View>
@@ -64,12 +65,11 @@ const QuestionnaireSeeds= () => {
         style={{width: windowWidth, paddingVertical: moderateScale(50, 0.3)}}>
         <View style={styles.infoBox}>
           <CustomText style={styles.heading} isBold>
-          How often did you have plain nuts or seeds last week?
+            How often did you have plain nuts or seeds last week?
           </CustomText>
           <CustomText style={styles.examples}>
-          e.g. cheddar, gouda, brie, cream cheese don't count cottage cheese
+            e.g. cheddar, gouda, brie, cream cheese don't count cottage cheese
           </CustomText>
-
         </View>
         <View style={styles.limitBox}>
           <CustomText style={styles.duration}>5-6 times a week</CustomText>
@@ -104,6 +104,9 @@ const QuestionnaireSeeds= () => {
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
+            onPress={() =>
+              navigationService.navigate('QuestionnaireDiaryProducts')
+            }
           />
         </View>
       </View>

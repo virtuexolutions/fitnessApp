@@ -4,6 +4,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import React from 'react';
@@ -15,6 +16,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import CustomText from '../Components/CustomText';
 import PercentageCounter from '../Components/PercentageCounter';
 import CustomButton from '../Components/CustomButton';
+import navigationService from '../navigationService';
 
 const Progress = () => {
   const text = ['OFF-TRACK', 'imBalanced', 'Good', 'Great', 'Optimal'];
@@ -55,7 +57,7 @@ const Progress = () => {
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
-              width: windowWidth * 0.8,
+              width: windowWidth * 0.9,
               alignItems: 'center',
               marginTop: moderateScale(10, 0.6),
             }}>
@@ -143,7 +145,9 @@ const Progress = () => {
             ]}>
             Weight Goal
           </CustomText>
-          <View style={styles.weight_container}>
+          <TouchableOpacity
+            onPress={() => navigationService.navigate('ProgressTracking')}
+            style={styles.weight_container}>
             <View
               style={{
                 width: moderateScale(50, 0.6),
@@ -163,7 +167,7 @@ const Progress = () => {
                 backgroundColor: '#FAC2AB',
               }}
             />
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -176,6 +180,7 @@ const styles = StyleSheet.create({
   safe_are_view: {
     width: windowWidth,
     height: windowHeight,
+    backgroundColor: Color.white,
   },
   scroll_view: {
     height: windowHeight,
@@ -231,7 +236,6 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.8,
     height: moderateScale(55, 0.6),
     borderRadius: moderateScale(25, 0.6),
-    marginTop: moderateScale(15, 0.6),
     backgroundColor: Color.peach,
     borderWidth: 0.8,
     borderColor: '#FEF3DD',
@@ -271,6 +275,6 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(20, 0.6),
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: moderateScale(50, 0.6),
+    marginBottom: moderateScale(100, 0.6),
   },
 });

@@ -17,6 +17,7 @@ import {moderateScale} from 'react-native-size-matters';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import CustomText from '../Components/CustomText';
 import RecipesCard from '../Components/RecipesCard';
+import navigationService from '../navigationService';
 
 const Recipes = () => {
   const hot_recipies = [
@@ -96,7 +97,9 @@ const Recipes = () => {
         rightIconName={'dots-three-vertical'}
         rightIconFrom={Entypo}
       />
-      <ScrollView style={styles.scroll_view}>
+      <ScrollView
+        style={styles.scroll_view}
+        showsVerticalScrollIndicator={false}>
         <View style={styles.main_view}>
           <TextInputWithTitle
             placeholder={'Find Recipies'}
@@ -182,7 +185,12 @@ const Recipes = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
             renderItem={({item}) => {
-              return <RecipesCard data={item} />;
+              return (
+                <RecipesCard
+                  onPress={() => navigationService.navigate('Home')}
+                  data={item}
+                />
+              );
             }}
           />
         </View>

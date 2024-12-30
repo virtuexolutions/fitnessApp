@@ -18,6 +18,7 @@ import Header from '../Components/Header';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import {Icon} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import navigationService from '../navigationService';
 
 const MealInDay = () => {
   return (
@@ -142,6 +143,7 @@ const MealInDay = () => {
               width={windowWidth * 0.8}
               style={[styles.buttonStyle]}
               textTransform={'Uppercase'}
+              onPress={() => navigationService.navigate('RemaindersScreen')}
             />
           </View>
         </ScrollView>

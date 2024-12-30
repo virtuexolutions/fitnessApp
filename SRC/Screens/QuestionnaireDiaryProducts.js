@@ -9,6 +9,7 @@ import CustomButton from '../Components/CustomButton';
 import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
+import navigationService from '../navigationService';
 const QuestionnaireDiaryProducts= () => {
   return (
     <ImageBackground
@@ -104,6 +105,7 @@ const QuestionnaireDiaryProducts= () => {
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
+            onPress={() => navigationService.navigate('Category')}
           />
         </View>
       </View>

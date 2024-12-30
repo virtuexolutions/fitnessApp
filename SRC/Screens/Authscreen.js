@@ -1,31 +1,22 @@
+import React, { useState } from 'react';
 import {
+  ImageBackground,
   SafeAreaView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import React, {act, useState} from 'react';
-import {ImageBackground} from 'react-native';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import CustomImage from '../Components/CustomImage';
-import {
-  height,
-  resizeMode,
-  width,
-} from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
-import {moderateScale} from 'react-native-size-matters';
-import CustomButton from '../Components/CustomButton';
+import { moderateScale } from 'react-native-size-matters';
 import Color from '../Assets/Utilities/Color';
-import TextInputWithTitle from '../Components/TextInputWithTitle';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {Icon} from 'native-base';
+import CustomButton from '../Components/CustomButton';
+import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
-import Signup from './Signup';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
+import TextInputWithTitle from '../Components/TextInputWithTitle';
+import navigationService from '../navigationService';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const Authscreen = () => {
   const [activeButton, setActivebutton] = useState(true);
+  console.log('🚀 ~ Authscreen ~ activeButton:', activeButton);
   return (
     <SafeAreaView>
       <ImageBackground
@@ -53,15 +44,13 @@ const Authscreen = () => {
                 setActivebutton(true);
               }}
               style={[
-                activeButton 
+                activeButton
                   ? {backgroundColor: Color.white}
                   : {backgroundColor: Color.transparent},
                 styles.signbuttonStyle,
               ]}
               text={'Sign in'}
-              textColor={
-                activeButton  ? Color.lightBlue : Color.white
-              }
+              textColor={activeButton ? Color.lightBlue : Color.white}
               fontSize={moderateScale(12, 0.6)}
             />
             <CustomButton
@@ -75,69 +64,67 @@ const Authscreen = () => {
                 styles.signbuttonStyle,
               ]}
               text={'Sign up'}
-              textColor={!activeButton  ? Color.lightBlue : Color.white}
+              textColor={!activeButton ? Color.lightBlue : Color.white}
               fontSize={moderateScale(12, 0.6)}
             />
           </View>
-          {
-            activeButton ?
-
+          {activeButton ? (
             <View style={styles.formStyle}>
-            <TextInputWithTitle
-              placeholder={'Your Email'}
-              placeholderColor={Color.grey}
-              // iconName={'message'}
-              // iconType={EvilIcons}
-            />
-            <TextInputWithTitle
-              placeholder={'Your Password'}
-              placeholderColor={Color.grey}
-              //   fontSize={moderateScale(10,0.6)}
-              // iconName={'message'}
-              // iconType={EvilIcons}
-            />
-          
-            <CustomButton
-              style={styles.buttonStyle}
-              text={'Sign in'}
-              // textstyle={{fontSize: moderateScale(18, 0.6)}}
-              fontSize={moderateScale(15, 0.6)}
-              textColor={Color.grey}
-            />
-          </View>
-            :
-              <View style={styles.formStyle}>
-            <TextInputWithTitle
-              placeholder={'Your Email'}
-              placeholderColor={Color.grey}
-              // iconName={'message'}
-              // iconType={EvilIcons}
-            />
-            <TextInputWithTitle
-              placeholder={'Your Password'}
-              placeholderColor={Color.grey}
-              //   fontSize={moderateScale(10,0.6)}
-              // iconName={'message'}
-              // iconType={EvilIcons}
-            />
-            <TextInputWithTitle
-              placeholder={'Your Address'}
-              placeholderColor={Color.grey}
-              fontSize={moderateScale(10, 0.6)}
-              // iconName={'message'}
-              // iconType={EvilIcons}
-            />
-            <CustomButton
-              style={styles.buttonStyle}
-              text={'Sign Up'}
-              // textstyle={{fontSize: moderateScale(18, 0.6)}}
-              fontSize={moderateScale(15, 0.6)}
-              textColor={Color.grey}
-            />
-          </View>
-            
-          }
-         
+              <TextInputWithTitle
+                placeholder={'Your Email'}
+                placeholderColor={Color.grey}
+                // iconName={'message'}
+                // iconType={EvilIcons}
+              />
+              <TextInputWithTitle
+                placeholder={'Your Password'}
+                placeholderColor={Color.grey}
+                //   fontSize={moderateScale(10,0.6)}
+                // iconName={'message'}
+                // iconType={EvilIcons}
+              />
+              <CustomButton
+                style={styles.buttonStyle}
+                text={'Sign in'}
+                // textstyle={{fontSize: moderateScale(18, 0.6)}}
+                fontSize={moderateScale(15, 0.6)}
+                textColor={Color.grey}
+                onPress={() => navigationService.navigate('IntroScreen')}
+              />
+            </View>
+          ) : (
+            <View style={styles.formStyle}>
+              <TextInputWithTitle
+                placeholder={'Your Email'}
+                placeholderColor={Color.grey}
+                // iconName={'message'}
+                // iconType={EvilIcons}
+              />
+              <TextInputWithTitle
+                placeholder={'Your Password'}
+                placeholderColor={Color.grey}
+                //   fontSize={moderateScale(10,0.6)}
+                // iconName={'message'}
+                // iconType={EvilIcons}
+              />
+              <TextInputWithTitle
+                placeholder={'Your Address'}
+                placeholderColor={Color.grey}
+                fontSize={moderateScale(10, 0.6)}
+                // iconName={'message'}
+                // iconType={EvilIcons}
+              />
+              <CustomButton
+                style={styles.buttonStyle}
+                text={'Sign Up'}
+                // textstyle={{fontSize: moderateScale(18, 0.6)}}
+                fontSize={moderateScale(15, 0.6)}
+                textColor={Color.grey}
+                onPress={() => navigationService.navigate('IntroScreen')}
+              />
+            </View>
+          )}
+
           <CustomText style={styles.bottomText}>
             By Creating An Account You Agree To Our Terms And Conditions.
           </CustomText>

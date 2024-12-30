@@ -1,5 +1,5 @@
-import {Icon} from 'native-base';
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useRef } from 'react';
 import {
   ImageBackground,
   StyleSheet,
@@ -8,17 +8,12 @@ import {
   View,
 } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import {moderateScale} from 'react-native-size-matters';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import {useDispatch} from 'react-redux';
+import { moderateScale } from 'react-native-size-matters';
+import { useDispatch } from 'react-redux';
 import Color from '../Assets/Utilities/Color';
-import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
-import ScreenBoiler from '../Components/ScreenBoiler';
-import {setWalkThrough} from '../Store/slices/auth-slice';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import {useRef} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import { setWalkThrough } from '../Store/slices/auth-slice';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const WalkThroughScreen = props => {
   const dispatch = useDispatch();

@@ -9,13 +9,14 @@ import CustomButton from '../Components/CustomButton';
 import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
+import navigationService from '../navigationService';
 const QuestionnaireFastFood = () => {
   return (
     <ImageBackground
       style={styles.bgcImageStyle}
       source={require('../Assets/Images/bgcthemeimage.png')}
       imageStyle={{width: '100%', height: '100%'}}>
-<View style={styles.topRoundImageContainer}>
+      <View style={styles.topRoundImageContainer}>
         <CustomImage
           style={{width: '100%'}}
           source={require('../Assets/Images/34.png')}
@@ -23,7 +24,6 @@ const QuestionnaireFastFood = () => {
         />
       </View>
       <View>
-
         <View
           // colors={[ "#00000097","rgba(0,0,0,0.25)"]}
           style={{
@@ -64,53 +64,54 @@ const QuestionnaireFastFood = () => {
           isBold>
           34/41
         </CustomText>
-</View>
-<View
+      </View>
+      <View
         style={{width: windowWidth, paddingVertical: moderateScale(50, 0.3)}}>
-      <View style={styles.infoBox}>
-        <CustomText style={styles.heading} isBold>
-          How often did you have fast-food from restaurants last week?
-        </CustomText>
-        <CustomText style={styles.examples}>
-          e.g. pizza, burgers, fish & chips, shrimp tempura, chicken nuggets,
-          fries, tacos
-        </CustomText>
-      </View>
-      <View style={styles.limitBox}>
-        <CustomText style={styles.duration}>Once a day</CustomText>
-        <View style={styles.sliderTextContainer}>
-          <CustomText style={styles.sliderText}>Never</CustomText>
-          <CustomText style={styles.sliderText}>Open</CustomText>
+        <View style={styles.infoBox}>
+          <CustomText style={styles.heading} isBold>
+            How often did you have fast-food from restaurants last week?
+          </CustomText>
+          <CustomText style={styles.examples}>
+            e.g. pizza, burgers, fish & chips, shrimp tempura, chicken nuggets,
+            fries, tacos
+          </CustomText>
         </View>
-        <View style={{width: windowWidth, alignItems: 'center'}}>
-          <Slider
-            w="3/4"
-            maxW="300"
-            color={'#F4BC9B'}
-            colorScheme={'amber'}
-            defaultValue={70}
-            minValue={0}
-            maxValue={100}
-            accessibilityLabel="hello world"
-            step={20}>
-            <Slider.Track>
-              <Slider.FilledTrack bg={'#F4BC9B'} />
-            </Slider.Track>
-            <Slider.Thumb
-              borderWidth={'1'}
-              borderColor={'#fff'}
-              bg={'#F4BC9B'}
-            />
-          </Slider>
+        <View style={styles.limitBox}>
+          <CustomText style={styles.duration}>Once a day</CustomText>
+          <View style={styles.sliderTextContainer}>
+            <CustomText style={styles.sliderText}>Never</CustomText>
+            <CustomText style={styles.sliderText}>Open</CustomText>
+          </View>
+          <View style={{width: windowWidth, alignItems: 'center'}}>
+            <Slider
+              w="3/4"
+              maxW="300"
+              color={'#F4BC9B'}
+              colorScheme={'amber'}
+              defaultValue={70}
+              minValue={0}
+              maxValue={100}
+              accessibilityLabel="hello world"
+              step={20}>
+              <Slider.Track>
+                <Slider.FilledTrack bg={'#F4BC9B'} />
+              </Slider.Track>
+              <Slider.Thumb
+                borderWidth={'1'}
+                borderColor={'#fff'}
+                bg={'#F4BC9B'}
+              />
+            </Slider>
+          </View>
+          <CustomButton
+            style={styles.buttonStyle}
+            text={'Next'}
+            // textstyle={{fontSize: moderateScale(18, 0.6)}}
+            fontSize={moderateScale(15, 0.6)}
+            textColor={Color.grey}
+            onPress={() => navigationService.navigate('QuestionnaireWater')}
+          />
         </View>
-        <CustomButton
-          style={styles.buttonStyle}
-          text={'Next'}
-          // textstyle={{fontSize: moderateScale(18, 0.6)}}
-          fontSize={moderateScale(15, 0.6)}
-          textColor={Color.grey}
-        />
-      </View>
       </View>
     </ImageBackground>
   );
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: windowHeight,
     // gap: moderateScale(30, 0.2),
-    justifyContent:"space-between"
+    justifyContent: 'space-between',
   },
   topRoundImageContainer: {
     width: windowWidth,
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
     alignItems: 'center',
     gap: moderateScale(10, 0.2),
-    top:-50
+    top: -50,
   },
   heading: {
     textAlign: 'center',
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: moderateScale(12, 0.2),
     // fontWeight: "bold",
-    opacity:0.79,
+    opacity: 0.79,
     width: windowWidth * 0.75,
     textTransform: 'none',
   },

@@ -15,6 +15,7 @@ import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
 import {windowHeight, windowWidth} from '../Utillity/utils';
+import navigationService from '../navigationService';
 
 const PickItems2 = () => {
   const [selected, setSelected] = useState(!true);
@@ -220,6 +221,7 @@ const PickItems2 = () => {
             width={windowWidth * 0.8}
             style={[styles.buttonStyle]}
             textTransform={'Uppercase'}
+            onPress={() => navigationService.navigate('TabNavigation')}
           />
         </View>
       </ScrollView>

@@ -1,31 +1,28 @@
+import React, { useState } from 'react';
 import {
   ImageBackground,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import React, { useState } from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import {moderateScale} from 'react-native-size-matters';
-import Color from '../Assets/Utilities/Color';
-import {mode} from 'native-base/lib/typescript/theme/tools';
-import {Icon} from 'native-base';
+import { moderateScale } from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Header from '../Components/Header';
-import CustomText from '../Components/CustomText';
-import CustomImage from '../Components/CustomImage';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
+import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
+import CustomImage from '../Components/CustomImage';
+import CustomText from '../Components/CustomText';
+import Header from '../Components/Header';
+import navigationService from '../navigationService';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const Choosegender = () => {
-    const [selected,setisSelected] = useState('Male')
+  const [selected, setisSelected] = useState('Male');
   return (
     <SafeAreaView>
       <ImageBackground
         imageStyle={{
-          height: '40%',
+          height: '35%',
           width: windowWidth,
         }}
         source={require('../Assets/Images/bottomroundColor.png')}
@@ -41,11 +38,19 @@ const Choosegender = () => {
           What sex should we use to calculate your recommendations?
         </CustomText>
         <View style={styles.buttonStyle}>
-          <TouchableOpacity onPress={()=>{
-            setisSelected('Male')
-          }} activeOpacity={0.9} style={[selected === 'Male' ?  {borderColor:Color.peach} : {
-            borderColor:Color.veryLightGray
-          } ,styles.genderButton]}>
+          <TouchableOpacity
+            onPress={() => {
+              setisSelected('Male');
+            }}
+            activeOpacity={0.9}
+            style={[
+              selected === 'Male'
+                ? {borderColor: Color.peach}
+                : {
+                    borderColor: Color.veryLightGray,
+                  },
+              styles.genderButton,
+            ]}>
             <View style={styles.imageStyle}>
               <CustomImage
                 style={{
@@ -66,11 +71,19 @@ const Choosegender = () => {
               Male
             </CustomText>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={()=>{
-            setisSelected('Female')
-          }}  activeOpacity={0.9} style={[selected === 'Female' ? {borderColor:Color.peach} : {
-            borderColor:Color.veryLightGray
-          } ,styles.genderButton]}>
+          <TouchableOpacity
+            onPress={() => {
+              setisSelected('Female');
+            }}
+            activeOpacity={0.9}
+            style={[
+              selected === 'Female'
+                ? {borderColor: Color.peach}
+                : {
+                    borderColor: Color.veryLightGray,
+                  },
+              styles.genderButton,
+            ]}>
             <View style={styles.imageStyle}>
               <CustomImage
                 style={{
@@ -106,6 +119,7 @@ const Choosegender = () => {
           text={'Next'}
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
+          onPress={() => navigationService.navigate('LifeScoreScreen')}
         />
       </ImageBackground>
     </SafeAreaView>
@@ -161,7 +175,6 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     alignSelf: 'center',
-   
   },
   nextButton: {
     width: windowWidth * 0.85,

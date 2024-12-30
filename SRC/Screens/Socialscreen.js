@@ -1,24 +1,21 @@
+import React, { useState } from 'react';
 import {
   FlatList,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+  TouchableOpacity
 } from 'react-native';
-import React, {useState} from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
 import Color from '../Assets/Utilities/Color';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
+import { Icon } from 'native-base';
+import { moderateScale } from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Header from '../Components/Header';
-import CustomText from '../Components/CustomText';
-import {moderateScale} from 'react-native-size-matters';
 import CustomButton from '../Components/CustomButton';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
-import {Icon} from 'native-base';
+import CustomText from '../Components/CustomText';
+import Header from '../Components/Header';
+import navigationService from '../navigationService';
 
 const Socialscreen = () => {
   const [selected, setSelected] = useState('Appstore');
@@ -84,9 +81,7 @@ const Socialscreen = () => {
         }}
         source={require('../Assets/Images/Rectangleimage.png')}
         style={styles.bgcImage}>
-        <CustomText isBold style={styles.genderText}>
-          How did you hear about blu?
-        </CustomText>
+        <CustomText isBold style={styles.genderText}></CustomText>
       </ImageBackground>
       <ScrollView
         contentContainerStyle={{
@@ -144,6 +139,7 @@ const Socialscreen = () => {
         <CustomButton
           onPress={() => {
             setActivebutton(true);
+            navigationService.navigate('ChooseMealsVariety');
           }}
           style={[
             activeButton
@@ -155,7 +151,7 @@ const Socialscreen = () => {
             },
             styles.bottomButton,
           ]}
-          text={'Next'}
+          text={'Continue'}
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
         />

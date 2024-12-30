@@ -17,6 +17,7 @@ import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import Ruler from 'react-native-animated-ruler';
+import navigationService from '../navigationService';
 
 const Height = () => {
   const [selec_btn, setSelectedBtn] = useState('FT');
@@ -32,106 +33,107 @@ const Height = () => {
         rightIconFrom={Entypo}
         headerColor={Color.peach}
       />
-      <ScrollView
+      {/* <ScrollView
         showsVerticalScrollIndicator={false}
         style={{
           width: windowWidth,
           height: windowHeight,
-        }}>
-        <ImageBackground
-          source={require('../Assets/Images/background3.png')}
-          style={styles.image_background_view}
-          imageStyle={styles.image_background_image}>
-          <View style={styles.main_view}>
-            <CustomText style={styles.heading}>How tall are you?</CustomText>
-            <CustomText style={styles.text2}>
-              Curabitur imperdiet enim sit amet justo faucibus, nec pulvinar
-              erat venenatis.
-            </CustomText>
-            <View style={styles.btn_main_view}>
-              <TouchableOpacity
-                onPress={() => setSelectedBtn('CM')}
-                style={[
-                  styles.btn_view,
-                  {
-                    backgroundColor:
-                      selec_btn === 'CM' ? Color.white : 'transparent',
-                  },
-                ]}>
-                <CustomText style={styles.btn_text}>CM</CustomText>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => setSelectedBtn('FT')}
-                style={[
-                  styles.btn_view,
-                  {
-                    backgroundColor:
-                      selec_btn === 'FT' ? Color.white : 'transparent',
-                  },
-                ]}>
-                <CustomText style={styles.btn_text}>FT</CustomText>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.text_view}>
-              <CustomText
-                isBold
-                style={{
-                  fontSize: moderateScale(30, 0.6),
-                  color: Color.darkGray,
-                }}>
-                {value}
-              </CustomText>
-              <CustomText style={styles.text3}>CM</CustomText>
-            </View>
-            <Ruler
-              style={{
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 0,
-                  height: 8,
+        }}> */}
+      <ImageBackground
+        source={require('../Assets/Images/background3.png')}
+        style={styles.image_background_view}
+        imageStyle={styles.image_background_image}>
+        <View style={styles.main_view}>
+          <CustomText style={styles.heading}>How tall are you?</CustomText>
+          <CustomText style={styles.text2}>
+            Curabitur imperdiet enim sit amet justo faucibus, nec pulvinar erat
+            venenatis.
+          </CustomText>
+          <View style={styles.btn_main_view}>
+            <TouchableOpacity
+              onPress={() => setSelectedBtn('CM')}
+              style={[
+                styles.btn_view,
+                {
+                  backgroundColor:
+                    selec_btn === 'CM' ? Color.white : 'transparent',
                 },
-                shadowOpacity: 0.46,
-                shadowRadius: 11.14,
-                elevation: 17,
-                marginTop: moderateScale(100, 0.6),
-                borderRadius: moderateScale(20, 0.6),
-              }}
-              onChangeValue={txt => setValue(txt)}
-              width={350}
-              height={200}
-              vertical={true}
-              minimum={100}
-              maximum={190}
-              indicatorColor={Color.peach}
-              indicatorWidth={moderateScale(200, 0.6)}
-              indicatorHeight={70}
-              indicatorBottom={20}
-              step={5}
-              stepColor={Color.darkGray}
-              stepHeight={70}
-              normalColor={Color.lightest_grey}
-              normalHeight={30}
-              backgroundColor={Color.white}
-              numberFontFamily="System"
-              numberSize={20}
-              numberColor={Color.black}
-              unitBottom={15}
-              unitColor="#888888"
-              unitSize={13}
-              unit={selec_btn === 'CM' ? 'cm' : 'ft'}
-            />
-            <CustomButton
-              text={'Skip'}
-              textColor={Color.grey}
-              fontSize={moderateScale(15, 0.6)}
-              bgColor={Color.peach}
-              width={windowWidth * 0.8}
-              style={[styles.buttonStyle]}
-              textTransform={'Uppercase'}
-            />
+              ]}>
+              <CustomText style={styles.btn_text}>CM</CustomText>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setSelectedBtn('FT')}
+              style={[
+                styles.btn_view,
+                {
+                  backgroundColor:
+                    selec_btn === 'FT' ? Color.white : 'transparent',
+                },
+              ]}>
+              <CustomText style={styles.btn_text}>FT</CustomText>
+            </TouchableOpacity>
           </View>
-        </ImageBackground>
-      </ScrollView>
+          <View style={styles.text_view}>
+            <CustomText
+              isBold
+              style={{
+                fontSize: moderateScale(30, 0.6),
+                color: Color.darkGray,
+              }}>
+              {value}
+            </CustomText>
+            <CustomText style={styles.text3}>CM</CustomText>
+          </View>
+          <Ruler
+            style={{
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 8,
+              },
+              shadowOpacity: 0.46,
+              shadowRadius: 11.14,
+              elevation: 17,
+              marginTop: moderateScale(100, 0.6),
+              borderRadius: moderateScale(20, 0.6),
+            }}
+            onChangeValue={txt => setValue(txt)}
+            width={350}
+            height={200}
+            vertical={true}
+            minimum={100}
+            maximum={190}
+            indicatorColor={Color.peach}
+            indicatorWidth={moderateScale(200, 0.6)}
+            indicatorHeight={70}
+            indicatorBottom={20}
+            step={5}
+            stepColor={Color.darkGray}
+            stepHeight={70}
+            normalColor={Color.lightest_grey}
+            normalHeight={30}
+            backgroundColor={Color.white}
+            numberFontFamily="System"
+            numberSize={20}
+            numberColor={Color.black}
+            unitBottom={15}
+            unitColor="#888888"
+            unitSize={13}
+            unit={selec_btn === 'CM' ? 'cm' : 'ft'}
+          />
+          <CustomButton
+            text={'Skip'}
+            textColor={Color.grey}
+            fontSize={moderateScale(15, 0.6)}
+            bgColor={Color.peach}
+            width={windowWidth * 0.8}
+            style={[styles.buttonStyle]}
+            textTransform={'Uppercase'}
+            onPress={() => navigationService.navigate('ChooseGender')}
+          />
+        </View>
+      </ImageBackground>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };
@@ -185,14 +187,14 @@ const styles = StyleSheet.create({
   image_background_image: {
     width: '100%',
     height: '45%',
-    top: -150,
+    top: -200,
   },
   btn_main_view: {
     height: windowHeight * 0.08,
     width: windowWidth * 0.9,
     backgroundColor: '#EAECEB',
     borderRadius: windowWidth,
-    marginTop: moderateScale(100, 0.6),
+    marginTop: moderateScale(80, 0.6),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

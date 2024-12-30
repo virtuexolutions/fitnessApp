@@ -43,19 +43,19 @@ const DietPlanScreen = () => {
     },
     {
       id: 2,
-      heading: 'Breakfast',
+      heading: 'Lunch',
       image: require('../Assets/Images/lunch.png'),
       text: 'Vestibulum diam leo dictum diet vitae tincidunt feugiat, commodo sed leo.',
     },
     {
       id: 3,
-      heading: 'Breakfast',
+      heading: 'Dinner',
       image: require('../Assets/Images/dinner.png'),
       text: 'Vestibulum diam leo dictum diet vitae tincidunt feugiat, commodo sed leo.',
     },
     {
       id: 4,
-      heading: 'Breakfast',
+      heading: 'Snack',
       image: require('../Assets/Images/snacks.png'),
       text: 'Vestibulum diam leo dictum diet vitae tincidunt feugiat, commodo sed leo.',
     },

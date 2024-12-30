@@ -14,6 +14,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import CustomText from '../Components/CustomText';
 import {moderateScale} from 'react-native-size-matters';
 import CustomButton from '../Components/CustomButton';
+import navigationService from '../navigationService';
 
 const Preferencesscreen = () => {
   const [selected, setSelected] = useState(
@@ -133,6 +134,7 @@ const Preferencesscreen = () => {
           text={'Next'}
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
+          onPress={() => navigationService.navigate('SocialScreen')}
         />
       </ImageBackground>
     </SafeAreaView>

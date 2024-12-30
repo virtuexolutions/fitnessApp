@@ -6,12 +6,13 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 import Color from '../Assets/Utilities/Color';
+import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
+import navigationService from '../navigationService';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const SupportingScreen = () => {
   const diet = [
@@ -55,6 +56,7 @@ const SupportingScreen = () => {
               <CustomImage
                 source={require('../Assets/Images/walk.png')}
                 style={styles.image}
+                resizeMode={'cover'}
               />
             </View>
           </View>
@@ -128,6 +130,16 @@ const SupportingScreen = () => {
             tortor eros. Fusce sit amet tempus eli.
           </CustomText>
         </View>
+        <CustomButton
+          text={'Next'}
+          textColor={Color.grey}
+          fontSize={moderateScale(15, 0.6)}
+          bgColor={Color.peach}
+          width={windowWidth * 0.8}
+          style={[styles.buttonStyle]}
+          textTransform={'Uppercase'}
+          onPress={() => navigationService.navigate('HealthPlanOnboarding')}
+        />
       </ScrollView>
     </SafeAreaView>
   );
@@ -164,6 +176,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%',
   },
+  buttonStyle: {
+    width: windowWidth * 0.8,
+    height: moderateScale(50, 0.6),
+    borderRadius: moderateScale(25, 0.6),
+    backgroundColor: Color.peach,
+    borderWidth: 0.8,
+    borderColor: '#FEF3DD',
+    shadowColor: Color.peach,
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+    elevation: 24,
+    marginBottom: moderateScale(20, 0.6),
+  },
   blog_view: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -178,12 +207,12 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     borderRadius: moderateScale(15, 0.6),
   },
   walk_view: {
-    width: windowWidth * 0.45,
-    height: windowWidth * 0.25,
+    width: windowWidth * 0.4,
+    height: windowWidth * 0.2,
     backgroundColor: Color.white,
     right: 0,
     position: 'absolute',

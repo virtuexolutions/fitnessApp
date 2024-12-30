@@ -1,22 +1,20 @@
+import { FlatList } from 'native-base';
+import React from 'react';
 import {
   ImageBackground,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import React from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import Color from '../Assets/Utilities/Color';
-import Header from '../Components/Header';
+import { moderateScale } from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
-import CustomText from '../Components/CustomText';
-import {moderateScale} from 'react-native-size-matters';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
-import {FlatList} from 'native-base';
+import Color from '../Assets/Utilities/Color';
 import CustomImage from '../Components/CustomImage';
+import CustomText from '../Components/CustomText';
+import Header from '../Components/Header';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const Yourplan = () => {
   const filterList1 = [
@@ -171,6 +169,7 @@ const Yourplan = () => {
                 // height:windowHeight*0.22
                 paddingHorizontal: moderateScale(40, 0.6),
               }}
+              showsHorizontalScrollIndicator={false}
               data={filterList1}
               renderItem={({item}) => {
                 return (
@@ -222,6 +221,7 @@ const Yourplan = () => {
 
             <FlatList
               horizontal
+              showsHorizontalScrollIndicator={false}
               contentContainerStyle={{
                 gap: moderateScale(20, 0.6),
                 marginTop: moderateScale(10, 0.6),

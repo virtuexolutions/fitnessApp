@@ -10,6 +10,7 @@ import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
+import navigationService from '../navigationService';
 const QuestionnaireRice = () => {
   return (
     <ImageBackground
@@ -18,10 +19,10 @@ const QuestionnaireRice = () => {
       imageStyle={{width: '100%', height: '100%'}}>
       <View style={styles.topRoundImageContainer}>
         <CustomImage
-          style={{width: '100%', top:-90}}
+          style={{width: '100%', top: -90}}
           source={require('../Assets/Images/26.png')}
           // imageStyle={styles.image}
-          resizeMode={"cover"}
+          resizeMode={'cover'}
         />
       </View>
       <View>
@@ -120,6 +121,7 @@ resizeMode={"contain"}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
             marginTop={moderateScale(12, 0.2)}
+            onPress={() => navigationService.navigate('QuestionnaireSaltySnacks')}
           />
         </View>
       </View>

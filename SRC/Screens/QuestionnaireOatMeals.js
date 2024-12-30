@@ -10,6 +10,7 @@ import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import Header from '../Components/Header';
+import navigationService from '../navigationService';
 const QuestionnaireOatMeals = () => {
   return (
     <ImageBackground
@@ -53,7 +54,7 @@ const QuestionnaireOatMeals = () => {
             size={moderateScale(24, 0.3)}
           />
         </View>
-          
+
         <CustomText
           style={[
             styles.duration,
@@ -68,7 +69,7 @@ const QuestionnaireOatMeals = () => {
         </CustomText>
         {/* </ImageBackground> */}
       </View>
-      
+
       <View
         style={{width: windowWidth, paddingVertical: moderateScale(50, 0.3)}}>
         <View style={styles.infoBox}>
@@ -112,6 +113,7 @@ const QuestionnaireOatMeals = () => {
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
+            onPress={() => navigationService.navigate('QuestionnaireBerries')}
           />
         </View>
       </View>

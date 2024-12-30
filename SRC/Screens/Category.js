@@ -1,26 +1,23 @@
+import { Icon } from 'native-base';
+import React, { useState } from 'react';
 import {
   FlatList,
   ImageBackground,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import React, {useState} from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import Color from '../Assets/Utilities/Color';
-import {moderateScale} from 'react-native-size-matters';
-import Header from '../Components/Header';
-import Entypo from 'react-native-vector-icons/Entypo';
-import CustomText from '../Components/CustomText';
-import PercentageCounter from '../Components/PercentageCounter';
-import CustomButton from '../Components/CustomButton';
-import CustomImage from '../Components/CustomImage';
-import {color} from 'native-base/lib/typescript/theme/styled-system';
-import {Icon} from 'native-base';
+import { moderateScale } from 'react-native-size-matters';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Color from '../Assets/Utilities/Color';
+import CustomImage from '../Components/CustomImage';
+import CustomText from '../Components/CustomText';
+import Header from '../Components/Header';
+import navigationService from '../navigationService';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 
 const Category = () => {
   const [selected, setSelected] = useState(!true);
@@ -113,9 +110,10 @@ const Category = () => {
                     </CustomText>
                     <TouchableOpacity
                       activeOpacity={0.9}
-                      // onPress={() => {
-                      //   setSelected(!true);
-                      // }}
+                      onPress={() => {
+                        navigationService.navigate('TabNavigation');
+                        // setSelected(!true);
+                      }}
                       style={[
                         selected
                           ? {backgroundColor: Color.peach}

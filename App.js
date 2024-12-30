@@ -6,46 +6,11 @@
  * @flow strict-local
  */
 
+import {NativeBaseProvider} from 'native-base';
 import React, {useEffect, useState} from 'react';
-import {PersistGate} from 'redux-persist/integration/react';
-import {Provider, useDispatch} from 'react-redux';
-import {NativeBaseProvider, View} from 'native-base';
-import {store, persistor} from './SRC/Store/index';
-import {
-  requestCameraPermission,
-  requestLocationPermission,
-  requestWritePermission,
-} from './SRC/Utillity/utils';
+import {Provider} from 'react-redux';
 import SplashScreen from './SRC/Screens/SplashScreen';
-import QuestionnaireAlcoholicDrinks from './SRC/Screens/QuestionnaireAlcoholicDrinks';
-import QuestionnaireYogurt from './SRC/Screens/QuestionnaireYogurt';
-import QuestionnaireEggs from './SRC/Screens/QuestionnaireEggs';
-import QuestionnaireExcercise from './SRC/Screens/QuestionnaireExerciseMod';
-import QuestionnaireExercise from './SRC/Screens/QuestionnaireExerciseMod';
-import QuestionnaireExerciseHigh from './SRC/Screens/QuestionnaireExerciseHigh';
-import QuestionnaireVegetables from './SRC/Screens/QuestionnaireVegetables';
-import QuestionnaireFruitJuice from './SRC/Screens/QuestionnaireFruitJuice';
-import QuestionnaireMeat from './SRC/Screens/QuestionnaireMeat';
-import QuestionnaireColorfulVegetables from './SRC/Screens/QuestionnaireColorfulVegetables';
-import QuestionnaireExerciseStrength from './SRC/Screens/QuestionnaireExerciseStrength';
-import QuestionnaireFriedFood from './SRC/Screens/QuestionnaireFriedFood';
-import QuestionnaireRedMeat from './SRC/Screens/QuestionnaireRedMeat';
-import QuestionnaireSugaryDrinks from './SRC/Screens/QuestionnaireSugaryDrinks';
-import QuestionnairePoultry from './SRC/Screens/QuestionnairePoultry';
-import QuestionnaireCheese from './SRC/Screens/QuestionnaireCheese';
-import QuestionnaireGreenVegetables from './SRC/Screens/QuestionnaireGreenVegetables';
-import QuestionnaireRootVegetables from './SRC/Screens/QuestionnaireRootVegetables.';
-import QuestionnaireSeaFood from './SRC/Screens/QuestionnaireSeaFood';
-import QuestionnaireSeeds from './SRC/Screens/QuestionnaireSeeds';
-import QuestionnaireDiaryProducts from './SRC/Screens/QuestionnaireDiaryProducts';
-import ChooseMealsVariety from './SRC/Screens/ChooseMealsVariety';
-import RemaindersScreen from './SRC/Screens/RemaindersScreen';
-import ScanScreen from './SRC/Screens/ScanScreen';
-import HealthPlanOnboarding from './SRC/Screens/HealthPlanOnboarding';
-import TrackerScreen from './SRC/Screens/TrackerScreen';
-import WeightTrackerScreen from './SRC/Screens/WeightTrackerScreen';
-import Startedscreen from './SRC/Screens/Startedscreen';
-import Yourplan from './SRC/Screens/Yourplan';
+import {store} from './SRC/Store/index';
 import AppNavigator from './SRC/appNavigation';
 
 const App = () => {
@@ -91,9 +56,7 @@ const MainContainer = () => {
   if (isloading == true) {
     return <SplashScreen />;
   }
-  // return <ChooseDeclineReasonScreen/>;
   return <AppNavigator />;
-  // <AppNavigator />;
 };
 
 const useloader = value => {
