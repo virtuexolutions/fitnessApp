@@ -221,7 +221,7 @@ const PickItems2 = () => {
             width={windowWidth * 0.8}
             style={[styles.buttonStyle]}
             textTransform={'Uppercase'}
-            onPress={() => navigationService.navigate('TabNavigation')}
+            onPress={() => navigationService.navigate('SupportingScreen')}
           />
         </View>
       </ScrollView>

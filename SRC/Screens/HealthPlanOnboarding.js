@@ -24,7 +24,7 @@ const HealthPlanOnboarding = () => {
         <CustomButton
           onPress={() => {
             // onPhoneNumberPressed();
-            navigationService.navigate('DietPlanScreen');
+            navigationService.navigate('TabNavigation');
           }}
           text={'Next'}
           fontSize={moderateScale(13, 0.3)}

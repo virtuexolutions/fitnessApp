@@ -68,7 +68,7 @@ const ChoooseAdditionalGoal = () => {
       <CustomButton
         onPress={() => {
           // onPhoneNumberPressed();
-          navigationService.navigate('AvailableFood');
+          navigationService.navigate('PreferenceScreen');
         }}
         text={'Next'}
         fontSize={moderateScale(13, 0.3)}

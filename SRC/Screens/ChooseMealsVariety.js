@@ -15,13 +15,11 @@ import {moderateScale} from 'react-native-size-matters';
 import CustomText from '../Components/CustomText';
 import CustomImage from '../Components/CustomImage';
 import navigationService from '../navigationService';
+import CustomButton from '../Components/CustomButton';
 
 const ChooseMealsVariety = () => {
   return (
-    <ScrollView
-      contentContainerStyle={styles.mainScreen}
-      // con
-    >
+    <ScrollView contentContainerStyle={styles.mainScreen}>
       <ImageBackground
         imageStyle={{width: '100%', height: '70%'}}
         source={require('../Assets/Images/Rectangle.png')}
@@ -93,7 +91,6 @@ const ChooseMealsVariety = () => {
             height: moderateScale(30, 0.2),
           }}
         />
-
         <View style>
           <CustomText style={styles.cardHeading} isBold>
             Minimal Variety
@@ -152,5 +149,11 @@ const styles = StyleSheet.create({
     color: '#686868',
     width: windowWidth * 0.6,
     fontSize: moderateScale(12, 0.2),
+  },
+  nextButton: {
+    width: windowWidth * 0.88,
+    height: moderateScale(50, 0.6),
+    borderRadius: moderateScale(25, 0.6),
+    backgroundColor: Color.peach,
   },
 });

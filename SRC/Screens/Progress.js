@@ -92,6 +92,15 @@ const Progress = () => {
               tortor eros. Fusce sit amet tempus elit, non semper dolor.
             </CustomText>
           </View>
+          <CustomButton
+            text={'Take A test'}
+            textColor={Color.grey}
+            fontSize={moderateScale(12, 0.6)}
+            bgColor={Color.peach}
+            width={windowWidth * 0.8}
+            style={styles.buttonStyle}
+            onPress={() => navigationService.navigate('QuestionnaireDessert')}
+          />
           <CustomText
             style={[
               styles.heading,

@@ -119,7 +119,7 @@ const Choosegender = () => {
           text={'Next'}
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
-          onPress={() => navigationService.navigate('LifeScoreScreen')}
+          onPress={() => navigationService.navigate('WeightCategoryScreen')}
         />
       </ImageBackground>
     </SafeAreaView>

@@ -20,6 +20,7 @@ import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import {Icon} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import navigationService from '../navigationService';
 
 const PickItems = () => {
   const [selected, setSelected] = useState(!true);
@@ -197,6 +198,7 @@ const PickItems = () => {
             width={windowWidth * 0.8}
             style={[styles.buttonStyle]}
             textTransform={'Uppercase'}
+            onPress={() => navigationService.navigate('AvailableFood')}
           />
         </View>
       </ScrollView>

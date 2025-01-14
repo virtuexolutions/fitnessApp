@@ -45,7 +45,7 @@ const Startedscreen = () => {
             text={'Get Started'}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
-            onPress={() => navigationService.navigate('AuthScreen')}
+            onPress={() => navigationService.navigate('IntroScreen')}
           />
           <View style={styles.loginTextStyle}>
             <CustomText

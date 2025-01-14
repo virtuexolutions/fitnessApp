@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   FlatList,
   ImageBackground,
@@ -8,14 +8,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
-import { windowHeight, windowWidth } from '../Utillity/utils';
+import {windowHeight, windowWidth} from '../Utillity/utils';
 import navigationService from '../navigationService';
 
 const AvailableFood = () => {

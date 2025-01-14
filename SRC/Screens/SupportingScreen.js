@@ -6,13 +6,13 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
 import navigationService from '../navigationService';
-import { windowHeight, windowWidth } from '../Utillity/utils';
+import {windowHeight, windowWidth} from '../Utillity/utils';
 
 const SupportingScreen = () => {
   const diet = [

@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
-import {
-  ImageBackground,
-  SafeAreaView,
-  StyleSheet,
-  View
-} from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import React, {useState} from 'react';
+import {ImageBackground, SafeAreaView, StyleSheet, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
 import TextInputWithTitle from '../Components/TextInputWithTitle';
 import navigationService from '../navigationService';
-import { windowHeight, windowWidth } from '../Utillity/utils';
+import {windowHeight, windowWidth} from '../Utillity/utils';
 
 const Authscreen = () => {
   const [activeButton, setActivebutton] = useState(true);

@@ -113,14 +113,14 @@ const RemaindersScreen = () => {
           text={'Allow Reminders'}
           fontSize={moderateScale(15, 0.6)}
           textColor={Color.grey}
-          onPress={() => navigationService.navigate('WeightCategoryScreen')}
+          onPress={() => navigationService.navigate('PickItems')}
         />
         <CustomButton
           style={[styles.buttonStyle]}
           text={'Maybe Later'}
           fontSize={moderateScale(15, 0.6)}
           textColor={Color.grey}
-          onPress={() => navigationService.navigate('WeightCategoryScreen')}
+          onPress={() => navigationService.navigate('PickItems')}
         />
       </View>
     </ScrollView>

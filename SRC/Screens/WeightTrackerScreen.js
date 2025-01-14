@@ -1,19 +1,19 @@
-import { Box, Slider } from 'native-base';
-import React, { useState } from 'react';
+import {Box, Slider} from 'native-base';
+import React, {useState} from 'react';
 import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
 import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
 import navigationService from '../navigationService';
-import { windowHeight, windowWidth } from '../Utillity/utils';
+import {windowHeight, windowWidth} from '../Utillity/utils';
 
 const WeightTrackerScreen = () => {
   const [value, setValue] = useState(0);
@@ -88,9 +88,9 @@ const WeightTrackerScreen = () => {
       <CustomButton
         onPress={() => {
           // onPhoneNumberPressed();
-          navigationService.navigate('Height')
+          navigationService.navigate('Height');
         }}
-        text={'Skip'}
+        text={'Done'}
         fontSize={moderateScale(13, 0.3)}
         textColor={'#7B7B7B'}
         // borderWidth={0.8}

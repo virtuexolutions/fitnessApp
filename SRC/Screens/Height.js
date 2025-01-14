@@ -82,7 +82,7 @@ const Height = () => {
               }}>
               {value}
             </CustomText>
-            <CustomText style={styles.text3}>CM</CustomText>
+            <CustomText style={styles.text3}>{selec_btn}</CustomText>
           </View>
           <Ruler
             style={{
@@ -122,7 +122,7 @@ const Height = () => {
             unit={selec_btn === 'CM' ? 'cm' : 'ft'}
           />
           <CustomButton
-            text={'Skip'}
+            text={'Done'}
             textColor={Color.grey}
             fontSize={moderateScale(15, 0.6)}
             bgColor={Color.peach}
