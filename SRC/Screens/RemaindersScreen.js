@@ -16,8 +16,13 @@ import CustomText from '../Components/CustomText';
 import CustomImage from '../Components/CustomImage';
 import CustomButton from '../Components/CustomButton';
 import navigationService from '../navigationService';
+import {useDispatch} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import {useNavigation} from '@react-navigation/native';
 
 const RemaindersScreen = () => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
   return (
     <ScrollView contentContainerStyle={styles.mainScreen}>
       <ImageBackground
@@ -113,14 +118,20 @@ const RemaindersScreen = () => {
           text={'Allow Reminders'}
           fontSize={moderateScale(15, 0.6)}
           textColor={Color.grey}
-          onPress={() => navigationService.navigate('PickItems')}
+          onPress={() => {
+            navigation.navigate('SupportingScreen');
+            dispatch(setUserProfileData({allow_reminders: false}));
+          }}
         />
         <CustomButton
           style={[styles.buttonStyle]}
           text={'Maybe Later'}
           fontSize={moderateScale(15, 0.6)}
           textColor={Color.grey}
-          onPress={() => navigationService.navigate('PickItems')}
+          onPress={() => {
+            navigation.navigate('SupportingScreen');
+            dispatch(setUserProfileData({allow_reminders: true}));
+          }}
         />
       </View>
     </ScrollView>

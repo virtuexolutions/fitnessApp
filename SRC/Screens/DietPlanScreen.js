@@ -14,6 +14,7 @@ import Header from '../Components/Header';
 import CustomText from '../Components/CustomText';
 import {TouchableOpacity} from 'react-native';
 import CustomImage from '../Components/CustomImage';
+import TestCompleteComponent from '../Components/TestCompleteComponent';
 
 const DietPlanScreen = () => {
   const list = [
@@ -179,6 +180,7 @@ const DietPlanScreen = () => {
           );
         }}
       />
+      {/* <TestCompleteComponent isModalVisible={true} /> */}
     </SafeAreaView>
   );
 };

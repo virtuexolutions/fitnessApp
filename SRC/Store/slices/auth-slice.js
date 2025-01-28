@@ -17,6 +17,7 @@ export const AuthSlice = createSlice({
   reducers: {
     setUserToken: (state, action) => {
       state.token = action?.payload?.token;
+      console.log('🚀 ~ action?.payload?.token:', action?.payload?.token);
     },
     setUserType(state, action) {
       state.user_type = action.payload;
@@ -31,7 +32,7 @@ export const AuthSlice = createSlice({
       state.token = action?.payload;
     },
     setUserLogoutAuth(state, action) {
-    //  return console.log("🚀 ~ setUserLogoutAuth ~ state:", state)
+      //  return console.log("🚀 ~ setUserLogoutAuth ~ state:", state)
       state.token = null;
       state.fcmToken = null;
     },

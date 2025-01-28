@@ -35,6 +35,7 @@ const SupportingScreen = () => {
       image: require('../Assets/Images/diet_image.png'),
     },
   ];
+  
   return (
     <SafeAreaView style={styles.safe_are_view}>
       <ScrollView style={styles.scroll_view}>

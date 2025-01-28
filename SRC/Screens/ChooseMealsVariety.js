@@ -16,8 +16,13 @@ import CustomText from '../Components/CustomText';
 import CustomImage from '../Components/CustomImage';
 import navigationService from '../navigationService';
 import CustomButton from '../Components/CustomButton';
+import {useDispatch} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import {useNavigation} from '@react-navigation/native';
 
 const ChooseMealsVariety = () => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
   return (
     <ScrollView contentContainerStyle={styles.mainScreen}>
       <ImageBackground
@@ -43,7 +48,10 @@ const ChooseMealsVariety = () => {
         How much variety would you like in your meals?
       </CustomText>
       <TouchableOpacity
-        onPress={() => navigationService.navigate('MealInDay')}
+        onPress={() => {
+          navigation.navigate('MealInDay');
+          dispatch(setUserProfileData({variety: '  High Variety'}));
+        }}
         style={styles.card}>
         <CustomImage
           source={require('../Assets/Images/ring1.png')}
@@ -62,7 +70,10 @@ const ChooseMealsVariety = () => {
         </View>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigationService.navigate('MealInDay')}
+        onPress={() => {
+          navigation.navigate('MealInDay');
+          dispatch(setUserProfileData({variety: 'Balanced Variety'}));
+        }}
         style={styles.card}>
         <CustomImage
           source={require('../Assets/Images/ring1.png')}
@@ -82,7 +93,10 @@ const ChooseMealsVariety = () => {
         </View>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigationService.navigate('MealInDay')}
+        onPress={() => {
+          navigationService.navigate('MealInDay');
+          dispatch(setUserProfileData({variety: '   Minimal Variety'}));
+        }}
         style={styles.card}>
         <CustomImage
           source={require('../Assets/Images/ring1.png')}

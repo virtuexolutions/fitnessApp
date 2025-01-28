@@ -17,7 +17,10 @@ const initialState = {
   location: '',
   pickupLocatin: {},
   dropoffLocation: {},
+  profileData: {},
+  testData: {},
 };
+console.log('🚀 ~ profileData:', initialState?.profileData);
 
 const CommonSlice = createSlice({
   name: 'commonReducer',
@@ -29,6 +32,15 @@ const CommonSlice = createSlice({
     },
     setPickupLocation(state, action) {
       state.pickupLocatin = action.payload;
+    },
+    setUserProfileData(state, action) {
+      state.profileData = {
+        ...state.profileData,
+        ...action.payload,
+      };
+    },
+    setTestData(state, action) {
+      state.testData = action.payload;
     },
     setDropoffLocation(state, action) {
       state.dropoffLocation = action.payload;
@@ -245,6 +257,8 @@ export const {
   setLoaction,
   setPickupLocation,
   setDropoffLocation,
+  setUserProfileData,
+  setTestData,
 } = CommonSlice.actions;
 
 export default CommonSlice.reducer;

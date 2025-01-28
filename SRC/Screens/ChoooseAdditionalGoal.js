@@ -1,14 +1,18 @@
-import { Box, Slider } from 'native-base';
-import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {Box, Slider} from 'native-base';
+import React, {useState} from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import CustomButton from '../Components/CustomButton';
 import CustomText from '../Components/CustomText';
 import navigationService from '../navigationService';
-import { windowHeight, windowWidth } from '../Utillity/utils';
+import {windowHeight, windowWidth} from '../Utillity/utils';
+import {useDispatch} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import {useNavigation} from '@react-navigation/native';
 
 const ChoooseAdditionalGoal = () => {
-  const [value, setValue] = useState(50); // Default value
+  const dispatch = useDispatch();
+  const [value, setValue] = useState('Living Longer');
   const goals = [
     {
       id: 1,
@@ -41,6 +45,7 @@ const ChoooseAdditionalGoal = () => {
       onPress: () => console.log('Prevent Lifestyle Diseases selected'),
     },
   ];
+  const navigation = useNavigation();
 
   return (
     <View style={styles.mainScreen}>
@@ -54,7 +59,8 @@ const ChoooseAdditionalGoal = () => {
         {goals.map((item, index) => {
           return (
             <TouchableOpacity
-              style={[styles.goal, item.id == 1 && styles.activeGoal]}
+              onPress={() => setValue(item.text)}
+              style={[item.text === value ? styles.activeGoal : styles.goal]}
               key={index}>
               <CustomText style={styles.goalText}>{item.text}</CustomText>
             </TouchableOpacity>
@@ -67,14 +73,12 @@ const ChoooseAdditionalGoal = () => {
       </CustomText>
       <CustomButton
         onPress={() => {
-          // onPhoneNumberPressed();
-          navigationService.navigate('PreferenceScreen');
+          navigation.navigate('PreferenceScreen');
+          dispatch(setUserProfileData({additional_goal: value}));
         }}
         text={'Next'}
         fontSize={moderateScale(13, 0.3)}
         textColor={'#7B7B7B'}
-        // borderWidth={0.8}
-        // borderColor={Color.black}
         borderRadius={moderateScale(30, 0.3)}
         width={windowWidth * 0.85}
         height={windowHeight * 0.07}
@@ -145,6 +149,13 @@ const styles = StyleSheet.create({
     borderColor: '#FF9D6370',
     backgroundColor: '#FBD7BD',
     elevation: 6,
+    width: windowWidth * 0.85,
+    height: windowHeight * 0.07,
+    marginTop: moderateScale(10, 0.3),
+    borderRadius: moderateScale(30, 0.3),
+    borderWidth: 1,
+    justifyContent: 'center',
+    paddingHorizontal: moderateScale(20, 0.2),
   },
   goalText: {
     color: '#676767',

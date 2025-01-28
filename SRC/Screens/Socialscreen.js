@@ -1,25 +1,30 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   FlatList,
   ImageBackground,
   ScrollView,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import Color from '../Assets/Utilities/Color';
-import { windowHeight, windowWidth } from '../Utillity/utils';
+import {windowHeight, windowWidth} from '../Utillity/utils';
 
-import { Icon } from 'native-base';
-import { moderateScale } from 'react-native-size-matters';
+import {Icon} from 'native-base';
+import {moderateScale} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import CustomButton from '../Components/CustomButton';
 import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
 import navigationService from '../navigationService';
+import {useDispatch} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import {useNavigation} from '@react-navigation/native';
 
 const Socialscreen = () => {
   const [selected, setSelected] = useState('Appstore');
   const [activeButton, setActivebutton] = useState(true);
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
   const socialList = [
     {
       id: 1,
@@ -139,7 +144,8 @@ const Socialscreen = () => {
         <CustomButton
           onPress={() => {
             setActivebutton(true);
-            navigationService.navigate('ChooseMealsVariety');
+            navigation.navigate('ChooseMealsVariety');
+            dispatch(setUserProfileData({hear_abount: selected}));
           }}
           style={[
             activeButton

@@ -2,16 +2,16 @@ import {
   BottomTabBar,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Icon } from 'native-base';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Icon} from 'native-base';
 import React from 'react';
-import { View } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import Color from './Assets/Utilities/Color';
 import navigationService from './navigationService';
 import Authscreen from './Screens/Authscreen';
@@ -88,6 +88,7 @@ import WalkThroughScreen from './Screens/WalkthroughScreen';
 import Weightcategoryscreen from './Screens/Weightcategoryscreen';
 import WeightTrackerScreen from './Screens/WeightTrackerScreen';
 import Yourplan from './Screens/Yourplan';
+import AddSomeInformation from './Screens/AddSomeInformation';
 
 // enableScreens();
 const AppNavigator = () => {
@@ -96,29 +97,28 @@ const AppNavigator = () => {
   const role = useSelector(state => state.authReducer.role);
   const isVerified = useSelector(state => state.authReducer.isVerified);
   const token = useSelector(state => state.authReducer.token);
+  const profileData = useSelector(state => state.commonReducer.profileData);
+  console.log('🚀 ~ AppNavigator ~ profileData:', profileData);
+  console.log('🚀 ~ AppNavigator ~ token:', token);
 
   const RootNav = createNativeStackNavigator();
   const RootNavLogged = createNativeStackNavigator();
 
   const AppNavigatorContainer = () => {
-    const firstScreen =
-      walkThrough == false
-        ? 'WalkThroughScreen'
-        : token == null
-        ? 'Start'
-        : 'MyDrawer';
-
+    const firstScreen = token == null ? 'StartedScreen' : 'AddSomeInformation';
     return (
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator
-          initialRouteName={'StartedScreen'}
-          // initialRouteName={'Walletscreen'}
-          // initialRouteName={'RateScreen'}
+          initialRouteName={firstScreen}
           screenOptions={{headerShown: false}}>
           <RootNav.Screen name="AuthScreen" component={Authscreen} />
           <RootNav.Screen name="AvailableFood" component={AvailableFood} />
           <RootNav.Screen name="Category" component={Category} />
           <RootNav.Screen name="ChangePassword" component={ChangePassword} />
+          <RootNav.Screen
+            name="AddSomeInformation"
+            component={AddSomeInformation}
+          />
           <RootNav.Screen
             name="ChooseAdditionalGoal"
             component={ChoooseAdditionalGoal}

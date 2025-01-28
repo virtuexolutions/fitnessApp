@@ -15,12 +15,16 @@ import CustomText from '../Components/CustomText';
 import {moderateScale} from 'react-native-size-matters';
 import CustomButton from '../Components/CustomButton';
 import navigationService from '../navigationService';
+import {useDispatch} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import {useNavigation} from '@react-navigation/native';
 
 const Preferencesscreen = () => {
   const [selected, setSelected] = useState(
     "I Don't Have Any Specific Preferences",
   );
-
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.safe_area}>
       <Header
@@ -134,7 +138,10 @@ const Preferencesscreen = () => {
           text={'Next'}
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
-          onPress={() => navigationService.navigate('SocialScreen')}
+          onPress={() => {
+            navigation.navigate('SocialScreen');
+            dispatch(setUserProfileData({food_preferences: selected}));
+          }}
         />
       </ImageBackground>
     </SafeAreaView>

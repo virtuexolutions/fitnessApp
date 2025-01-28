@@ -1,27 +1,32 @@
 import React, {useState} from 'react';
 import {
-  FlatList,
   ImageBackground,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
 } from 'react-native';
+import Ruler from 'react-native-animated-ruler';
 import {moderateScale} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {useDispatch, useSelector} from 'react-redux';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
-import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import Ruler from 'react-native-animated-ruler';
 import navigationService from '../navigationService';
+import {windowHeight, windowWidth} from '../Utillity/utils';
+import {setUserProfileData} from '../Store/slices/common';
+import {useNavigation} from '@react-navigation/native';
 
 const Height = () => {
   const [selec_btn, setSelectedBtn] = useState('FT');
+  const dispatch = useDispatch();
   const [value, setValue] = useState(100);
+  const profileData = useSelector(state => state.commonReducer.profileData);
+  console.log('🚀 ~ Height ~ profileData:', profileData);
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.safe_are_view}>
       <Header
@@ -129,7 +134,10 @@ const Height = () => {
             width={windowWidth * 0.8}
             style={[styles.buttonStyle]}
             textTransform={'Uppercase'}
-            onPress={() => navigationService.navigate('ChooseGender')}
+            onPress={() => {
+              navigation.navigate('ChooseGender');
+              dispatch(setUserProfileData({height: value}));
+            }}
           />
         </View>
       </ImageBackground>

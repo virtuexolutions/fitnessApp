@@ -1,20 +1,15 @@
-import React, {useState} from 'react';
+import {Icon} from 'native-base';
+import React from 'react';
 import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-  I18nManager,
   ActivityIndicator,
+  I18nManager,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
-import {Icon, Spinner} from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
-import {moderateScale, scale} from 'react-native-size-matters';
-import CustomText from './CustomText';
+import {moderateScale} from 'react-native-size-matters';
 import Color from '../Assets/Utilities/Color';
-import CustomImage from './CustomImage';
-import {windowWidth} from '../Utillity/utils';
+import CustomText from './CustomText';
 
 const CustomButton = props => {
   const {
@@ -113,94 +108,70 @@ const CustomButton = props => {
           start={{x: 1, y: 0.2}}
           end={{x: 1, y: 1}}
           colors={bgColor}>
-          {loader && (
+          {loader ? (
             <ActivityIndicator
               style={styles.indicatorStyle}
               size="small"
               color={loaderColor ? loaderColor : Color.white}
             />
+          ) : (
+            <>
+              {iconName && (
+                <Icon
+                  name={iconName}
+                  as={iconType}
+                  style={[styles.iconCustom, iconStyle && iconStyle]}
+                />
+              )}
+              <CustomText
+                style={[
+                  styles.text,
+                  textstyle && textstyle,
+                  {
+                    color: textColor,
+                    fontSize: fontSize,
+                  },
+                  textTransform && {
+                    textTransform: textTransform,
+                  },
+                ]}
+                isRegular={isBold ? false : true}
+                isBold={isBold ? true : false}>
+                {text}
+              </CustomText>
+            </>
           )}
-          {/* {iconIsImage && (
-            <View style={{width:windowWidth  0.1, height:windowWidth  0.1, overflow:'hidden'}}>
-              <CustomImage
-              source={require('../Assets/Images/goal.png')}
-              style={{width:'100%', height:"100%"}}              
-              />
-              </View>
-          ) */}
-
-          {/ } /}
-          {iconName && (
-            <Icon
-              name={iconName}
-              as={iconType}
-              style={[styles.iconCustom, iconStyle && iconStyle]}
-            />
-          )}
-          <CustomText
-            style={[
-              styles.text,
-              textstyle && textstyle,
-              {
-                color: textColor,
-                fontSize: fontSize,
-              },
-              textTransform && {
-                textTransform: textTransform,
-              },
-            ]}
-            isRegular={isBold ? false : true}
-            isBold={isBold ? true : false}>
-            {text}
-          </CustomText>
         </LinearGradient>
       ) : (
         <>
-          {loader && (
+          {loader ? (
             <ActivityIndicator
               style={styles.indicatorStyle}
               size="small"
               color={loaderColor ? loaderColor : Color.white}
             />
+          ) : (
+            <CustomText
+              style={[
+                styles.text,
+                textstyle,
+                {
+                  color: textColor,
+                  fontSize: fontSize,
+                },
+                textTransform && {
+                  textTransform: textTransform,
+                },
+                disabled && {
+                  color: Color.white,
+                  opacity: 0.6,
+                },
+              ]}
+              isRegular={isBold ? false : true}
+              isBold={isBold ? true : false}>
+              {text}
+            </CustomText>
           )}
-          {/* {iconIsImage && (
-            <View style={{width:windowWidth * 0.07, 
-            marginRight:moderateScale(5,0.2),
-            height:windowWidth * 0.07, overflow:'hidden'}}>
-              <CustomImage
-              source={require('../Assets/Images/goal.png')}
-              style={{width:'100%', height:"100%", tintColor:"black"}}              
-              
-              />
-              </View>
-          )} */}
-          {/* {iconName && (
-            <Icon
-              name={iconName}
-              as={iconType}
-              style={[styles.iconCustom, iconStyle && iconStyle]}
-            />
-          )} */}
-          <CustomText
-            style={[
-              styles.text,
-              textstyle,
-              {
-                color: textColor,
-                fontSize: fontSize,
-              },
-              textTransform && {
-                textTransform: textTransform,
-              },
-              disabled && {
-                color: Color.white,
-                opacity: 0.6,
-              },
-            ]}
-            isRegular={isBold ? false : true}
-            isBold={isBold ? true : false}>
-            {text}
-          </CustomText>
         </>
       )}
     </TouchableOpacity>

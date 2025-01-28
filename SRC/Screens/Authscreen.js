@@ -1,17 +1,67 @@
 import React, {useState} from 'react';
 import {ImageBackground, SafeAreaView, StyleSheet, View} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
+import {useDispatch, useSelector} from 'react-redux';
 import Color from '../Assets/Utilities/Color';
+import {Post} from '../Axios/AxiosInterceptorFunction';
 import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
 import TextInputWithTitle from '../Components/TextInputWithTitle';
+import {setUserData} from '../Store/slices/common';
+import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
+import {setUserToken} from '../Store/slices/auth';
 import navigationService from '../navigationService';
-import {windowHeight, windowWidth} from '../Utillity/utils';
 
 const Authscreen = () => {
+  const dispatch = useDispatch();
   const [activeButton, setActivebutton] = useState(true);
   console.log('🚀 ~ Authscreen ~ activeButton:', activeButton);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [sign_loading, setSignupLoading] = useState(false);
+  const token = useSelector(state => state.authReducer.token);
+  console.log('🚀 ~ Authscreen ~ token:', token);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onPressLogin = async () => {
+    const url = 'login';
+    const body = {
+      email: email,
+      password: password,
+    };
+    setIsLoading(true);
+    const response = await Post(url, body, apiHeader());
+    console.log('🚀 ~ onPressLogin ~ response:', response?.data);
+    setIsLoading(false);
+    if (response != undefined) {
+      setIsLoading(false);
+      dispatch(setUserToken({token: response?.data?.token}));
+      dispatch(setUserData(response?.data?.user_info));
+      navigationService.navigate('WeightTrackerScreen');
+    }
+  };
+
+  const onPressSignup = async () => {
+    const url = 'register';
+    const body = {
+      email: email,
+      password: password,
+      confirm_password: confirmPassword,
+    };
+    setSignupLoading(true);
+    const response = await Post(url, body, apiHeader());
+    console.log('🚀 ~ onPressLogin ~ response:', response?.data);
+    setSignupLoading(false);
+    if (response != undefined) {
+      setSignupLoading(false);
+      dispatch(setUserData(response?.data?.user_details));
+      dispatch(setUserToken(response?.data?.token));
+      navigationService.navigate('WeightTrackerScreen');
+    }
+  };
+
   return (
     <SafeAreaView>
       <ImageBackground
@@ -63,28 +113,31 @@ const Authscreen = () => {
               fontSize={moderateScale(12, 0.6)}
             />
           </View>
+
           {activeButton ? (
             <View style={styles.formStyle}>
               <TextInputWithTitle
                 placeholder={'Your Email'}
                 placeholderColor={Color.grey}
-                // iconName={'message'}
-                // iconType={EvilIcons}
+                setText={setEmail}
+                values={email}
+                inputWidth={windowWidth * 0.7}
               />
               <TextInputWithTitle
                 placeholder={'Your Password'}
                 placeholderColor={Color.grey}
-                //   fontSize={moderateScale(10,0.6)}
-                // iconName={'message'}
-                // iconType={EvilIcons}
+                setText={setPassword}
+                values={password}
+                inputWidth={windowWidth * 0.7}
               />
               <CustomButton
                 style={styles.buttonStyle}
                 text={'Sign in'}
-                // textstyle={{fontSize: moderateScale(18, 0.6)}}
                 fontSize={moderateScale(15, 0.6)}
                 textColor={Color.grey}
-                onPress={() => navigationService.navigate('IntroScreen')}
+                onPress={() => onPressLogin()}
+                loader={isLoading}
+                loaderColor={Color.peach}
               />
             </View>
           ) : (
@@ -92,34 +145,36 @@ const Authscreen = () => {
               <TextInputWithTitle
                 placeholder={'Your Email'}
                 placeholderColor={Color.grey}
-                // iconName={'message'}
-                // iconType={EvilIcons}
+                value={email}
+                setText={setEmail}
+                inputWidth={windowWidth * 0.7}
               />
               <TextInputWithTitle
                 placeholder={'Your Password'}
                 placeholderColor={Color.grey}
-                //   fontSize={moderateScale(10,0.6)}
-                // iconName={'message'}
-                // iconType={EvilIcons}
+                values={password}
+                setText={setPassword}
+                inputWidth={windowWidth * 0.7}
               />
               <TextInputWithTitle
-                placeholder={'Your Address'}
+                placeholder={'comfirm password'}
                 placeholderColor={Color.grey}
                 fontSize={moderateScale(10, 0.6)}
-                // iconName={'message'}
-                // iconType={EvilIcons}
+                values={confirmPassword}
+                setText={setConfirmPassword}
+                inputWidth={windowWidth * 0.7}
               />
               <CustomButton
                 style={styles.buttonStyle}
                 text={'Sign Up'}
-                // textstyle={{fontSize: moderateScale(18, 0.6)}}
                 fontSize={moderateScale(15, 0.6)}
                 textColor={Color.grey}
-                onPress={() => navigationService.navigate('IntroScreen')}
+                loader={sign_loading}
+                onPress={() => onPressSignup()}
+                loaderColor={Color.peach}
               />
             </View>
           )}
-
           <CustomText style={styles.bottomText}>
             By Creating An Account You Agree To Our Terms And Conditions.
           </CustomText>

@@ -223,7 +223,7 @@ const TextInputWithTitle = props => {
                   color: props.inputColor,
                 },
               ]}
-              // onChangeText={text => props.setText(text)}
+              onChangeText={text => props.setText(text)}
               value={props.value}
               placeholder={`${props.placeholder}`}
               placeholderTextColor={

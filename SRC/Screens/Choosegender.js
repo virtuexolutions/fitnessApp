@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   ImageBackground,
   SafeAreaView,
   StyleSheet,
   TouchableOpacity,
-  View
+  View,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
@@ -14,10 +14,17 @@ import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
 import navigationService from '../navigationService';
-import { windowHeight, windowWidth } from '../Utillity/utils';
+import {windowHeight, windowWidth} from '../Utillity/utils';
+import {useDispatch, useSelector} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import {useNavigation} from '@react-navigation/native';
 
 const Choosegender = () => {
+  const navigation = useNavigation();
   const [selected, setisSelected] = useState('Male');
+  const profileData = useSelector(state => state.commonReducer.profileData);
+  console.log('🚀 ~ Choosegender ~ profileData:', profileData);
+  const dispatch = useDispatch();
   return (
     <SafeAreaView>
       <ImageBackground
@@ -119,7 +126,10 @@ const Choosegender = () => {
           text={'Next'}
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
-          onPress={() => navigationService.navigate('WeightCategoryScreen')}
+          onPress={() => {
+            navigation.navigate('WeightCategoryScreen');
+            dispatch(setUserProfileData({gender: selected}));
+          }}
         />
       </ImageBackground>
     </SafeAreaView>

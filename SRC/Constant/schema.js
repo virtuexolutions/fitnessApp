@@ -1,8 +1,4 @@
 import * as Yup from 'yup';
-// export const loginSchema = Yup.object({
-//     email: Yup.string().email('Invalid email format').required('Email is required'),
-//     password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-//   });
 
 export const loginSchema = Yup.object({
   email: Yup.string()
@@ -34,11 +30,11 @@ export const SignupSchema = Yup.object({
   termsAccepted: Yup.boolean()
     .oneOf([true], 'You must accept the terms and conditions')
     .required('Required'),
-  modal: Yup.boolean().required('Car number is required'),
-  number: Yup.boolean().required('Car number is required'),
-  seat: Yup.bool().required('Seat is required'),
-  category: Yup.string().required('Category is Requried'),
-  image: Yup.object().required('Image of car is required'),
+  // modal: Yup.boolean().required('Car number is required'),
+  // number: Yup.boolean().required('Car number is required'),
+  // seat: Yup.bool().required('Seat is required'),
+  // category: Yup.string().required('Category is Requried'),
+  // image: Yup.object().required('Image of car is required'),
 });
 
 export const forgotpasswordSchema = Yup.object({
@@ -71,4 +67,11 @@ export const editProfileSchema = Yup.object({
   userName: Yup.string(),
   email: Yup.string(),
   phoneNumber: Yup.number(),
+});
+
+export const addYourCarSchema = Yup.object({
+  carName: Yup.string().required('Car Name is required'),
+  carModel: Yup.string().required('Car Model is required'),
+  carNumber: Yup.string().required('Car Number is required'),
+  carSeats: Yup.string().required('Car Seat is required'),
 });

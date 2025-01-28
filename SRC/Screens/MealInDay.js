@@ -19,8 +19,18 @@ import {windowHeight, windowWidth} from '../Utillity/utils';
 import {Icon} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import navigationService from '../navigationService';
+import {useDispatch} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import {useNavigation} from '@react-navigation/native';
 
 const MealInDay = () => {
+  const [mealinDay, setMealInDay] = useState();
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const addMeal = meal => {
+    setMealInDay(prevMeals => [...prevMeals, meal]);
+  };
+
   return (
     <SafeAreaView style={styles.safe_are_view}>
       <ImageBackground
@@ -59,7 +69,9 @@ const MealInDay = () => {
             <CustomText style={styles.text2}>
               select at least 2 main meals
             </CustomText>
-            <TouchableOpacity style={styles.button_view}>
+            <TouchableOpacity
+              onPress={() => setMealInDay('Breakfast')}
+              style={styles.button_view}>
               <View style={styles.round}>
                 <View style={styles.inner_round}></View>
               </View>
@@ -68,7 +80,9 @@ const MealInDay = () => {
                 Main
               </CustomText>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button_view}>
+            <TouchableOpacity
+              onPress={() => setMealInDay('Lunch')}
+              style={styles.button_view}>
               <View style={styles.round}>
                 <View style={styles.inner_round}></View>
               </View>
@@ -77,7 +91,9 @@ const MealInDay = () => {
                 Main
               </CustomText>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button_view}>
+            <TouchableOpacity
+              onPress={() => setMealInDay('Dinner')}
+              style={styles.button_view}>
               <View style={styles.round}>
                 <View style={styles.inner_round}></View>
               </View>
@@ -87,6 +103,7 @@ const MealInDay = () => {
               </CustomText>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={() => setMealInDay('Snack')}
               style={[
                 styles.button_view,
                 {
@@ -107,6 +124,7 @@ const MealInDay = () => {
               </CustomText>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={() => setMealInDay('Snack 2')}
               style={[
                 styles.button_view,
                 {
@@ -143,7 +161,14 @@ const MealInDay = () => {
               width={windowWidth * 0.8}
               style={[styles.buttonStyle]}
               textTransform={'Uppercase'}
-              onPress={() => navigationService.navigate('RemaindersScreen')}
+              onPress={() => {
+                navigation.navigate('RemaindersScreen');
+                dispatch(
+                  setUserProfileData({
+                    meal_in_Day: ['BreakFast', 'Lunch', 'Dinner', 'Snack'],
+                  }),
+                );
+              }}
             />
           </View>
         </ScrollView>

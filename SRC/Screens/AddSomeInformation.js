@@ -14,7 +14,7 @@ import CustomText from '../Components/CustomText';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import navigationService from '../navigationService';
 
-const Startedscreen = () => {
+const AddSomeInformation = () => {
   return (
     <SafeAreaView>
       <ImageBackground
@@ -36,37 +36,22 @@ const Startedscreen = () => {
             />
           </View>
           <CustomText style={styles.textStyle}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel
-            tortor eros. Fusce sit amet tempus elit non semper. consectetur
-            adipiscing elit. Cras vel
+            Blu want your some imformation for starting your healthcare journey
           </CustomText>
           <CustomButton
             style={styles.buttonStyle}
             text={'Get Started'}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
-            onPress={() => navigationService.navigate('AuthScreen')}
+            onPress={() => navigationService.navigate('WeightTrackerScreen')}
           />
-          <View style={styles.loginTextStyle}>
-            <CustomText
-              style={{
-                fontSize: moderateScale(13, 0.6),
-                color: Color.grey,
-              }}>
-              Already Have An Account?
-            </CustomText>
-            <TouchableOpacity activeOpacity={0.55}>
-              <CustomText
-                isBold={true}
-                style={{
-                  fontSize: moderateScale(13, 0.6),
-                  color: Color.grey,
-                  left: moderateScale(5, 0.3),
-                }}>
-                Login
-              </CustomText>
-            </TouchableOpacity>
-          </View>
+          <CustomButton
+            style={styles.buttonStyle}
+            text={'Skip'}
+            fontSize={moderateScale(15, 0.6)}
+            textColor={Color.grey}
+            onPress={() => navigationService.navigate('TabNavigation')}
+          />
         </View>
         <View style={styles.bottomText}>
           <CustomText
@@ -84,7 +69,7 @@ const Startedscreen = () => {
   );
 };
 
-export default Startedscreen;
+export default AddSomeInformation;
 
 const styles = StyleSheet.create({
   Container: {

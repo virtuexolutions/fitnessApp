@@ -1,14 +1,32 @@
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
+import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
 import CustomText from '../Components/CustomText';
 import {Box, Slider} from 'native-base';
 import {moderateScale} from 'react-native-size-matters';
 import CustomButton from '../Components/CustomButton';
 import Color from '../Assets/Utilities/Color';
 import navigationService from '../navigationService';
+import {Post} from '../Axios/AxiosInterceptorFunction';
+import {useDispatch, useSelector} from 'react-redux';
+import {setUserData} from '../Store/slices/common';
 
 const HealthPlanOnboarding = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.authReducer.token);
+
+  const profileData = useSelector(state => state.commonReducer.profileData);
+  console.log('🚀 ~ HealthPlanOnboarding ~ profileData:', profileData);
+
+  const updateUserProfile = async () => {
+    const url = 'user-profile';
+    const response = await Post(url, profileData, apiHeader(token));
+    console.log('🚀 ~ updateUserProfile ~ response:', response?.data);
+    if (response != undefined) {
+      dispatch(setUserData(response?.data));
+    }
+  };
+
   return (
     <ImageBackground
       style={styles.mainScreen}
@@ -24,7 +42,8 @@ const HealthPlanOnboarding = () => {
         <CustomButton
           onPress={() => {
             // onPhoneNumberPressed();
-            navigationService.navigate('TabNavigation');
+            updateUserProfile();
+            // navigationService.navigate('TabNavigation');
           }}
           text={'Next'}
           fontSize={moderateScale(13, 0.3)}

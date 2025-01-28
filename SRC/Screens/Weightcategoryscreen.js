@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-  View
-} from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import React, {useState} from 'react';
+import {SafeAreaView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
 import CustomText from '../Components/CustomText';
 import navigationService from '../navigationService';
-import { windowHeight, windowWidth } from '../Utillity/utils';
+import {windowHeight, windowWidth} from '../Utillity/utils';
+import {useDispatch} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import { useNavigation } from '@react-navigation/native';
 
 const Weightcategoryscreen = () => {
   const [selected, setSelected] = useState('Lose Weight');
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topText}>
@@ -109,7 +110,10 @@ const Weightcategoryscreen = () => {
         text={'Next'}
         textColor={Color.grey}
         fontSize={moderateScale(14, 0.6)}
-        onPress={() => navigationService.navigate('ChooseAdditionalGoal')}
+        onPress={() => {
+          navigation.navigate('ChooseAdditionalGoal');
+          dispatch(setUserProfileData({goal: selected}));
+        }}
       />
     </SafeAreaView>
   );

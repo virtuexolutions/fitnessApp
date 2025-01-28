@@ -12,11 +12,16 @@ import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
 import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
-import navigationService from '../navigationService';
 import {windowHeight, windowWidth} from '../Utillity/utils';
+import {useDispatch} from 'react-redux';
+import {setUserProfileData} from '../Store/slices/common';
+import navigationService from '../navigationService';
+import {useNavigation} from '@react-navigation/native';
 
 const WeightTrackerScreen = () => {
   const [value, setValue] = useState(0);
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
   return (
     <View style={{alignItems: 'center'}}>
       <Header
@@ -52,17 +57,6 @@ const WeightTrackerScreen = () => {
         <CustomText style={styles.weightNumber}>{value}</CustomText>
         <CustomText style={styles.weightUnit}>KG</CustomText>
       </View>
-      {/* <RulerPicker
-    width={windowWidth * 0.8}
-  min={0}
-  max={240}
-  step={1}
-  fractionDigits={0}
-  initialValue={0}
-  onValueChange={(number) => console.log(number)}
-  onValueChangeEnd={(number) => console.log(number)}
-  unit="cm"
-/> */}
       <Slider
         marginTop={moderateScale(50, 0.3)}
         width={windowWidth * 0.8}
@@ -73,28 +67,21 @@ const WeightTrackerScreen = () => {
         value={value}
         onChange={v => setValue(v)}
         colorScheme="orange">
-        {/* Slider Track */}
         <Slider.Track h={2} bg="#D3D3D3">
-          {' '}
-          {/* Gray unfilled background */}
-          <Slider.FilledTrack bg="#FBD7BD" /> {/* Peach filled background */}
+          <Slider.FilledTrack bg="#FBD7BD" />
         </Slider.Track>
-
-        {/* Slider Thumb */}
         <Slider.Thumb>
           <Box h={6} w={10} rounded="full" bg="gray.500" shadow={2} />
         </Slider.Thumb>
       </Slider>
       <CustomButton
         onPress={() => {
-          // onPhoneNumberPressed();
-          navigationService.navigate('Height');
+          // dispatch(setUserProfileData({weight: value}));
+          navigation.navigate('Height');
         }}
         text={'Done'}
         fontSize={moderateScale(13, 0.3)}
         textColor={'#7B7B7B'}
-        // borderWidth={0.8}
-        // borderColor={Color.black}
         borderRadius={moderateScale(30, 0.3)}
         width={windowWidth * 0.85}
         height={windowHeight * 0.07}
