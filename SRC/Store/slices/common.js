@@ -19,6 +19,7 @@ const initialState = {
   dropoffLocation: {},
   profileData: {},
   testData: {},
+  dietPlan: {},
 };
 console.log('🚀 ~ profileData:', initialState?.profileData);
 
@@ -40,7 +41,13 @@ const CommonSlice = createSlice({
       };
     },
     setTestData(state, action) {
-      state.testData = action.payload;
+      state.testData = {
+        ...state.testData,
+        ...action.payload,
+      };
+    },
+    setDietPlan(state, action) {
+      state.dietPlan = action.payload;
     },
     setDropoffLocation(state, action) {
       state.dropoffLocation = action.payload;
@@ -259,6 +266,7 @@ export const {
   setDropoffLocation,
   setUserProfileData,
   setTestData,
+  setDietPlan,
 } = CommonSlice.actions;
 
 export default CommonSlice.reducer;

@@ -14,7 +14,9 @@ import CustomText from '../Components/CustomText';
 import navigationService from '../navigationService';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 
-const SupportingScreen = () => {
+const SupportingScreen = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ SupportingScreen ~ data:', data);
   const diet = [
     {
       id: 1,
@@ -35,7 +37,6 @@ const SupportingScreen = () => {
       image: require('../Assets/Images/diet_image.png'),
     },
   ];
-  
   return (
     <SafeAreaView style={styles.safe_are_view}>
       <ScrollView style={styles.scroll_view}>
@@ -139,7 +140,9 @@ const SupportingScreen = () => {
           width={windowWidth * 0.8}
           style={[styles.buttonStyle]}
           textTransform={'Uppercase'}
-          onPress={() => navigationService.navigate('HealthPlanOnboarding')}
+          onPress={() =>
+            navigationService.navigate('HealthPlanOnboarding', {data: data})
+          }
         />
       </ScrollView>
     </SafeAreaView>

@@ -19,8 +19,11 @@ import navigationService from '../navigationService';
 import {useDispatch} from 'react-redux';
 import {setUserProfileData} from '../Store/slices/common';
 import {useNavigation} from '@react-navigation/native';
+import {date} from 'yup';
 
-const RemaindersScreen = () => {
+const RemaindersScreen = ({route}) => {
+  const data = route.params;
+  console.log("🚀 ~ RemaindersScreen ~ data:", data)
   const dispatch = useDispatch();
   const navigation = useNavigation();
   return (
@@ -119,8 +122,19 @@ const RemaindersScreen = () => {
           fontSize={moderateScale(15, 0.6)}
           textColor={Color.grey}
           onPress={() => {
-            navigation.navigate('SupportingScreen');
-            dispatch(setUserProfileData({allow_reminders: false}));
+            navigation.navigate('SupportingScreen', {
+              height: data?.height,
+              weight: data?.weight,
+              gender: data?.gender,
+              goal: data?.goal,
+              additional_goal: data?.additional_goal,
+              food_preferences: data?.food_preferences,
+              hear_about: data?.hear_about,
+              variety: data?.variety,
+              meal_in_Day: data?.meal_in_Day,
+              allow_reminders: false,
+            });
+            // dispatch(setUserProfileData({allow_reminders: false}));
           }}
         />
         <CustomButton
@@ -129,8 +143,18 @@ const RemaindersScreen = () => {
           fontSize={moderateScale(15, 0.6)}
           textColor={Color.grey}
           onPress={() => {
-            navigation.navigate('SupportingScreen');
-            dispatch(setUserProfileData({allow_reminders: true}));
+            navigation.navigate('SupportingScreen', {
+              height: data?.height,
+              weight: data?.weight,
+              gender: data?.gender,
+              goal: data?.goal,
+              additional_goal: data?.additional_goal,
+              food_preferences: data?.food_preferences,
+              hear_abount: data?.hear_abount,
+              variety: data?.variety,
+              meal_in_Day: data?.meal_in_Day,
+              allow_reminders: true,
+            });
           }}
         />
       </View>

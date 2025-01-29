@@ -1,5 +1,5 @@
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import Color from '../Assets/Utilities/Color';
 import {moderateScale} from 'react-native-size-matters';
@@ -10,7 +10,12 @@ import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import navigationService from '../navigationService';
+import {useDispatch, useSelector} from 'react-redux';
+import {setTestData} from '../Store/slices/common';
 const QuestionnaireNoodles = () => {
+  const dispatch = useDispatch();
+  const testData = useSelector(state => state.commonReducer.testData);
+  const [sliderValue, setSliderValue] = useState(0);
   return (
     <ImageBackground
       style={styles.bgcImageStyle}
@@ -80,7 +85,7 @@ resizeMode={"contain"}
         </View>
         <View style={styles.limitBox}>
           <CustomText style={styles.duration} isBold>
-            70%
+            {sliderValue + '%'}
           </CustomText>
           <View style={styles.sliderTextContainer}>
             <CustomText style={styles.sliderText}>Never</CustomText>
@@ -92,9 +97,10 @@ resizeMode={"contain"}
               maxW="300"
               color={'#F4BC9B'}
               colorScheme={'amber'}
-              defaultValue={70}
+              defaultValue={sliderValue}
               minValue={0}
               maxValue={100}
+              onChange={val => setSliderValue(val)}
               accessibilityLabel="hello world"
               step={20}>
               <Slider.Track>
@@ -113,7 +119,10 @@ resizeMode={"contain"}
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
-            onPress={() => navigationService.navigate('QuestionnaireBread')}
+            onPress={() => {
+              navigationService.navigate('QuestionnaireBread');
+              dispatch(setTestData({noodlesWholeGrain: sliderValue}));
+            }}
           />
         </View>
       </View>

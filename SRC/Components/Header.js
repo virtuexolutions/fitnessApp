@@ -13,6 +13,8 @@ import {windowHeight, windowWidth} from '../Utillity/utils';
 import navigationService from '../navigationService';
 import CustomImage from './CustomImage';
 import CustomText from './CustomText';
+import {setUserData} from '../Store/slices/common';
+import {setUserToken} from '../Store/slices/auth-slice';
 const {height, width} = Dimensions.get('window');
 
 const Header = props => {
@@ -184,7 +186,7 @@ const Header = props => {
           {islastIcon && (
             <Icon
               style={{
-                marginLeft: moderateScale(10, 0.6),
+                marginLeft: moderateScale(5, 0.6),
               }}
               name="notifications-none"
               as={MaterialIcons}
@@ -192,6 +194,19 @@ const Header = props => {
               color={Color.lightGrey}
             />
           )}
+          <Icon
+            onPress={() => {
+              dispatch(setUserData({}));
+              dispatch(setUserToken(null));
+            }}
+            name={'logout'}
+            as={MaterialIcons}
+            size={moderateScale(22, 0.3)}
+            style={{
+              marginLeft: moderateScale(5, 0.6),
+            }}
+            color={Color.lightGrey}
+          />
         </View>
       ) : (
         // <View

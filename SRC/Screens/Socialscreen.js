@@ -20,7 +20,9 @@ import {useDispatch} from 'react-redux';
 import {setUserProfileData} from '../Store/slices/common';
 import {useNavigation} from '@react-navigation/native';
 
-const Socialscreen = () => {
+const Socialscreen = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ Socialscreen ~ data:', data);
   const [selected, setSelected] = useState('Appstore');
   const [activeButton, setActivebutton] = useState(true);
   const dispatch = useDispatch();
@@ -144,8 +146,15 @@ const Socialscreen = () => {
         <CustomButton
           onPress={() => {
             setActivebutton(true);
-            navigation.navigate('ChooseMealsVariety');
-            dispatch(setUserProfileData({hear_abount: selected}));
+            navigation.navigate('ChooseMealsVariety', {
+              height: data?.height,
+              weight: data?.weight,
+              gender: data?.gender,
+              goal: data?.goal,
+              additional_goal: data?.additional_goal,
+              food_preferences: data?.food_preferences,
+              hear_about: selected,
+            });
           }}
           style={[
             activeButton

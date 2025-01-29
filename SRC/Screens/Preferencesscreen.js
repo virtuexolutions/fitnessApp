@@ -18,8 +18,11 @@ import navigationService from '../navigationService';
 import {useDispatch} from 'react-redux';
 import {setUserProfileData} from '../Store/slices/common';
 import {useNavigation} from '@react-navigation/native';
+import {date} from 'yup';
 
-const Preferencesscreen = () => {
+const Preferencesscreen = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ Preferencesscreen ~ data:', data);
   const [selected, setSelected] = useState(
     "I Don't Have Any Specific Preferences",
   );
@@ -139,8 +142,15 @@ const Preferencesscreen = () => {
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
           onPress={() => {
-            navigation.navigate('SocialScreen');
-            dispatch(setUserProfileData({food_preferences: selected}));
+            navigation.navigate('SocialScreen', {
+              height: data?.height,
+              weight: data?.weight,
+              gender: data?.gender,
+              goal: data?.goal,
+              additional_goal: data?.additional_goal,
+              food_preferences: selected,
+            });
+            // dispatch(setUserProfileData({food_preferences: selected}));
           }}
         />
       </ImageBackground>

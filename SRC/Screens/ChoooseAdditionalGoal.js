@@ -10,7 +10,9 @@ import {useDispatch} from 'react-redux';
 import {setUserProfileData} from '../Store/slices/common';
 import {useNavigation} from '@react-navigation/native';
 
-const ChoooseAdditionalGoal = () => {
+const ChoooseAdditionalGoal = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ ChoooseAdditionalGoal ~ data:', data);
   const dispatch = useDispatch();
   const [value, setValue] = useState('Living Longer');
   const goals = [
@@ -73,8 +75,14 @@ const ChoooseAdditionalGoal = () => {
       </CustomText>
       <CustomButton
         onPress={() => {
-          navigation.navigate('PreferenceScreen');
-          dispatch(setUserProfileData({additional_goal: value}));
+          navigation.navigate('PreferenceScreen', {
+            height: data?.height,
+            weight: data?.weight,
+            gender: data?.gender,
+            goal: data?.goal,
+            additional_goal: value,
+          });
+          // dispatch(setUserProfileData({additional_goal: value}));
         }}
         text={'Next'}
         fontSize={moderateScale(13, 0.3)}

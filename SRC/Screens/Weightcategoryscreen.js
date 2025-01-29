@@ -8,9 +8,11 @@ import navigationService from '../navigationService';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import {useDispatch} from 'react-redux';
 import {setUserProfileData} from '../Store/slices/common';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-const Weightcategoryscreen = () => {
+const Weightcategoryscreen = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ Weightcategoryscreen ~ data:', data);
   const [selected, setSelected] = useState('Lose Weight');
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -111,8 +113,13 @@ const Weightcategoryscreen = () => {
         textColor={Color.grey}
         fontSize={moderateScale(14, 0.6)}
         onPress={() => {
-          navigation.navigate('ChooseAdditionalGoal');
-          dispatch(setUserProfileData({goal: selected}));
+          navigation.navigate('ChooseAdditionalGoal', {
+            height: data?.height,
+            weight: data?.weight,
+            gender: data?.gender,
+            goal: selected,
+          });
+          // dispatch(setUserProfileData({goal: selected}));
         }}
       />
     </SafeAreaView>

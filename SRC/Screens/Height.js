@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
 import {
   ImageBackground,
   SafeAreaView,
@@ -14,17 +15,16 @@ import Color from '../Assets/Utilities/Color';
 import CustomButton from '../Components/CustomButton';
 import CustomText from '../Components/CustomText';
 import Header from '../Components/Header';
-import navigationService from '../navigationService';
-import {windowHeight, windowWidth} from '../Utillity/utils';
 import {setUserProfileData} from '../Store/slices/common';
-import {useNavigation} from '@react-navigation/native';
+import {windowHeight, windowWidth} from '../Utillity/utils';
 
-const Height = () => {
+const Height = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ Height ~ height:', data);
   const [selec_btn, setSelectedBtn] = useState('FT');
   const dispatch = useDispatch();
   const [value, setValue] = useState(100);
   const profileData = useSelector(state => state.commonReducer.profileData);
-  console.log('🚀 ~ Height ~ profileData:', profileData);
   const navigation = useNavigation();
 
   return (
@@ -38,12 +38,6 @@ const Height = () => {
         rightIconFrom={Entypo}
         headerColor={Color.peach}
       />
-      {/* <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={{
-          width: windowWidth,
-          height: windowHeight,
-        }}> */}
       <ImageBackground
         source={require('../Assets/Images/background3.png')}
         style={styles.image_background_view}
@@ -135,8 +129,10 @@ const Height = () => {
             style={[styles.buttonStyle]}
             textTransform={'Uppercase'}
             onPress={() => {
-              navigation.navigate('ChooseGender');
-              dispatch(setUserProfileData({height: value}));
+              navigation.navigate('ChooseGender', {
+                weight: data?.weight,
+                height: value,
+              });
             }}
           />
         </View>

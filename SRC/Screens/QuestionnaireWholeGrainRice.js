@@ -1,5 +1,5 @@
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import Color from '../Assets/Utilities/Color';
 import {moderateScale} from 'react-native-size-matters';
@@ -10,13 +10,18 @@ import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import navigationService from '../navigationService';
+import {useDispatch, useSelector} from 'react-redux';
+import {setTestData} from '../Store/slices/common';
 const QuestionnaireWholeGrainRice = () => {
+  const [sliderValue, setSliderValue] = useState(0);
+  const testData = useSelector(state => state.commonReducer.testData);
+  const dispatch = useDispatch();
+
   return (
     <ImageBackground
       style={styles.bgcImageStyle}
       source={require('../Assets/Images/bgcthemeimage.png')}
       imageStyle={{width: '100%', height: '100%'}}>
-      \{' '}
       <View style={styles.topRoundImageContainer}>
         <CustomImage
           style={{width: '100%'}}
@@ -77,7 +82,7 @@ const QuestionnaireWholeGrainRice = () => {
           </CustomText>
         </View>
         <View style={styles.limitBox}>
-          <CustomText style={styles.duration}>70%</CustomText>
+          <CustomText style={styles.duration}> {sliderValue + '%'}</CustomText>
           <View style={styles.sliderTextContainer}>
             <CustomText style={styles.sliderText}>Never</CustomText>
             <CustomText style={styles.sliderText}>Open</CustomText>
@@ -88,7 +93,8 @@ const QuestionnaireWholeGrainRice = () => {
               maxW="300"
               color={'#F4BC9B'}
               colorScheme={'amber'}
-              defaultValue={70}
+              defaultValue={sliderValue}
+              onChange={val => setSliderValue(val)}
               minValue={0}
               maxValue={100}
               accessibilityLabel="hello world"
@@ -109,7 +115,10 @@ const QuestionnaireWholeGrainRice = () => {
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
-            onPress={() => navigationService.navigate('QuestionnaireOatMeals')}
+            onPress={() => {
+              navigationService.navigate('QuestionnaireOatMeals');
+              dispatch(setTestData({riceWholeGrain: sliderValue}));
+            }}
           />
         </View>
       </View>

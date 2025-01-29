@@ -1,16 +1,68 @@
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import {windowHeight, windowWidth} from '../Utillity/utils';
-import Color from '../Assets/Utilities/Color';
-import {moderateScale} from 'react-native-size-matters';
-import CustomImage from '../Components/CustomImage';
-import CustomText from '../Components/CustomText';
-import CustomButton from '../Components/CustomButton';
-import {Icon, Slider} from 'native-base';
+import axios from 'axios';
+import { Icon, Slider } from 'native-base';
+import React, { useState } from 'react';
+import { ImageBackground, StyleSheet, View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
+import { useDispatch, useSelector } from 'react-redux';
+import Color from '../Assets/Utilities/Color';
+import CustomButton from '../Components/CustomButton';
+import CustomImage from '../Components/CustomImage';
+import CustomText from '../Components/CustomText';
+import TestCompleteComponent from '../Components/TestCompleteComponent';
 import navigationService from '../navigationService';
-const QuestionnaireDiaryProducts= () => {
+import { setDietPlan, setTestData } from '../Store/slices/common';
+import { apiHeader, windowHeight, windowWidth } from '../Utillity/utils';
+
+const QuestionnaireDiaryProducts = () => {
+  const [sliderValue, setSliderValue] = useState(0);
+  const [responseData, setResponseData] = useState(null);
+  const [modal_visible, setModalVisible] = useState(false);
+  const testData = useSelector(state => state.commonReducer.testData);
+  const userData = useSelector(state => state.commonReducer.userData);
+  const token = useSelector(state => state.authReducer.token);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const updateFunction = val => {
+    console.log('🚀 ~ updateFunction ~ val:', val);
+    if (val === 0) {
+      setSliderValue('0');
+    } else if (val === 20) {
+      setSliderValue('1-2');
+    } else if (val === 40) {
+      setSliderValue('2-3');
+    } else if (val === 60) {
+      setSliderValue('4-5');
+    } else if (val === 80) {
+      setSliderValue('5-6');
+    } else {
+      setSliderValue('7');
+    }
+  };
+
+  const onPressSubmit = async () => {
+    const combinedData = {
+      prompt: JSON.stringify({...testData, ...userData.user_profile}),
+    };
+    console.log('🚀 ~ onPressSubmit ~ combinedData:', combinedData);
+    const url = 'https://aidietplan.cstmpanel.com/dietplan';
+    setLoading(true);
+    try {
+      const response = await axios.post(url, combinedData, apiHeader(token));
+      console.log('🚀 API Response:', response?.data);
+      setResponseData(response?.data);
+      if (response?.data?.success === true) {
+        setModalVisible(true);
+        dispatch(setDietPlan(response?.data));
+      }
+    } catch (error) {
+      console.log('🚀 API Error:', error?.response?.data || error?.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <ImageBackground
       style={styles.bgcImageStyle}
@@ -21,7 +73,7 @@ const QuestionnaireDiaryProducts= () => {
           style={{width: '100%', top: -40}}
           source={require('../Assets/Images/15.png')}
           // resizeMode={"cover"}
-          />
+        />
       </View>
 
       <View>
@@ -65,15 +117,19 @@ const QuestionnaireDiaryProducts= () => {
         style={{width: windowWidth, paddingVertical: moderateScale(50, 0.3)}}>
         <View style={styles.infoBox}>
           <CustomText style={styles.heading} isBold>
-          How often did you have plain dairy products last week?
+            How often did you have plain dairy products last week?
           </CustomText>
           <CustomText style={styles.examples}>
-          e.g. plain yogurt, plain cottage cheese, sour cream don't count cheese
+            e.g. plain yogurt, plain cottage cheese, sour cream don't count
+            cheese
           </CustomText>
-
         </View>
         <View style={styles.limitBox}>
-          <CustomText style={styles.duration}>5-6 times a week</CustomText>
+          <CustomText style={styles.duration}>
+            {sliderValue === 0
+              ? sliderValue + ' time'
+              : sliderValue + ' times a week'}
+          </CustomText>
           <View style={styles.sliderTextContainer}>
             <CustomText style={styles.sliderText}>Never</CustomText>
             <CustomText style={styles.sliderText}>Open</CustomText>
@@ -84,7 +140,8 @@ const QuestionnaireDiaryProducts= () => {
               maxW="300"
               color={'#F4BC9B'}
               colorScheme={'amber'}
-              defaultValue={70}
+              defaultValue={sliderValue}
+              onChange={val => updateFunction(val)}
               minValue={0}
               maxValue={100}
               accessibilityLabel="hello world"
@@ -102,13 +159,25 @@ const QuestionnaireDiaryProducts= () => {
           <CustomButton
             style={styles.buttonStyle}
             text={'Next'}
+            loader={loading}
+            loaderColor={Color.peach}
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
-            onPress={() => navigationService.navigate('Category')}
+            onPress={() => {
+              dispatch(setTestData({dairyProductLastWeek: sliderValue}));
+              onPressSubmit();
+            }}
           />
         </View>
       </View>
+      <TestCompleteComponent
+        isModalVisible={modal_visible}
+        onPressGoBack={() => {
+          navigationService.navigate('TabNavigation');
+          setModalVisible(false);
+        }}
+      />
     </ImageBackground>
   );
 };

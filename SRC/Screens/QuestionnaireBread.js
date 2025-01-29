@@ -1,5 +1,5 @@
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {windowHeight, windowWidth} from '../Utillity/utils';
 import Color from '../Assets/Utilities/Color';
 import {moderateScale} from 'react-native-size-matters';
@@ -10,7 +10,29 @@ import {Icon, Slider} from 'native-base';
 import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import navigationService from '../navigationService';
+import {useDispatch, useSelector} from 'react-redux';
+import {setTestData} from '../Store/slices/common';
 const QuestionnaireBread = () => {
+  const testData = useSelector(state => state.commonReducer.testData);
+  const dispatch = useDispatch();
+  const [sliderValue, setSliderValue] = useState(0);
+
+  const updateFunction = val => {
+    if (val === 0) {
+      setSliderValue('0');
+    } else if (val === 20) {
+      setSliderValue('1-2');
+    } else if (val === 40) {
+      setSliderValue('2-3');
+    } else if (val === 60) {
+      setSliderValue('4-5');
+    } else if (val === 80) {
+      setSliderValue('5-6');
+    } else {
+      setSliderValue('7');
+    }
+  };
+
   return (
     <ImageBackground
       style={styles.bgcImageStyle}
@@ -78,7 +100,9 @@ resizeMode={"contain"}
           </CustomText>
         </View>
         <View style={styles.limitBox}>
-          <CustomText style={styles.duration}>70%</CustomText>
+          <CustomText style={styles.duration}>
+            {sliderValue + ' times a week'}
+          </CustomText>
           <View style={styles.sliderTextContainer}>
             <CustomText style={styles.sliderText}>Never</CustomText>
             <CustomText style={styles.sliderText}>Open</CustomText>
@@ -89,8 +113,9 @@ resizeMode={"contain"}
               maxW="300"
               color={'#F4BC9B'}
               colorScheme={'amber'}
-              defaultValue={70}
+              defaultValue={sliderValue}
               minValue={0}
+              onChange={val => updateFunction(val)}
               maxValue={100}
               accessibilityLabel="hello world"
               step={20}>
@@ -110,7 +135,10 @@ resizeMode={"contain"}
             // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
-            onPress={() =>navigationService.navigate('QuestionnaireBread2')}
+            onPress={() => {
+              navigationService.navigate('QuestionnaireBread2');
+              dispatch(setTestData({breadinLastWeek: sliderValue}));
+            }}
           />
         </View>
       </View>

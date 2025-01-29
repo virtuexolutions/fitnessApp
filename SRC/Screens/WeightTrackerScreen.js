@@ -76,8 +76,7 @@ const WeightTrackerScreen = () => {
       </Slider>
       <CustomButton
         onPress={() => {
-          // dispatch(setUserProfileData({weight: value}));
-          navigation.navigate('Height');
+          navigation.navigate('Height', {weight: value});
         }}
         text={'Done'}
         fontSize={moderateScale(13, 0.3)}

@@ -20,7 +20,9 @@ import {useDispatch} from 'react-redux';
 import {setUserProfileData} from '../Store/slices/common';
 import {useNavigation} from '@react-navigation/native';
 
-const ChooseMealsVariety = () => {
+const ChooseMealsVariety = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ ChooseMealsVariety ~ data:', data);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   return (
@@ -49,8 +51,17 @@ const ChooseMealsVariety = () => {
       </CustomText>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('MealInDay');
-          dispatch(setUserProfileData({variety: '  High Variety'}));
+          navigation.navigate('MealInDay', {
+            height: data?.height,
+            weight: data?.weight,
+            gender: data?.gender,
+            goal: data?.goal,
+            additional_goal: data?.additional_goal,
+            food_preferences: data?.food_preferences,
+            hear_abount: data?.hear_abount,
+            variety: 'High Variety',
+          });
+          // dispatch(setUserProfileData({variety: '  High Variety'}));
         }}
         style={styles.card}>
         <CustomImage
@@ -71,8 +82,18 @@ const ChooseMealsVariety = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('MealInDay');
-          dispatch(setUserProfileData({variety: 'Balanced Variety'}));
+          navigation.navigate('MealInDay', {
+            height: data?.height,
+            weight: data?.weight,
+            gender: data?.gender,
+            goal: data?.goal,
+            additional_goal: data?.additional_goal,
+            food_preferences: data?.food_preferences,
+            hear_abount: data?.hear_abount,
+            variety: 'Balanced Variety',
+          });
+
+          // dispatch(setUserProfileData({variety: 'Balanced Variety'}));
         }}
         style={styles.card}>
         <CustomImage
@@ -94,8 +115,18 @@ const ChooseMealsVariety = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          navigationService.navigate('MealInDay');
-          dispatch(setUserProfileData({variety: '   Minimal Variety'}));
+          navigation.navigate('MealInDay', {
+            height: data?.height,
+            weight: data?.weight,
+            gender: data?.gender,
+            goal: data?.goal,
+            additional_goal: data?.additional_goal,
+            food_preferences: data?.food_preferences,
+            hear_about: data?.hear_about,
+            variety: ' Minimal Variety',
+          });
+          // navigationService.navigate('MealInDay');
+          // dispatch(setUserProfileData({variety: '   Minimal Variety'}));
         }}
         style={styles.card}>
         <CustomImage

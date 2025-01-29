@@ -11,14 +11,13 @@ import AntDesiign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import navigationService from '../navigationService';
 import {useDispatch} from 'react-redux';
+import {setTestData} from '../Store/slices/common';
 
 const QuestionnaireDessert = () => {
   const dispatch = useDispatch();
   const [sliderValue, setSliderValue] = useState(0);
-  console.log('🚀 ~ QuestionnaireDessert ~ sliderValue:', sliderValue);
 
   const updateFunction = val => {
-    console.log('🚀 ~ updateFunction ~ val:', val);
     if (val === 0) {
       setSliderValue('0');
     } else if (val === 20) {
@@ -132,10 +131,12 @@ const QuestionnaireDessert = () => {
           <CustomButton
             style={styles.buttonStyle}
             text={'Next'}
-            // textstyle={{fontSize: moderateScale(18, 0.6)}}
             fontSize={moderateScale(15, 0.6)}
             textColor={Color.grey}
-            onPress={() => navigationService.navigate('QuestionnaireNoodles')}
+            onPress={() => {
+              navigationService.navigate('QuestionnaireNoodles');
+              dispatch(setTestData({desertInWeek: sliderValue}));
+            }}
           />
         </View>
       </View>

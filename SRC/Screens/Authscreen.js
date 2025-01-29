@@ -10,8 +10,8 @@ import CustomText from '../Components/CustomText';
 import TextInputWithTitle from '../Components/TextInputWithTitle';
 import {setUserData} from '../Store/slices/common';
 import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
-import {setUserToken} from '../Store/slices/auth';
 import navigationService from '../navigationService';
+import {setUserToken} from '../Store/slices/auth';
 
 const Authscreen = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Authscreen = () => {
   const token = useSelector(state => state.authReducer.token);
   console.log('🚀 ~ Authscreen ~ token:', token);
   const [isLoading, setIsLoading] = useState(false);
-
+  
   const onPressLogin = async () => {
     const url = 'login';
     const body = {
@@ -39,7 +39,6 @@ const Authscreen = () => {
       setIsLoading(false);
       dispatch(setUserToken({token: response?.data?.token}));
       dispatch(setUserData(response?.data?.user_info));
-      navigationService.navigate('WeightTrackerScreen');
     }
   };
 
@@ -52,13 +51,12 @@ const Authscreen = () => {
     };
     setSignupLoading(true);
     const response = await Post(url, body, apiHeader());
-    console.log('🚀 ~ onPressLogin ~ response:', response?.data);
+    console.log('🚀 ~ onPressLogin ~ response:', response?.data?.token);
     setSignupLoading(false);
     if (response != undefined) {
       setSignupLoading(false);
-      dispatch(setUserData(response?.data?.user_details));
-      dispatch(setUserToken(response?.data?.token));
-      navigationService.navigate('WeightTrackerScreen');
+      dispatch(setUserData(response?.data?.user_info));
+      dispatch(setUserToken({token: response?.data?.token}));
     }
   };
 

@@ -19,7 +19,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {setUserProfileData} from '../Store/slices/common';
 import {useNavigation} from '@react-navigation/native';
 
-const Choosegender = () => {
+const Choosegender = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ Choosegender ~ data:', data);
   const navigation = useNavigation();
   const [selected, setisSelected] = useState('Male');
   const profileData = useSelector(state => state.commonReducer.profileData);
@@ -127,8 +129,11 @@ const Choosegender = () => {
           textColor={Color.grey}
           fontSize={moderateScale(14, 0.6)}
           onPress={() => {
-            navigation.navigate('WeightCategoryScreen');
-            dispatch(setUserProfileData({gender: selected}));
+            navigation.navigate('WeightCategoryScreen', {
+              height: data?.height,
+              weight: data?.weight,
+              gender: selected,
+            });
           }}
         />
       </ImageBackground>

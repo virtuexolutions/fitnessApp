@@ -1,29 +1,32 @@
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
-import CustomText from '../Components/CustomText';
 import {Box, Slider} from 'native-base';
+import React, {useState} from 'react';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
-import CustomButton from '../Components/CustomButton';
-import Color from '../Assets/Utilities/Color';
-import navigationService from '../navigationService';
-import {Post} from '../Axios/AxiosInterceptorFunction';
 import {useDispatch, useSelector} from 'react-redux';
+import Color from '../Assets/Utilities/Color';
+import {Post} from '../Axios/AxiosInterceptorFunction';
+import CustomButton from '../Components/CustomButton';
+import CustomText from '../Components/CustomText';
 import {setUserData} from '../Store/slices/common';
+import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
 
-const HealthPlanOnboarding = () => {
+const HealthPlanOnboarding = ({route}) => {
+  const data = route.params;
+  console.log('🚀 ~ HealthPlanOnboarding ~ data:', data?.data);
   const dispatch = useDispatch();
   const token = useSelector(state => state.authReducer.token);
-
+  const [loading, setLoading] = useState(false);
   const profileData = useSelector(state => state.commonReducer.profileData);
-  console.log('🚀 ~ HealthPlanOnboarding ~ profileData:', profileData);
 
   const updateUserProfile = async () => {
-    const url = 'user-profile';
-    const response = await Post(url, profileData, apiHeader(token));
+    const url = 'auth/user-profile';
+    setLoading(true);
+    const response = await Post(url, data?.data, apiHeader(token));
+    setLoading(false);
     console.log('🚀 ~ updateUserProfile ~ response:', response?.data);
     if (response != undefined) {
-      dispatch(setUserData(response?.data));
+      setLoading(false);
+      dispatch(setUserData(response?.data?.user_info));
     }
   };
 
@@ -41,15 +44,13 @@ const HealthPlanOnboarding = () => {
         </CustomText>
         <CustomButton
           onPress={() => {
-            // onPhoneNumberPressed();
             updateUserProfile();
-            // navigationService.navigate('TabNavigation');
           }}
+          loader={loading}
+          loaderColor={Color.peach}
           text={'Next'}
           fontSize={moderateScale(13, 0.3)}
           textColor={'#7B7B7B'}
-          // borderWidth={0.8}
-          // borderColor={Color.black}
           borderRadius={moderateScale(30, 0.3)}
           width={windowWidth * 0.85}
           height={windowHeight * 0.07}

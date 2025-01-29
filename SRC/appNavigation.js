@@ -97,15 +97,22 @@ const AppNavigator = () => {
   const role = useSelector(state => state.authReducer.role);
   const isVerified = useSelector(state => state.authReducer.isVerified);
   const token = useSelector(state => state.authReducer.token);
+  const userData = useSelector(state => state.commonReducer.userData);
+  console.log('🚀 ~ AppNavigator ~ userData:', userData);
   const profileData = useSelector(state => state.commonReducer.profileData);
-  console.log('🚀 ~ AppNavigator ~ profileData:', profileData);
   console.log('🚀 ~ AppNavigator ~ token:', token);
 
   const RootNav = createNativeStackNavigator();
   const RootNavLogged = createNativeStackNavigator();
 
   const AppNavigatorContainer = () => {
-    const firstScreen = token == null ? 'StartedScreen' : 'AddSomeInformation';
+    const firstScreen =
+      token == null
+        ? 'StartedScreen'
+        : userData?.user_profile == null
+        ? 'WeightTrackerScreen'
+        : 'TabNavigation';
+        
     return (
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator

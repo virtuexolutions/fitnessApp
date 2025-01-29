@@ -23,7 +23,9 @@ import {useDispatch} from 'react-redux';
 import {setUserProfileData} from '../Store/slices/common';
 import {useNavigation} from '@react-navigation/native';
 
-const MealInDay = () => {
+const MealInDay = ({route}) => {
+  const data = route?.params;
+  console.log("🚀 ~ MealInDay ~ data:", data)
   const [mealinDay, setMealInDay] = useState();
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -162,12 +164,17 @@ const MealInDay = () => {
               style={[styles.buttonStyle]}
               textTransform={'Uppercase'}
               onPress={() => {
-                navigation.navigate('RemaindersScreen');
-                dispatch(
-                  setUserProfileData({
-                    meal_in_Day: ['BreakFast', 'Lunch', 'Dinner', 'Snack'],
-                  }),
-                );
+                navigation.navigate('RemaindersScreen', {
+                  height: data?.height,
+                  weight: data?.weight,
+                  gender: data?.gender,
+                  goal: data?.goal,
+                  additional_goal: data?.additional_goal,
+                  food_preferences: data?.food_preferences,
+                  hear_abount: data?.hear_about,
+                  variety: data?.variety,
+                  meal_in_Day: ['BreakFast', 'Lunch', 'Dinner', 'Snack'],
+                });
               }}
             />
           </View>

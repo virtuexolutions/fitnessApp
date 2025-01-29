@@ -14,6 +14,7 @@ import CustomText from '../Components/CustomText';
 import {moderateScale} from 'react-native-size-matters';
 import CustomImage from '../Components/CustomImage';
 import Entypo from 'react-native-vector-icons/Entypo';
+import TestCompleteComponent from '../Components/TestCompleteComponent';
 const Home = () => {
   const varieties = [
     {
