@@ -110,7 +110,7 @@ const AppNavigator = () => {
       token == null
         ? 'StartedScreen'
         : userData?.user_profile == null
-        ? 'WeightTrackerScreen'
+        ? 'AddSomeInformation'
         : 'TabNavigation';
         
     return (

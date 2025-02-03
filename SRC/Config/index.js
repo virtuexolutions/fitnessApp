@@ -1,4 +1,4 @@
-export const baseUrl = 'https://6bbd-45-199-187-64.ngrok-free.app';
+export const baseUrl = 'https://95c8-45-199-187-64.ngrok-free.app';
 export const baseUrl2 = "https://aidietplan.cstmpanel.com";
 export const imageUrl = `${baseUrl}/api/images/`;
 export const profilePicUrl = `${baseUrl}/uploads`;

@@ -24,7 +24,7 @@ const Authscreen = () => {
   const token = useSelector(state => state.authReducer.token);
   console.log('🚀 ~ Authscreen ~ token:', token);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const onPressLogin = async () => {
     const url = 'login';
     const body = {
