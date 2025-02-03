@@ -89,6 +89,7 @@ import Weightcategoryscreen from './Screens/Weightcategoryscreen';
 import WeightTrackerScreen from './Screens/WeightTrackerScreen';
 import Yourplan from './Screens/Yourplan';
 import AddSomeInformation from './Screens/AddSomeInformation';
+import ConformationCode from './Screens/ConformationCode';
 
 // enableScreens();
 const AppNavigator = () => {
@@ -110,7 +111,7 @@ const AppNavigator = () => {
       token == null
         ? 'StartedScreen'
         : userData?.user_profile == null
-        ? 'WeightTrackerScreen'
+        ? 'AddSomeInformation'
         : 'TabNavigation';
         
     return (
@@ -125,6 +126,10 @@ const AppNavigator = () => {
           <RootNav.Screen
             name="AddSomeInformation"
             component={AddSomeInformation}
+          />
+          <RootNav.Screen
+            name="ConformationCode"
+            component={ConformationCode}
           />
           <RootNav.Screen
             name="ChooseAdditionalGoal"

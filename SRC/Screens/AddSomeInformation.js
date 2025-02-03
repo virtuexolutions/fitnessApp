@@ -88,12 +88,13 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.12,
   },
   textStyle: {
-    fontSize: moderateScale(12, 0.6),
+    fontSize: moderateScale(15, 0.6),
     color: Color.grey,
     width: windowWidth * 0.85,
     textAlign: 'center',
     marginTop: moderateScale(20, 0.6),
     lineHeight: moderateScale(15, 0.3),
+    fontWeight: 'bold',
     // alignItems:'center',
     // backgroundColor:'green'
   },

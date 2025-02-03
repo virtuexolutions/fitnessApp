@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ImageBackground, SafeAreaView, StyleSheet, View} from 'react-native';
+import {ImageBackground, SafeAreaView, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 import {useDispatch, useSelector} from 'react-redux';
 import Color from '../Assets/Utilities/Color';
@@ -12,8 +12,10 @@ import {setUserData} from '../Store/slices/common';
 import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
 import navigationService from '../navigationService';
 import {setUserToken} from '../Store/slices/auth';
+import { useNavigation } from '@react-navigation/native';
 
 const Authscreen = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const [activeButton, setActivebutton] = useState(true);
   console.log('🚀 ~ Authscreen ~ activeButton:', activeButton);
@@ -24,7 +26,7 @@ const Authscreen = () => {
   const token = useSelector(state => state.authReducer.token);
   console.log('🚀 ~ Authscreen ~ token:', token);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const onPressLogin = async () => {
     const url = 'login';
     const body = {
@@ -137,6 +139,15 @@ const Authscreen = () => {
                 loader={isLoading}
                 loaderColor={Color.peach}
               />
+              <TouchableOpacity activeOpacity={0.5}
+              onPress={()=>{
+                navigation.navigate('ConformationCode')
+              }}>
+              <CustomText
+                    style={styles.forgotpassword}>
+                    Forgot password ?
+                  </CustomText>
+                  </TouchableOpacity>
             </View>
           ) : (
             <View style={styles.formStyle}>
@@ -227,4 +238,13 @@ const styles = StyleSheet.create({
     // backgroundColor:'red',
     marginTop: moderateScale(50, 0.6),
   },
+  forgotpassword: {
+      fontSize: moderateScale(10, 0.6),
+      color: Color.black,
+      alignSelf:'center',
+      // textAlign: 'right',
+      // width: '95%',
+      // paddingVertical: moderateScale(4, 0.6),
+      fontWeight: '700',
+    },
 });

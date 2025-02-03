@@ -12,6 +12,8 @@ import {Provider} from 'react-redux';
 import SplashScreen from './SRC/Screens/SplashScreen';
 import {store} from './SRC/Store/index';
 import AppNavigator from './SRC/appNavigation';
+import ConformationCOde from './SRC/Screens/ConformationCode';
+import ConformationCode from './SRC/Screens/ConformationCode';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -57,6 +59,7 @@ const MainContainer = () => {
     return <SplashScreen />;
   }
   return <AppNavigator />;
+  // <ConformationCode />;
 };
 
 const useloader = value => {
