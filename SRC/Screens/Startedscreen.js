@@ -22,8 +22,9 @@ const Startedscreen = () => {
           width: windowWidth,
           height: windowHeight,
         }}
-        imageStyle={{width: '100%', height: '100%', resizeMode: 'stretch'}}
-        source={require('../Assets/Images/bgcimage.png')}>
+        // imageStyle={{width: '100%', height: '100%', resizeMode: 'stretch'}}
+        // source={require('../Assets/Images/bgcimage.png')}
+        >
         <View style={styles.Container}>
           <View style={styles.bluImage}>
             <CustomImage

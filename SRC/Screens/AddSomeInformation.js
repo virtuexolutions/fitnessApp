@@ -23,7 +23,7 @@ const AddSomeInformation = () => {
           height: windowHeight,
         }}
         imageStyle={{width: '100%', height: '100%', resizeMode: 'stretch'}}
-        source={require('../Assets/Images/bgcimage.png')}>
+        source={require('../Assets/Images/background3.png')}>
         <View style={styles.Container}>
           <View style={styles.bluImage}>
             <CustomImage
