@@ -14,6 +14,8 @@ import {store} from './SRC/Store/index';
 import AppNavigator from './SRC/appNavigation';
 import ConformationCOde from './SRC/Screens/ConformationCode';
 import ConformationCode from './SRC/Screens/ConformationCode';
+import ResetPassword from './SRC/Screens/ResetPassword';
+import EnterCode from './SRC/Screens/EnterCode';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -58,7 +60,7 @@ const MainContainer = () => {
   if (isloading == true) {
     return <SplashScreen />;
   }
-  return <ConformationCode />;
+  return <EnterCode />;
   // <AppNavigator />;
 };
 

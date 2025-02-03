@@ -89,6 +89,8 @@ import Weightcategoryscreen from './Screens/Weightcategoryscreen';
 import WeightTrackerScreen from './Screens/WeightTrackerScreen';
 import Yourplan from './Screens/Yourplan';
 import AddSomeInformation from './Screens/AddSomeInformation';
+import ConformationCode from './Screens/ConformationCode';
+import EnterCode from './Screens/EnterCode';
 
 // enableScreens();
 const AppNavigator = () => {
@@ -112,7 +114,7 @@ const AppNavigator = () => {
         : userData?.user_profile == null
         ? 'AddSomeInformation'
         : 'TabNavigation';
-        
+
     return (
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator
@@ -130,6 +132,12 @@ const AppNavigator = () => {
             name="ChooseAdditionalGoal"
             component={ChoooseAdditionalGoal}
           />
+          <RootNav.Screen
+            name="ConformationCode"
+            component={ConformationCode}
+          />
+          <RootNav.Screen name="EnterCode" component={EnterCode} />
+          <RootNav.Screen name="ResetPassword" component={ResetPassword} />
           <RootNav.Screen name="ChooseGender" component={Choosegender} />
           <RootNav.Screen
             name="ChooseMealsVariety"

@@ -1,24 +1,29 @@
 import React, {useState} from 'react';
 import {ImageBackground, SafeAreaView, StyleSheet, View} from 'react-native';
+import {
+  CodeField,
+  Cursor,
+  useBlurOnFulfill,
+  useClearByFocusCell,
+} from 'react-native-confirmation-code-field';
 import {moderateScale} from 'react-native-size-matters';
 import {useDispatch, useSelector} from 'react-redux';
 import Color from '../Assets/Utilities/Color';
-import {Post} from '../Axios/AxiosInterceptorFunction';
 import CustomButton from '../Components/CustomButton';
 import CustomImage from '../Components/CustomImage';
 import CustomText from '../Components/CustomText';
-import TextInputWithTitle from '../Components/TextInputWithTitle';
-import {setUserData} from '../Store/slices/common';
-import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
-import navigationService from '../navigationService';
-import {setUserToken} from '../Store/slices/auth';
-import Header from '../Components/Header';
+import {windowHeight, windowWidth} from '../Utillity/utils';
 
-const ResetPassword = () => {
+const EnterCode = ({route}) => {
+  //   const {email} = route.params;
   const dispatch = useDispatch();
-  const [password, setpassword] = useState('');
-  const [confirmPassword, setconfirmPassword] = useState('');
-
+  const [code, setCode] = useState('');
+  const CELL_COUNT = 4;
+  const ref = useBlurOnFulfill({code, cellCount: CELL_COUNT});
+  const [abcd, getCellOnLayoutHandler] = useClearByFocusCell({
+    code,
+    setCode,
+  });
   const token = useSelector(state => state.authReducer.token);
 
   return (
@@ -39,23 +44,38 @@ const ResetPassword = () => {
             />
           </View>
           <CustomText isBold style={styles.txt2}>
-            Reset Password
+            Enter OTP
           </CustomText>
+          <CustomText style={styles.txt3}>
+            Enter the code here we send you
+            {
+              <CustomText isBold style={{color: Color.black}}>
+                {/* {email}s */}
+              </CustomText>
+            }
+          </CustomText>
+          <CodeField
+            placeholder={'0'}
+            ref={ref}
+            value={code}
+            onChangeText={setCode}
+            cellCount={CELL_COUNT}
+            rootStyle={styles.codeFieldRoot}
+            keyboardType="number-pad"
+            textContentType="oneTimeCode"
+            renderCell={({index, symbol, isFocused}) => (
+              <View
+                onLayout={getCellOnLayoutHandler(index)}
+                key={index}
+                style={[styles.cellRoot, isFocused && styles.focusCell]}>
+                <CustomText
+                  style={[styles.cellText, isFocused && {color: Color.black}]}>
+                  {symbol || (isFocused ? <Cursor /> : null)}
+                </CustomText>
+              </View>
+            )}
+          />
           <View style={styles.formStyle}>
-            <TextInputWithTitle
-              placeholder={'Enter your new password'}
-              placeholderColor={Color.grey}
-              value={password}
-              setText={setpassword}
-              inputWidth={windowWidth * 0.7}
-            />
-            <TextInputWithTitle
-              placeholder={'Confirm your new password'}
-              placeholderColor={Color.grey}
-              value={confirmPassword}
-              setText={setconfirmPassword}
-              inputWidth={windowWidth * 0.7}
-            />
             <CustomButton
               style={styles.buttonStyle}
               text={'Submit'}
@@ -71,7 +91,7 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default EnterCode;
 
 const styles = StyleSheet.create({
   bgcImageStyle: {
@@ -129,5 +149,29 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     // backgroundColor:'red',
     marginTop: moderateScale(50, 0.6),
+  },
+  codeFieldRoot: {
+    marginTop: moderateScale(20, 0.3),
+    marginBottom: moderateScale(15, 0.3),
+    width: windowWidth * 0.65,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  cellRoot: {
+    width: moderateScale(55, 0.3),
+    height: moderateScale(55, 0.3),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: Color.white,
+    borderWidth: 2,
+    borderRadius: moderateScale(5, 0.3),
+  },
+  focusCell: {
+    backgroundColor: Color.white,
+  },
+  cellText: {
+    color: Color.white,
+    fontSize: moderateScale(20, 0.3),
+    textAlign: 'center',
   },
 });
