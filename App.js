@@ -6,11 +6,11 @@
  * @flow strict-local
  */
 
-import {NativeBaseProvider} from 'native-base';
-import React, {useEffect, useState} from 'react';
-import {Provider} from 'react-redux';
+import { NativeBaseProvider } from 'native-base';
+import React, { useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
 import SplashScreen from './SRC/Screens/SplashScreen';
-import {store} from './SRC/Store/index';
+import { store } from './SRC/Store/index';
 import AppNavigator from './SRC/appNavigation';
 import ConformationCOde from './SRC/Screens/ConformationCode';
 import ConformationCode from './SRC/Screens/ConformationCode';
@@ -60,8 +60,7 @@ const MainContainer = () => {
   if (isloading == true) {
     return <SplashScreen />;
   }
-  return <EnterCode />;
-  // <AppNavigator />;
+  return <AppNavigator />;
 };
 
 const useloader = value => {

@@ -2,16 +2,16 @@ import {
   BottomTabBar,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Icon} from 'native-base';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Icon } from 'native-base';
 import React from 'react';
-import {View} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { View } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import Color from './Assets/Utilities/Color';
 import navigationService from './navigationService';
 import Authscreen from './Screens/Authscreen';
@@ -91,6 +91,7 @@ import Yourplan from './Screens/Yourplan';
 import AddSomeInformation from './Screens/AddSomeInformation';
 import ConformationCode from './Screens/ConformationCode';
 import EnterCode from './Screens/EnterCode';
+import ProfileScreen from './Screens/ProfileScreen';
 
 // enableScreens();
 const AppNavigator = () => {
@@ -112,14 +113,14 @@ const AppNavigator = () => {
       token == null
         ? 'StartedScreen'
         : userData?.user_profile == null
-        ? 'AddSomeInformation'
-        : 'TabNavigation';
+          ? 'AddSomeInformation'
+          : 'TabNavigation';
 
     return (
       <NavigationContainer ref={navigationService.navigationRef}>
         <RootNav.Navigator
-          initialRouteName={firstScreen}
-          screenOptions={{headerShown: false}}>
+          initialRouteName={'ProfileScreen'}
+          screenOptions={{ headerShown: false }}>
           <RootNav.Screen name="AuthScreen" component={Authscreen} />
           <RootNav.Screen name="AvailableFood" component={AvailableFood} />
           <RootNav.Screen name="Category" component={Category} />
@@ -165,6 +166,10 @@ const AppNavigator = () => {
           <RootNav.Screen
             name="ProgressTracking"
             component={ProgressTracking}
+          />
+          <RootNav.Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
           />
 
           <RootNav.Screen
@@ -327,7 +332,7 @@ const AppNavigator = () => {
             name="RemaindersScreen"
             component={RemaindersScreen}
           />
-          <RootNav.Screen name="ResetPassword" component={ResetPassword} />
+          {/* <RootNav.Screen name="ResetPassword" component={ResetPassword} /> */}
           <RootNav.Screen name="ScanScreen" component={ScanScreen} />
           <RootNav.Screen name="Signup" component={Signup} />
           <RootNav.Screen name="SocialScreen" component={Socialscreen} />
@@ -368,10 +373,10 @@ export const TabNavigation = () => {
     <Tabs.Navigator
       tabBar={props => {
         return (
-          <BottomTabBar {...props} style={{backgroundColor: 'transparent'}} />
+          <BottomTabBar {...props} style={{ backgroundColor: 'transparent' }} />
         );
       }}
-      screenOptions={({route}) => ({
+      screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -380,7 +385,7 @@ export const TabNavigation = () => {
           backgroundColor: 'transparent',
           paddingHorizontal: moderateScale(10, 0.6),
         },
-        tabBarIcon: ({focused}) => {
+        tabBarIcon: ({ focused }) => {
           let iconName;
           let color = Color.theme2;
           let size = moderateScale(24, 0.3);

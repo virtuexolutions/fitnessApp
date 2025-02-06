@@ -1,21 +1,21 @@
-import {useNavigation} from '@react-navigation/native';
-import {Icon} from 'native-base';
-import React, {useState} from 'react';
-import {Alert, Dimensions, TouchableOpacity, View} from 'react-native';
-import {moderateScale, ScaledSheet} from 'react-native-size-matters';
+import { useNavigation } from '@react-navigation/native';
+import { Icon } from 'native-base';
+import React, { useState } from 'react';
+import { Alert, Dimensions, TouchableOpacity, View } from 'react-native';
+import { moderateScale, ScaledSheet } from 'react-native-size-matters';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Color from '../Assets/Utilities/Color';
-import {windowHeight, windowWidth} from '../Utillity/utils';
+import { windowHeight, windowWidth } from '../Utillity/utils';
 import navigationService from '../navigationService';
 import CustomImage from './CustomImage';
 import CustomText from './CustomText';
-import {setUserData} from '../Store/slices/common';
-import {setUserToken} from '../Store/slices/auth-slice';
-const {height, width} = Dimensions.get('window');
+import { setUserData } from '../Store/slices/common';
+import { setUserToken } from '../Store/slices/auth-slice';
+const { height, width } = Dimensions.get('window');
 
 const Header = props => {
   const dispatch = useDispatch();
@@ -52,10 +52,10 @@ const Header = props => {
   const userRole = useSelector(state => state.commonReducer.selectedRole);
   const token = useSelector(state => state.authReducer.token);
   const statusArray = [
-    {label: 'Change Password', value: 'ChangePassword'},
-    {label: 'Terms & Conditions', value: 'TermsAndConditions'},
-    {label: 'Financial Breakdown', value: 'FinancialBreakDown'},
-    {label: 'Logout', value: 'Logout'},
+    { label: 'Change Password', value: 'ChangePassword' },
+    { label: 'Terms & Conditions', value: 'TermsAndConditions' },
+    { label: 'Financial Breakdown', value: 'FinancialBreakDown' },
+    { label: 'Logout', value: 'Logout' },
   ];
 
   const Confirm = () => {
@@ -79,7 +79,7 @@ const Header = props => {
     <View
       style={[
         styles.header2,
-        {backgroundColor: headerColor ? headerColor : 'transparent'},
+        { backgroundColor: headerColor ? headerColor : 'transparent' },
       ]}>
       <View
         style={{
@@ -103,13 +103,13 @@ const Header = props => {
         ) : (
           <>
             {isImage ? (
-              <View
+              <TouchableOpacity activeOpacity={0.5} onPress={() => navigationN.navigate('ProfileScreen')}
                 style={{
                   width: moderateScale(50, 0.6),
                   height: moderateScale(50, 0.6),
                 }}>
                 <CustomImage source={require('../Assets/Images/profile.png')} />
-              </View>
+              </TouchableOpacity>
             ) : (
               <>
                 {isFilledButton ? (
@@ -182,6 +182,7 @@ const Header = props => {
             as={rightIconFrom ? rightIconFrom : AntDesign}
             size={moderateScale(22, 0.3)}
             color={iconColor ? iconColor : Color.lightGrey}
+            style={{ marginRight: moderateScale(5, 0.6) }}
           />
           {islastIcon && (
             <Icon
