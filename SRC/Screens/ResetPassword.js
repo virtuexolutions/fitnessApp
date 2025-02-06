@@ -1,226 +1,156 @@
 import React, {useState} from 'react';
-import {
-  Image,
-  Dimensions,
-  ImageBackground,
-  Platform,
-  ToastAndroid,
-  TouchableOpacity,
-  View,
-  ActivityIndicator,
-} from 'react-native';
-import {ScaledSheet, moderateScale} from 'react-native-size-matters';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import {ImageBackground, Platform, SafeAreaView, StyleSheet, ToastAndroid, View} from 'react-native';
+import {moderateScale} from 'react-native-size-matters';
 import {useDispatch, useSelector} from 'react-redux';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import TextInputWithTitle from '../Components/TextInputWithTitle';
 import Color from '../Assets/Utilities/Color';
-import CustomStatusBar from '../Components/CustomStatusBar';
-import CustomText from '../Components/CustomText';
-import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
-import CustomButton from '../Components/CustomButton';
-
-import {Icon} from 'native-base';
-import {useNavigation} from '@react-navigation/native';
 import {Post} from '../Axios/AxiosInterceptorFunction';
-import {Formik} from 'formik';
-import {forgotpassword} from '../Constant/schema';
+import CustomButton from '../Components/CustomButton';
+import CustomImage from '../Components/CustomImage';
+import CustomText from '../Components/CustomText';
+import TextInputWithTitle from '../Components/TextInputWithTitle';
+import {setUserData} from '../Store/slices/common';
+import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
+import navigationService from '../navigationService';
+import {setUserToken} from '../Store/slices/auth';
+import Header from '../Components/Header';
 
-const ResetPassword = props => {
+const ResetPassword = ({route}) => {
+  const {email} = route.params;
+  console.log('check', email);
   const dispatch = useDispatch();
-  const {user_type} = useSelector(state => state.authReducer);
-  const email = props?.route?.params?.email;
-  console.log('🚀 ~ ResetPassword ~ email===================:', email);
-
-  const navigationN = useNavigation();
-  const [password, setPassword] = useState('');
-  const [ConfirmPass, setConfirmPass] = useState('');
+  const [password, setpassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [confirmPassword, setconfirmPassword] = useState('');
 
-  const resetPassword = async values => {
+  const token = useSelector(state => state.authReducer.token);
+  const onPressPassword = async () => {
+    // console.log("check")
     const url = 'password/reset';
-    const data = {
+    const body = {
       email: email,
-      password: values.password,
-      confirm_password: values.confirmPassword,
+      password: password,
+      confirm_password: confirmPassword,
     };
     setIsLoading(true);
-    const response = await Post(url, data, apiHeader());
+    const response = await Post(url, body, apiHeader());
+    console.log('password', response.data);
     setIsLoading(false);
     if (response != undefined) {
-      console.log('response data =>', response?.data);
+      navigationService.navigate("AuthScreen")
       Platform.OS == 'android'
-        ? ToastAndroid.show(`Password Reset SuccessFully`, ToastAndroid.SHORT)
-        : alert(`Password Reset SuccessFully`);
-      navigationN.navigate('LoginScreen');
+        ? ToastAndroid.show(response?.data?.message, ToastAndroid.SHORT)
+        : Alert(response?.data?.message);
     }
   };
 
   return (
-    <>
-      <CustomStatusBar
-        backgroundColor={Color.white}
-        barStyle={'dark-content'}
-      />
-      <View style={styles.main_container}>
-        <TouchableOpacity activeOpacity={0.8} style={styles.back}>
-          <Icon
-            name={'arrowleft'}
-            as={AntDesign}
-            size={moderateScale(22, 0.3)}
-            color={Color.white}
-            onPress={() => {
-              navigationN.goBack();
-            }}
-          />
-        </TouchableOpacity>
-        <KeyboardAwareScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={styles.container}>
+    <SafeAreaView>
+      <ImageBackground
+        style={styles.bgcImageStyle}
+        source={require('../Assets/Images/bgcthemeimage.png')}
+        imageStyle={{width: '100%', height: '100%'}}>
+        <View style={styles.container}>
+          <View style={styles.logoImage}>
+            <CustomImage
+              style={{
+                width: '100%',
+                height: '100%',
+                resizeMode: 'contain',
+              }}
+              source={require('../Assets/Images/Tomato.png')}
+            />
+          </View>
           <CustomText isBold style={styles.txt2}>
-            Forget Password
+            Reset Password
           </CustomText>
-          <CustomText style={styles.txt3}>
-            Forgot your password ? don't worry, jsut take a simple step and
-            create your new password!
-          </CustomText>
-          <Formik
-            initialValues={{
-              password: '',
-              confirmPassword: '',
-            }}
-            validationSchema={forgotpassword}
-            onSubmit={resetPassword}>
-            {({values, handleChange, handleSubmit, touched, errors}) => {
-              return (
-                <View style={styles.text_input}>
-                  <TextInputWithTitle
-                    title={'new password *'}
-                    titleText={'New Password'}
-                    placeholder={'New Password'}
-                    setText={handleChange('password')}
-                    value={values.password}
-                    secureText={true}
-                    viewHeight={0.06}
-                    viewWidth={0.8}
-                    inputWidth={0.55}
-                    border={1}
-                    borderRadius={moderateScale(30, 0.3)}
-                    borderColor={'#000'}
-                    backgroundColor={Color.white}
-                    marginTop={moderateScale(10, 0.3)}
-                    color={Color.black}
-                    placeholderColor={Color.veryLightGray}
-                  />
-                  {touched.password && errors.password && (
-                    <CustomText style={styles.schemaText}>
-                      {errors.password}
-                    </CustomText>
-                  )}
-                  <TextInputWithTitle
-                    title={'new password *'}
-                    titleText={'New Password'}
-                    placeholder={'New Password'}
-                    setText={handleChange('confirmPassword')}
-                    value={values.confirmPassword}
-                    secureText={true}
-                    viewHeight={0.06}
-                    viewWidth={0.8}
-                    inputWidth={0.7}
-                    border={1}
-                    borderRadius={moderateScale(30, 0.3)}
-                    borderColor={'#000'}
-                    backgroundColor={Color.white}
-                    marginTop={moderateScale(10, 0.3)}
-                    color={Color.black}
-                    placeholderColor={Color.veryLightGray}
-                  />
-                  {touched.password && errors.password && (
-                    <CustomText style={styles.schemaText}>
-                      {errors.password}
-                    </CustomText>
-                  )}
-                  <CustomButton
-                    text={
-                      isLoading ? (
-                        <ActivityIndicator size={'small'} color={Color.white} />
-                      ) : (
-                        'Reset'
-                      )
-                    }
-                    textColor={Color.white}
-                    width={windowWidth * 0.8}
-                    height={windowHeight * 0.065}
-                    marginTop={moderateScale(20, 0.3)}
-                    onPress={handleSubmit}
-                    borderRadius={30}
-                    bgColor={
-                      user_type == 'Rider' ? Color.darkBlue : Color.themeBlack
-                    }
-                  />
-                </View>
-              );
-            }}
-          </Formik>
-        </KeyboardAwareScrollView>
-      </View>
-    </>
+          <View style={styles.formStyle}>
+            <TextInputWithTitle
+              placeholder={'Enter your new password'}
+              placeholderColor={Color.grey}
+              value={password}
+              setText={setpassword}
+              inputWidth={windowWidth * 0.7}
+            />
+            <TextInputWithTitle
+              placeholder={'Confirm your new password'}
+              placeholderColor={Color.grey}
+              value={confirmPassword}
+              setText={setconfirmPassword}
+              inputWidth={windowWidth * 0.7}
+            />
+            <CustomButton
+              style={styles.buttonStyle}
+              text={'Submit'}
+              fontSize={moderateScale(15, 0.6)}
+              textColor={Color.grey}
+              onPress={() => onPressPassword()}
+              loader={isLoading}
+              loaderColor={Color.peach}
+            />
+          </View>
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
   );
 };
 
-const styles = ScaledSheet.create({
-  main_container: {
-    height: windowHeight,
+export default ResetPassword;
+
+const styles = StyleSheet.create({
+  bgcImageStyle: {
     width: windowWidth,
-    backgroundColor: 'white',
+    height: windowHeight,
   },
-  txt2: {
-    color: Color.black,
-    fontSize: moderateScale(24, 0.6),
-  },
-  txt3: {
-    color: Color.themeLightGray,
-    fontSize: moderateScale(11, 0.6),
-    textAlign: 'center',
-    width: '80%',
-    marginVertical: moderateScale(10, 0.3),
-    lineHeight: moderateScale(17, 0.3),
-  },
-  back: {
-    position: 'absolute',
-    top: moderateScale(20, 0.3),
-    left: moderateScale(20, 0.3),
-    height: moderateScale(30, 0.3),
-    width: moderateScale(30, 0.3),
-    borderRadius: moderateScale(5, 0.3),
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Color.themeBlack,
-    zIndex: 1,
-  },
-  text_input: {
-    alignItems: 'center',
-    borderWidth: 1,
-    width: windowWidth * 0.9,
-    borderColor: Color.mediumGray,
-    paddingVertical: moderateScale(10, 0.6),
-    // height: windowHeight * 0.36,
-    borderRadius: 20,
-    paddingTop: windowHeight * 0.03,
-    paddingHorizontal: moderateScale(30, 0.6),
+  logoImage: {
+    width: windowWidth * 0.4,
+    height: windowHeight * 0.2,
+    marginTop: moderateScale(80, 0.6),
+    // backgroundColor:'green'
   },
   container: {
-    paddingBottom: moderateScale(20, 0.3),
     alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: windowHeight,
   },
-  schemaText: {
-    fontSize: moderateScale(10, 0.6),
-    color: Color.red,
-    alignSelf: 'flex-start',
+  txt2: {
+    color: Color.white,
+    fontSize: moderateScale(22, 0.6),
+    textTransform: 'uppercase',
+    marginTop: moderateScale(20, 0.6),
+  },
+  txt3: {
+    color: Color.white,
+    fontSize: moderateScale(12, 0.6),
+    textAlign: 'center',
+    width: '80%',
+    marginTop: moderateScale(10, 0.3),
+    lineHeight: moderateScale(20, 0.3),
+  },
+  signbuttonStyle: {
+    width: windowWidth * 0.26,
+    height: moderateScale(37, 0.6),
+    borderRadius: moderateScale(20, 0.6),
+    // backgroundColor: Color.white,
+    borderWidth: 1.5,
+    borderColor: Color.white,
+    marginTop: moderateScale(30, 0.6),
+  },
+  buttonStyle: {
+    width: windowWidth * 0.89,
+    height: moderateScale(50, 0.6),
+    borderRadius: moderateScale(25, 0.6),
+    //   marginTop: moderateScale(15, 0.6),
+    backgroundColor: Color.white,
+  },
+  formStyle: {
+    // backgroundColor:'green',
+    paddingVertical: moderateScale(15, 0.6),
+    gap: moderateScale(15, 0.6),
+  },
+  bottomText: {
+    fontSize: moderateScale(12, 0.6),
+    color: Color.grey,
+    width: windowWidth * 0.7,
+    textAlign: 'center',
+    // backgroundColor:'red',
+    marginTop: moderateScale(50, 0.6),
   },
 });
-
-export default ResetPassword;

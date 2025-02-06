@@ -13,6 +13,7 @@ import {apiHeader, windowHeight, windowWidth} from '../Utillity/utils';
 import navigationService from '../navigationService';
 import {setUserToken} from '../Store/slices/auth';
 import { useNavigation } from '@react-navigation/native';
+import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 const Authscreen = () => {
   const navigation = useNavigation();
@@ -130,15 +131,6 @@ const Authscreen = () => {
                 values={password}
                 inputWidth={windowWidth * 0.7}
               />
-              <CustomButton
-                style={styles.buttonStyle}
-                text={'Sign in'}
-                fontSize={moderateScale(15, 0.6)}
-                textColor={Color.grey}
-                onPress={() => onPressLogin()}
-                loader={isLoading}
-                loaderColor={Color.peach}
-              />
               <TouchableOpacity activeOpacity={0.5}
               onPress={()=>{
                 navigation.navigate('ConformationCode')
@@ -148,6 +140,16 @@ const Authscreen = () => {
                     Forgot password ?
                   </CustomText>
                   </TouchableOpacity>
+              <CustomButton
+                style={styles.buttonStyle}
+                text={'Sign in'}
+                fontSize={moderateScale(15, 0.6)}
+                textColor={Color.grey}
+                onPress={() => onPressLogin()}
+                loader={isLoading}
+                loaderColor={Color.peach}
+              />
+              
             </View>
           ) : (
             <View style={styles.formStyle}>
@@ -239,9 +241,12 @@ const styles = StyleSheet.create({
     marginTop: moderateScale(50, 0.6),
   },
   forgotpassword: {
-      fontSize: moderateScale(10, 0.6),
-      color: Color.black,
-      alignSelf:'center',
+      fontSize: moderateScale(13, 0.6),
+      color: Color.grey,
+      alignSelf:'flex-end',
+      marginRight:moderateScale(10,0.6),
+      textDecorationLine:'underline',
+      
       // textAlign: 'right',
       // width: '95%',
       // paddingVertical: moderateScale(4, 0.6),

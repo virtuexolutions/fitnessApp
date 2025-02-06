@@ -138,7 +138,9 @@ const DietPlanScreen = () => {
           marginTop: moderateScale(50, 0.6),
         }}
       />
-      <FlatList
+      <FlatList contentContainerStyle={{
+        paddingBottom:moderateScale(80,0.6)
+      }}
         showsVerticalScrollIndicator={false}
         data={diet_plan}
         style={{

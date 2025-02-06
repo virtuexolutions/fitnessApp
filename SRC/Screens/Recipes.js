@@ -97,7 +97,9 @@ const Recipes = () => {
         rightIconName={'dots-three-vertical'}
         rightIconFrom={Entypo}
       />
-      <ScrollView
+      <ScrollView contentContainerStyle={{
+        paddingBottom:moderateScale(80,0.6)
+      }}
         style={styles.scroll_view}
         showsVerticalScrollIndicator={false}>
         <View style={styles.main_view}>

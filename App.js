@@ -14,6 +14,9 @@ import {store} from './SRC/Store/index';
 import AppNavigator from './SRC/appNavigation';
 import ConformationCOde from './SRC/Screens/ConformationCode';
 import ConformationCode from './SRC/Screens/ConformationCode';
+import ResetPassword from './SRC/Screens/ResetPassword';
+import EnterCode from './SRC/Screens/EnterCode';
+import Recipedetail from './SRC/Screens/Recipedetail';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -57,9 +60,12 @@ const MainContainer = () => {
   const [isloading] = useloader(true);
   if (isloading == true) {
     return <SplashScreen />;
+    // return <Recipedetail />
   }
-  return <AppNavigator />;
-  // <ConformationCode />;
+  return <AppNavigator />; 
+  // <Recipedetail /> ;
+  
+  // <Recipedetail />;
 };
 
 const useloader = value => {
