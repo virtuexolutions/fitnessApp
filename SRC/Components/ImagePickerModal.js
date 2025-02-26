@@ -17,7 +17,7 @@ import {moderateScale, ScaledSheet} from 'react-native-size-matters';
 import {Icon} from 'native-base';
 import Modal from 'react-native-modal';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import Entypo from 'react-native-vector-icons/Entypo';
+import  Entypo from 'react-native-vector-icons/Entypo';
 // import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import CustomText from '../Components/CustomText';
 import {windowHeight, windowWidth} from '../Utillity/utils';

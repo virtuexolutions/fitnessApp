@@ -21,6 +21,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Icon} from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const Recipedetail = () => {
   const ingredientsList = [
@@ -81,6 +82,50 @@ const Recipedetail = () => {
         'Bake in the oven for 3 minutes. Take them out and place one yolk in the middle of each. Season with pepper and bake for another 2-3 minutes, until the yolks are almost set.',
     },
   ];
+  const informationList = [
+    {
+      id: 1,
+      // SNo: '1',
+      title: 'Calories',
+      text:'358 kcal'
+    },
+    {
+      id: 2,
+      // SNo: '2',
+      title: 'Net carbs',
+      text:'1.2 g'
+    },
+    {
+      id: 3,
+      // SNo: '3',
+      title: 'Fat',
+      text:'25 g'  
+    },
+    {
+      id: 4,
+      // SNo: '4',
+      title: 'Protein',
+      text:'29 g'  
+    },
+    {
+      id: 5,
+      // SNo: '5',
+      title: 'Cholesterol',
+      text:'515 mg'  
+    },
+    {
+      id: 6,
+      // SNo: '5',
+      title: 'Sodium',
+      text:'975 mg'  
+    },
+    {
+      id: 7,
+      // SNo: '5',
+      title: 'Potassium',
+      text:'178 mg'  
+    },
+  ];
   // const [isShow, setShow] = useState(false);
   return (
     <SafeAreaView>
@@ -113,12 +158,17 @@ const Recipedetail = () => {
                 backgroundColor: 'red',
               }}
               source={require('../Assets/Images/cheesyeggclouds.png')}>
-              <Header
-                headerColor={'rgba(115, 114, 112, 0.5)'}
-                isRightIcon
-                showBack={true}
-                islastIcon
-              />
+              <Header textstyle={{
+                color:Color.black
+              }}
+        title={'Recipes'}
+        showBack
+        isRightIcon
+        iconColor={Color.black}
+        rightIconName={'dots-three-vertical'}
+        rightIconFrom={Entypo}
+        isLogout={false}
+      />
             </ImageBackground>
           </View>
           <View style={styles.mainHeading}>
@@ -260,7 +310,7 @@ const Recipedetail = () => {
             return(
               <View style={{
                 flexDirection:'row',
-                alignItems:'center',
+                // alignItems:'center',
                 width:windowWidth *0.9,
                 alignSelf:'center',
                 paddingHorizontal:moderateScale(10,0.6),
@@ -303,6 +353,8 @@ const Recipedetail = () => {
               <View style={{
                 flexDirection:'row',
                 width:windowWidth *0.9,
+                // top:moderateScale(3,0.3),
+                // alignItems:'center',
                 alignSelf:'center',
                 paddingHorizontal:moderateScale(10,0.6),
                 // backgroundColor:'green'
@@ -324,6 +376,60 @@ const Recipedetail = () => {
                 </CustomText>
               </View>
               </View>
+            )
+          }}
+          />
+          <View style={{
+            marginLeft:moderateScale(30,0.3),
+            marginTop:moderateScale(10,0.3),
+            borderBottomWidth:1,
+            borderBottomColor:Color.lightest_grey,
+            width:windowWidth *0.85,
+            // backgroundColor:'red'
+          }}>
+            <CustomText
+              isBold
+              style={{
+                fontSize: moderateScale(19, 0.3),
+                color: Color.black,
+                letterSpacing: 2,
+                // marginLeft:moderateScale(30,0.3),
+                  // marginTop:moderateScale(10,0.3)
+              }}>
+              Nutrition information
+            </CustomText>
+            <CustomText
+              style={{
+                fontSize: moderateScale(15, 0.3),
+                color: Color.lightGrey,
+                // letterSpacing: 2
+              }}>
+              1 serving
+            </CustomText>
+            </View>
+          <FlatList
+          data={informationList}
+          renderItem={({item})=>{
+            return(
+              <View style={styles.dietPlanStyle}>
+            <CustomText
+              style={{
+                fontSize: moderateScale(17, 0.3),
+                color: Color.black,
+                // letterSpacing: 2
+              }}>
+              {item.title}
+            </CustomText>
+            <CustomText
+              isBold
+              style={{
+                fontSize: moderateScale(17, 0.3),
+                color: Color.black,
+                // letterSpacing: 2
+              }}>
+              {item.text}
+            </CustomText>
+          </View>
             )
           }}
           />
@@ -649,7 +755,7 @@ const styles = StyleSheet.create({
     height: windowWidth * 0.05,
     borderRadius: (windowWidth * 0.05) / 2,
     backgroundColor: Color.peach,
-    top:moderateScale(10,0.3),
+    top:moderateScale(8,0.3),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -657,7 +763,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // backgroundColor:'red',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    // alignItems: 'center',
     marginTop: moderateScale(9, 0.3),
     paddingHorizontal: moderateScale(30, 0.6),
   },

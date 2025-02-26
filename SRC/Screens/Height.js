@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {
   ImageBackground,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
@@ -29,7 +30,7 @@ const Height = ({route}) => {
 
   return (
     <SafeAreaView style={styles.safe_are_view}>
-      <Header
+      {/* <Header
         showBack
         isRightIcon
         title={'Height'}
@@ -37,7 +38,11 @@ const Height = ({route}) => {
         rightIconName={'dots-three-vertical'}
         rightIconFrom={Entypo}
         headerColor={Color.peach}
-      />
+      /> */}
+
+      <ScrollView contentContainerStyle={{
+        paddingBottom:moderateScale(20,0.6)
+      }} >
       <ImageBackground
         source={require('../Assets/Images/background3.png')}
         style={styles.image_background_view}
@@ -137,7 +142,8 @@ const Height = ({route}) => {
           />
         </View>
       </ImageBackground>
-      {/* </ScrollView> */}
+      </ScrollView>
+
     </SafeAreaView>
   );
 };
@@ -161,6 +167,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: moderateScale(18, 0.6),
     textAlign: 'center',
+    marginTop:moderateScale(20,0.3),
     color: Color.darkGray,
     fontWeight: '700',
   },
@@ -191,7 +198,7 @@ const styles = StyleSheet.create({
   image_background_image: {
     width: '100%',
     height: '45%',
-    top: -200,
+    top: -150,
   },
   btn_main_view: {
     height: windowHeight * 0.08,

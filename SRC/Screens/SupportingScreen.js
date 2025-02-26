@@ -39,7 +39,9 @@ const SupportingScreen = ({route}) => {
   ];
   return (
     <SafeAreaView style={styles.safe_are_view}>
-      <ScrollView style={styles.scroll_view}>
+      <ScrollView contentContainerStyle={{
+        paddingBottom:moderateScale(20,0.6)
+      }} style={styles.scroll_view}>
         <View style={styles.main_view}>
           <CustomText style={styles.subheading_text}>
             Let's Get To Know You Better!

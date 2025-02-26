@@ -6,17 +6,18 @@
  * @flow strict-local
  */
 
-import {NativeBaseProvider} from 'native-base';
-import React, {useEffect, useState} from 'react';
-import {Provider} from 'react-redux';
+import { NativeBaseProvider } from 'native-base';
+import React, { useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
 import SplashScreen from './SRC/Screens/SplashScreen';
-import {store} from './SRC/Store/index';
+import { store } from './SRC/Store/index';
 import AppNavigator from './SRC/appNavigation';
 import ConformationCOde from './SRC/Screens/ConformationCode';
 import ConformationCode from './SRC/Screens/ConformationCode';
 import ResetPassword from './SRC/Screens/ResetPassword';
 import EnterCode from './SRC/Screens/EnterCode';
 import Recipedetail from './SRC/Screens/Recipedetail';
+import { requestCameraPermission } from './SRC/Utillity/utils';
 
 const App = () => {
   const [publishableKey, setPublishableKey] = useState('');
@@ -58,14 +59,19 @@ const MainContainer = () => {
    *
    */
   const [isloading] = useloader(true);
+  useEffect(() => {
+    async function GetPermission() {
+      await requestCameraPermission();
+      // await requestWritePermission();
+      // await requestLocationPermission();
+    }
+    GetPermission();
+  }, []);
   if (isloading == true) {
     return <SplashScreen />;
     // return <Recipedetail />
   }
-  return <AppNavigator />; 
-  // <Recipedetail /> ;
-  
-  // <Recipedetail />;
+  return <AppNavigator />;
 };
 
 const useloader = value => {
@@ -76,4 +82,6 @@ const useloader = value => {
   }, []);
   return [isloading];
 };
+
+
 export default App;

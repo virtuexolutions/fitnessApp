@@ -171,7 +171,9 @@ const Recipes = () => {
             horizontal
             showsHorizontalScrollIndicator={false}
             renderItem={({item}) => {
-              return <RecipesCard data={item} />;
+              return <RecipesCard onPress={()=>{
+                navigationService.navigate("Recipedetail")
+              }} data={item} />;
             }}
           />
           <View style={styles.text_view}>

@@ -147,7 +147,7 @@ const TextInputWithTitle = props => {
                           ? props?.fontSize
                           : moderateScale(15, 0.6),
                         fontWeight: '400',
-                      },
+                      }, 
                     ]
                   : [
                       styles.inputBox,
@@ -260,9 +260,11 @@ const styles = ScaledSheet.create({
     // textTransform: 'capitalize',
   },
   inputBox: {
-    paddingLeft: moderateScale(20, 0.6),
+    paddingLeft: moderateScale(15, 0.6),
     borderRadius: 8,
     fontSize: moderateScale(14, 0.3),
+    // backgroundColor:'green',
+    
     // textTransform: 'capitalize',
     // fontFamily: 'PlusJakartaDisplay-Regular',
     textAlign: I18nManager.isRTL ? 'right' : 'left',

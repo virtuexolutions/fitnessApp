@@ -15,6 +15,7 @@ import CustomText from '../Components/CustomText';
 import {TouchableOpacity} from 'react-native';
 import CustomImage from '../Components/CustomImage';
 import TestCompleteComponent from '../Components/TestCompleteComponent';
+import navigationService from '../navigationService';
 
 const DietPlanScreen = () => {
   const list = [
@@ -41,6 +42,7 @@ const DietPlanScreen = () => {
       heading: 'Breakfast',
       image: require('../Assets/Images/breakfast.png'),
       text: 'Vestibulum diam leo dictum diet vitae tincidunt feugiat, commodo sed leo.',
+      
     },
     {
       id: 2,
@@ -149,7 +151,9 @@ const DietPlanScreen = () => {
         }}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity
+            <TouchableOpacity onPress={()=>{
+              navigationService.navigate("Breakfast")
+            }}
               style={[
                 styles.list_view,
                 item?.id === 1

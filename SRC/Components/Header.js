@@ -45,6 +45,8 @@ const Header = props => {
     rightIconName,
     iconColor,
     isRightImage,
+    onPressRightIcon,
+    isLogout = true,
   } = props;
 
   const [searchText, setSearchText] = useState('');
@@ -103,13 +105,20 @@ const Header = props => {
         ) : (
           <>
             {isImage ? (
-              <View
+              <TouchableOpacity
+                activeOpacity={0}
+               onPress={()=>{
+                navigationN.navigate("ProfileScreen")
+               }}
                 style={{
                   width: moderateScale(50, 0.6),
                   height: moderateScale(50, 0.6),
+                  // backgroundColor:
                 }}>
-                <CustomImage source={require('../Assets/Images/profile.png')} />
-              </View>
+                <CustomImage onPress={()=>{
+                  navigationN.navigate("ProfileScreen")
+                }} source={require('../Assets/Images/profile.png')} />
+              </TouchableOpacity>
             ) : (
               <>
                 {isFilledButton ? (
@@ -178,10 +187,12 @@ const Header = props => {
             alignItems: 'center',
           }}>
           <Icon
+          onPress={onPressRightIcon}
             name={rightIconName ? rightIconName : 'search1'}
             as={rightIconFrom ? rightIconFrom : AntDesign}
             size={moderateScale(22, 0.3)}
             color={iconColor ? iconColor : Color.lightGrey}
+            style={{marginRight: moderateScale(5, 0.6)}}
           />
           {islastIcon && (
             <Icon
@@ -194,19 +205,21 @@ const Header = props => {
               color={Color.lightGrey}
             />
           )}
-          <Icon
-            onPress={() => {
-              dispatch(setUserData({}));
-              dispatch(setUserToken(null));
-            }}
-            name={'logout'}
-            as={MaterialIcons}
-            size={moderateScale(22, 0.3)}
-            style={{
-              marginLeft: moderateScale(5, 0.6),
-            }}
-            color={Color.lightGrey}
-          />
+          {isLogout && (
+            <Icon
+              onPress={() => {
+                dispatch(setUserData({}));
+                dispatch(setUserToken(null));
+              }}
+              name={'logout'}
+              as={MaterialIcons}
+              size={moderateScale(22, 0.3)}
+              style={{
+                marginLeft: moderateScale(5, 0.6),
+              }}
+              color={Color.lightGrey}
+            />
+          )}
         </View>
       ) : (
         // <View
@@ -257,6 +270,7 @@ const Header = props => {
         //     }}
         //   />
         // </View>
+         
         <View
           style={{
             width: moderateScale(50, 0.6),
@@ -264,6 +278,8 @@ const Header = props => {
           }}>
           <CustomImage source={require('../Assets/Images/profile.png')} />
         </View>
+        
+        
       )}
     </View>
   );
